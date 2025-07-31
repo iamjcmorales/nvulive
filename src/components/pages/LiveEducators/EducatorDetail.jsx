@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useParams, Link } from 'react-router-dom';
 import educatorsData from '../../../data/educatorsData'; // Ajustar ruta relativa
-import { FaArrowLeft, FaInstagram, FaLinkedin, FaFacebookF, FaUserClock, FaWifi } from 'react-icons/fa';
+import { FaArrowLeft, FaInstagram, FaLinkedin, FaFacebookF, FaUserClock, FaWifi, FaComments, FaTimes } from 'react-icons/fa';
 import { useTranslation } from 'react-i18next'; // Importar hook
+import LiveChat from '../../ui/LiveChat';
 
 // --- Styled Components (Restaurados) --- 
 
@@ -30,6 +31,63 @@ const BackLink = styled(Link)`
 
 const ContentWrapper = styled.div`
     padding: 20px 24px 0 24px; // 20px arriba, 24px laterales, 0 abajo
+`;
+
+const StreamChatContainer = styled.div`
+  display: ${props => props.$showChat ? 'flex' : 'block'};
+  gap: 20px;
+  align-items: stretch;
+  
+  @media (max-width: 1200px) {
+    flex-direction: column;
+  }
+`;
+
+const StreamSection = styled.div`
+  flex: ${props => props.$showChat ? '1' : 'none'};
+  min-width: 0;
+`;
+
+const ChatSection = styled.div`
+  width: ${props => props.$showChat ? '350px' : '0'};
+  height: ${props => props.$showChat ? '600px' : '0'};
+  overflow: hidden;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  
+  @media (max-width: 1200px) {
+    width: 100%;
+    height: ${props => props.$showChat ? '600px' : '0'};
+  }
+`;
+
+const ChatToggleButton = styled.button`
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(0, 150, 136, 0.5);
+  border-radius: 8px;
+  color: #00d4aa;
+  padding: 8px 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+  z-index: 10;
+  backdrop-filter: blur(4px);
+  
+  &:hover {
+    background: rgba(0, 150, 136, 0.1);
+    border-color: #00d4aa;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 212, 170, 0.2);
+  }
 `;
 
 const StreamArea = styled.div`
@@ -70,8 +128,8 @@ const EducatorTitle = styled.p`
 // Link/Banner para Sesiones Favoritas
 const FavoritesLink = styled(Link)`
   display: block;
-  margin-bottom: 24px;
-  padding: 24px 20px;
+  margin: 32px 0;
+  padding: 32px 24px;
   background: rgb(0,150,136); /* Cyan principal */
   color: rgb(255,255,255);
   border-radius: 12px;
@@ -177,13 +235,28 @@ const EducatorDetail = () => {
   const { educatorId } = useParams();
   const { t } = useTranslation();
   const educator = findEducatorById(educatorId);
+  const [showChat, setShowChat] = useState(false);
+  
+  const handleToggleChat = (e) => {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    setShowChat(!showChat);
+  };
+  
+  // Habilitar chat para todos los educadores
+  const shouldShowChatFeature = true;
+  
+  // Educadores que usan Vimeo interaction tools en lugar de LiveChat
+  const vimeoInteractionEducators = ['henry-tyson', 'lucas-longmire', 'richard-hall-pops', 'arin-long', 'paulina'];
+  const hasVimeoInteraction = vimeoInteractionEducators.includes(educatorId);
+  const shouldShowSideBySide = (showChat && shouldShowChatFeature) || hasVimeoInteraction;
 
   if (!educator) {
     return (
         <div> 
-            {/* Texto traducido */}
             <ContentWrapper>
-               {/* Texto traducido */}
                <p>{t('educatorDetail.notFound')}</p>
             </ContentWrapper>
         </div>
@@ -195,21 +268,261 @@ const EducatorDetail = () => {
 
   return (
     <EducatorDetailContainer> 
-      {/* Eliminar BackLinkContainer y BackLink aquí, dejar solo el embed y la info */}
       <ContentWrapper>
-        <StreamArea>
-          <iframe
-            src={liveEmbedSrc}
-            frameBorder="0"
-            allow="autoplay; fullscreen"
-            allowFullScreen
-            title="Live Stream"
-          />
+        <StreamChatContainer $showChat={shouldShowSideBySide}>
+          <StreamSection $showChat={shouldShowSideBySide}>
+            <StreamArea>
+          {educatorId === 'corey-williams' ? (
+            <div style={{ padding: "56.25% 0 0 0", position: "relative" }}>
+              <iframe
+                src="https://vimeo.com/event/4839566/embed"
+                frameborder="0"
+                allow="autoplay; fullscreen; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  width: "100%",
+                  height: "100%"
+                }}
+                title="Vimeo Live Event"
+              />
+            </div>
+          ) : educatorId === 'arin-long' ? (
+            <div style={{ padding: "56.25% 0 0 0", position: "relative" }}>
+              <iframe
+                src="https://vimeo.com/event/4865934/embed"
+                frameborder="0"
+                allow="autoplay; fullscreen; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  width: "100%",
+                  height: "100%"
+                }}
+                title="Vimeo Live Event"
+              />
+            </div>
+          ) : educatorId === 'steph-royal' ? (
+            <div style={{ padding: "56.25% 0 0 0", position: "relative" }}>
+              <iframe
+                src="https://vimeo.com/event/4849959/embed"
+                frameborder="0"
+                allow="autoplay; fullscreen; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  width: "100%",
+                  height: "100%"
+                }}
+                title="Vimeo Live Event"
+              />
+            </div>
+
+          ) : educatorId === 'paulina' ? (
+            <div style={{ padding: "56.25% 0 0 0", position: "relative" }}>
+              <iframe
+                src="https://vimeo.com/event/4879347/embed"
+                frameborder="0"
+                allow="autoplay; fullscreen; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  width: "100%",
+                  height: "100%"
+                }}
+                title="Vimeo Live Event"
+              />
+            </div>
+          ) : educatorId === 'maur-gaytan' ? (
+            <div style={{ padding: "56.25% 0 0 0", position: "relative" }}>
+              <iframe
+                src="https://vimeo.com/event/5033739/embed"
+                frameborder="0"
+                allow="autoplay; fullscreen; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  width: "100%",
+                  height: "100%"
+                }}
+                title="Vimeo Live Event"
+              />
+            </div>
+          ) : educatorId === 'jorge-damelines' ? (
+            <div style={{ padding: "56.25% 0 0 0", position: "relative" }}>
+              <iframe
+                src="https://vimeo.com/event/5032569/embed"
+                frameborder="0"
+                allow="autoplay; fullscreen; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  width: "100%",
+                  height: "100%"
+                }}
+                title="Vimeo Live Event"
+              />
+            </div>
+          ) : educatorId === 'dani-curtis' ? (
+            <div style={{ padding: "56.25% 0 0 0", position: "relative" }}>
+              <iframe
+                src="https://vimeo.com/event/4839563/embed"
+                frameborder="0"
+                allow="autoplay; fullscreen; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  width: "100%",
+                  height: "100%"
+                }}
+                title="Vimeo Live Event"
+              />
+            </div>
+          ) : educatorId === 'angie-toney' ? (
+            <div style={{ padding: "56.25% 0 0 0", position: "relative" }}>
+              <iframe
+                src="https://vimeo.com/event/4650197/embed"
+                frameborder="0"
+                allow="autoplay; fullscreen; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  width: "100%",
+                  height: "100%"
+                }}
+                title="Vimeo Live Event"
+              />
+            </div>
+          ) : (
+            <div style={{ padding: "56.25% 0 0 0", position: "relative" }}>
+              <iframe
+                src={liveEmbedSrc}
+                frameborder="0"
+                allow="autoplay; fullscreen; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  width: "100%",
+                  height: "100%"
+                }}
+                title="Live Stream"
+              />
+            </div>
+          )}
+          {shouldShowChatFeature && !showChat && !hasVimeoInteraction && (
+            <ChatToggleButton onClick={handleToggleChat}>
+              <FaComments />
+              {t('liveChat.openChat')}
+            </ChatToggleButton>
+          )}
         </StreamArea>
-        {/* Aquí sigue el resto de la info del educador, bio, etc. */}
+        </StreamSection>
+        
+        {shouldShowChatFeature && !hasVimeoInteraction && (
+          <ChatSection $showChat={showChat}>
+            {showChat && (
+              <LiveChat 
+                onClose={() => setShowChat(false)} 
+                educatorName={educator.name}
+              />
+            )}
+          </ChatSection>
+        )}
+        
+        {educatorId === 'henry-tyson' && (
+          <ChatSection $showChat={true}>
+            <iframe 
+              src="https://vimeo.com/live/interaction_tools/live_event/4932282?theme=light" 
+              width="100%" 
+              height="100%" 
+              frameborder="0"
+              style={{ borderRadius: '8px' }}
+              title="Andre Tyson Live Chat"
+            />
+          </ChatSection>
+        )}
+        
+        {educatorId === 'lucas-longmire' && (
+          <ChatSection $showChat={true}>
+            <iframe 
+              src="https://vimeo.com/live/interaction_tools/live_event/5189586?theme=light" 
+              width="100%" 
+              height="100%" 
+              frameborder="0"
+              style={{ borderRadius: '8px' }}
+              title="Lucas L Live Chat"
+            />
+          </ChatSection>
+        )}
+        
+        {educatorId === 'richard-hall-pops' && (
+          <ChatSection $showChat={true}>
+            <iframe 
+              src="https://vimeo.com/live/interaction_tools/live_event/4650337?theme=light" 
+              width="100%" 
+              height="100%" 
+              frameborder="0"
+              style={{ borderRadius: '8px' }}
+              title="Pops Live Chat"
+            />
+          </ChatSection>
+        )}
+        
+        {educatorId === 'arin-long' && (
+          <ChatSection $showChat={true}>
+            <iframe 
+              src="https://vimeo.com/live/interaction_tools/live_event/4865934?theme=light" 
+              width="100%" 
+              height="100%" 
+              frameborder="0"
+              style={{ borderRadius: '8px' }}
+              title="Arin Long Live Chat"
+            />
+          </ChatSection>
+        )}
+        
+        {educatorId === 'paulina' && (
+          <ChatSection $showChat={true}>
+            <iframe 
+              src="https://vimeo.com/live/interaction_tools/live_event/4650299?theme=light" 
+              width="100%" 
+              height="100%" 
+              frameborder="0"
+              style={{ borderRadius: '8px' }}
+              title="Ana Paulina Live Chat"
+            />
+          </ChatSection>
+        )}
+      </StreamChatContainer>
         {/* Enlace a Sesiones Favoritas */}
         <FavoritesLink to={`/educadores/${educatorId}/sesiones`}>
-            {/* Texto traducido */}
             <FavoritesTitle>{t('educatorDetail.favoriteSessions')}</FavoritesTitle>
         </FavoritesLink>
         
@@ -239,9 +552,7 @@ const EducatorDetail = () => {
             <BioColumn>
                 <BioHeader>
                     <EducatorName>{educator.name}</EducatorName>
-                    {/* Usar LanguageBadge */}
                     <LanguageBadge>
-                        {/* Mostrar idioma */}
                         {educator.language || 'N/A'}
                     </LanguageBadge>
                 </BioHeader>

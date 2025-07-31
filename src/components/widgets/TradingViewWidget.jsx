@@ -5,13 +5,19 @@ const TradingViewWidget = () => {
 
   useEffect(() => {
     if (!containerRef.current) return;
+    
     // Limpia el contenido previo
     containerRef.current.innerHTML = '';
-    const script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.async = true;
-    script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js';
-    script.innerHTML = `{
+    
+    // Agrega un pequeño delay para asegurar que el DOM esté listo
+    const timeoutId = setTimeout(() => {
+      if (!containerRef.current) return;
+      
+      const script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js';
+      script.innerHTML = `{
       "colorTheme": "dark",
       "dateRange": "1D",
       "showChart": true,
@@ -56,7 +62,17 @@ const TradingViewWidget = () => {
         }
       ]
     }`;
-    containerRef.current.appendChild(script);
+      
+      try {
+        containerRef.current.appendChild(script);
+      } catch (error) {
+        console.warn('Error loading TradingView widget:', error);
+      }
+    }, 100);
+    
+    return () => {
+      clearTimeout(timeoutId);
+    };
   }, []);
 
   return (

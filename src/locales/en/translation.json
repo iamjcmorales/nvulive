@@ -1,28 +1,120 @@
 {
   "sidebar": {
     "home": "Home",
+    "newMembers": "New Members",
     "calendar": "Calendar",
     "educators": "Educators",
     "academy": "Academy",
     "forum": "Forum",
     "backoffice": "Back Office",
     "scanner": "Scanner",
+    "crm": "CRM",
     "menu": "Menu",
     "liveMarkups": "Live Markups",
     "beyondCharts": "Beyond the Charts",
+    "tntTraining": "TNT Training",
     "news": "News",
     "markups": "Markups",
     "tradingJournal": "Trading Journal",
     "social": {
       "instagram": "Instagram",
       "telegram": "Telegram"
+    },
+    "appModal": {
+      "title": "Download TNT App",
+      "subtitle": "Access all trading features from your mobile device",
+      "downloadIOS": "Download for iOS",
+      "downloadAndroid": "Download for Android"
     }
   },
   "scanner": {
     "title": "Scanners",
     "gold": "GOLD SCANNER",
     "abi": "ABI SCANNER",
-    "pops": "POPS SCANNER"
+    "pops": "POPS SCANNER",
+    "earlyAccess": {
+      "title": "Want to be part of Early Access?",
+      "description": "Get exclusive access to our scanners before anyone else. Join our early access program and enhance your trading.",
+      "buttonText": "I want the scanners",
+      "olympusButton": "I want the Olympus Scanner",
+      "skywalkerButton": "I want the Skywalker Scanner",
+      "modal": {
+        "title": "Steps to Gain Access to the Olympus Scanner",
+        "videoTitle": "How to Create a TradingView Account",
+        "step1": {
+          "title": "1. Complete the Access Request Form",
+          "description": "Please fill out the designated form with the following required information:"
+        },
+        "step2": {
+          "title": "2. Submit the Form",
+          "description": "Ensure all information is accurate before submitting the form. Incomplete or incorrect details may delay access."
+        },
+        "step3": {
+          "title": "3. Receive Your Invitation",
+          "description": "Once your form has been reviewed and verified, you will receive an invitation granting access to the Olympus Scanner."
+        },
+        "step4": {
+          "title": "4. Access the Olympus Scanner on TradingView",
+          "description": "After receiving your invitation, you will be able to access and use the Olympus Scanner directly within your TradingView account."
+        },
+        "form": {
+          "firstName": "First Name",
+          "lastName": "Last Name",
+          "email": "Email Address",
+          "nvisionId": "NvisionU ID",
+          "tradingViewUsername": "TradingView Username",
+          "submitButton": "Submit Request",
+          "successMessage": "Form submitted successfully! You will receive a response soon.",
+          "errorMessage": "Error submitting form. Please try again.",
+          "requiredField": "This field is required",
+          "requestFor": "Request for:",
+          "emailInvalid": "Email format is invalid",
+          "submitting": "Submitting..."
+        }
+      },
+      "skywalker": {
+        "title": "Steps to Gain Access to the Skywalker Scanner",
+        "step1": {
+          "title": "1. Complete the Access Request Form",
+          "description": "Please complete the form with the required information to access the Skywalker Scanner:"
+        },
+        "step2": {
+          "title": "2. Submit the Form",
+          "description": "Ensure all information is accurate before submitting the form. Incomplete or incorrect details may delay access."
+        },
+        "step3": {
+          "title": "3. Receive Your Invitation",
+          "description": "Once your form has been reviewed and verified, you will receive an invitation granting access to the Skywalker Scanner."
+        },
+        "step4": {
+          "title": "4. Access the Skywalker Scanner on TradingView",
+          "description": "After receiving your invitation, you will be able to access and use the Skywalker Scanner directly within your TradingView account."
+        }
+      }
+    }
+  },
+  "educatorSessions": {
+    "noSessionsAvailable": "No sessions available for this educator.",
+    "favoriteSessions": "Favorite Sessions",
+    "allSessions": "All Sessions",
+    "noFavorites": "No favorite sessions. Mark some sessions as favorites by clicking the star."
+  },
+  "liveChat": {
+    "title": "NVU Live Chat",
+    "liveUsers": "live",
+    "closeChat": "Close Chat",
+    "openChat": "Live Chat",
+    "messagePlaceholder": "Type a message as {{username}}...",
+    "sendMessage": "Send message",
+    "loading": "Loading chat...",
+    "emptyChat": "Be the first to write in this chat!",
+    "connected": "Connected",
+    "disconnected": "Disconnected",
+    "sending": "Sending...",
+    "retry": "Retry",
+    "connectionError": "Connection error",
+    "permissionError": "No permission to send messages",
+    "generalError": "Error sending message"
   },
   "home": {
     "welcome": "Welcome",
@@ -55,10 +147,10 @@
     "abi-belity": "Abi Belilty is a professional trader with over 7 years of experience in the financial markets. With an innate passion for trading, Abi has dedicated years of his life to perfecting his skills and knowledge in the world of investments.\n\nWith a unique and insightful vision, Abi invites people from all over the world to connect to his sessions, where he shares his favorite strategies and key tips to take trading to the next level. His practical approach and ability to simplify complex concepts make his sessions accessible and valuable for traders of all levels.",
     "frank-araujo": "Trader with over 5 years of experience in financial markets, specializing in the EUR/USD pair. As a swing trader, I will provide you with the right tools to learn trading from the basics to the advanced, with a clear focus on mastering the charts and understanding market behavior professionally.",
     "maur-gaytan": "Engineer by profession, Certified Leadership Coach, 4 years as a Trader, specializing in trading XAU and JPY pairs with his own strategy, married with two daughters.",
-    "aring-long-fx": "Arin Long has a true passion for education and a strong foundation in problem-solving and process optimization, which she developed during her career as a mechanical engineer. With a natural affinity for technical analysis, she transitioned into trading five years ago and quickly developed a deep passion for the markets. Arin's trading approach is grounded in her technical mindset and meticulous attention to detail, skills she further refined through mentorship with Richard Hall (aka Market Bully). By mastering simple yet powerful strategies, Arin remains committed to continuous learning, constantly refining her techniques and expanding her market knowledge.",
+    "arin-long-fx": "Arin Long has a true passion for education and a strong foundation in problem-solving and process optimization, which she developed during her career as a mechanical engineer. With a natural affinity for technical analysis, she transitioned into trading five years ago and quickly developed a deep passion for the markets. Arin's trading approach is grounded in her technical mindset and meticulous attention to detail, skills she further refined through mentorship with Richard Hall (aka Market Bully). By mastering simple yet powerful strategies, Arin remains committed to continuous learning, constantly refining her techniques and expanding her market knowledge.",
     "marcelo-t-fx": "I am Marcelo Trullen, an expert in E-commerce and Digital Marketing. My passion for digital growth and continuous search for effective solutions has allowed me to help teams take their businesses to the next level. I am committed to continuous learning and implementing cutting-edge solutions in the world of e-commerce.",
     "richard-p-fx": "Expert educator in their field, committed to student success.",
-    "about-nikki-fx": "Expert educator in their field, committed to student success.",
+
     "jorge-damelines": "Expert in human development and evolution, guide of transformative experiences, accompanying processes of self-knowledge, inner power and conscious action.",
     "paulina": "Expert educator in their field, committed to student success.",
     "henry-tyson": "I am a strong and passionate person about what I do. As long as I put my mind to it, I can achieve it. I put God first in everything I do.",
@@ -66,7 +158,9 @@
     "dani-curtis": "Raquel Curtis, MBA, is a financial educator, entrepreneur, and international best-selling author dedicated to helping women take control of their finances and build wealth. A Georgia native and mother of three, Raquel turned personal setbacks into success through budgeting and investing, inspiring the creation of The Boujee Banker brand. She teaches women how to budget, save, invest, and grow online businesses. Raquel is the author of Mastering Your Money Mindset and co-author of the Amazon best-seller MoneyTalk$, featuring a foreword by Les Brown. A dynamic speaker and doctoral candidate, she has impacted thousands globally, guiding individuals toward lasting financial empowerment.",
     "annie-toney": "Expert educator in their field, committed to student success.",
     "al-blue": "Dr. A.L.Blue, Sr. is a bestselling Author, Wealth Evangelist & Private Equity Investor serving as Senior Partner & Managing Director of Blue Wealth Solutions Consolidated LLC, a better life financial empowerment, Wealth Building, & Educational Company focused on true wealth creation and asset accumulation in Precious Metals as well as generational wealth and trust fund creation solutions. He also serves as a Wealth Evangelist teaching biblical principles on wealth creation and better living from a spiritual perspective as a Kingdom Financier.",
-    "steph-royal": "Stephon Royal is a passionate and dynamic social media educator dedicated to empowering individuals and businesses to master the art of digital storytelling and online influence. With years of experience in creating viral-worthy content and building impactful online brands, Stephon combines creativity with strategy to help students unlock the full potential of social media platforms.\n\nSpecializing in content creation, audience engagement, and monetization strategies, Stephon has developed a reputation for delivering practical insights, innovative techniques, and actionable solutions. Whether you're a beginner influencer, a small business owner, or a seasoned marketer, Stephon's approachable teaching style ensures every student walks away with the skills and confidence to thrive in the ever-evolving world of social media.\n\nKnown for his energetic workshops and personalized coaching, Stephon's mission is simple: to help you build a brand that not only stands out but also connects, converts, and creates lasting impact."
+    "stephon-r": "Stephon Royal is a passionate and dynamic social media educator dedicated to empowering individuals and businesses to master the art of digital storytelling and online influence. With years of experience in creating viral-worthy content and building impactful online brands, Stephon combines creativity with strategy to help students unlock the full potential of social media platforms.\n\nSpecializing in content creation, audience engagement, and monetization strategies, Stephon has developed a reputation for delivering practical insights, innovative techniques, and actionable solutions. Whether you're a beginner influencer, a small business owner, or a seasoned marketer, Stephon's approachable teaching style ensures every student walks away with the skills and confidence to thrive in the ever-evolving world of social media.\n\nKnown for his energetic workshops and personalized coaching, Stephon's mission is simple: to help you build a brand that not only stands out but also connects, converts, and creates lasting impact.",
+    "tamara-minto": "Tamara Minto is an author, speaker, entrepreneur, and educator with extensive experience in marketing, real estate, and investments. In 2018, Tamara founded a non-profit organization, iTrade Junior Investor Trading Game, as a platform to empower and educate young people aged 10 to 17 about the power of the financial market. She is a passionate investor and advocate for financial literacy, focusing on the importance of equipping our families to develop a wealth mindset.",
+    "angie-toney": "Educator specialized in financial literacy, helping people take control of their finances and build long-term wealth."
   },
   "login": {
     "title": "Login",
@@ -85,13 +179,33 @@
   },
   "educators": {
     "pageTitle": "Educators",
-    "noEducatorsInCategory": "No educators available in this category."
+    "noEducatorsInCategory": "No educators available in this category.",
+    "noEducatorsAvailable": "Coming Soon",
+    "categories": {
+      "forex": "Forex Educator",
+      "crypto": "Crypto Educator",
+      "finance": "Finance Educator",
+      "marketing": "Marketing Educator"
+    }
   },
   "categories": {
     "forex": "Forex",
+    "futures": "Futures",
+    "stock": "Stock",
     "crypto": "Crypto",
     "financial_literacy": "Financial Literacy",
-    "marketing_digital": "Digital Marketing"
+    "marketing_digital": "Digital Marketing",
+    "mindset": "Mindset"
+  },
+  "tntTraining": {
+    "welcomeTitle": "TNT Training",
+    "welcomeDescription": "Welcome to TNT Training. The most comprehensive trading education program designed to take you from beginner to professional trader.",
+    "onboardingTitle": "TNT Onboarding",
+    "onboardingDescription": "Welcome to the TNT Training onboarding program. Here you will find everything you need to start your trading journey with the best tools and knowledge.",
+    "comingSoon": "Coming Soon",
+    "loadingSessions": "Loading sessions...",
+    "noSessionsAvailable": "No sessions available.",
+    "videoUntitled": "Untitled video"
   },
   "calendar": {
     "pageTitle": "Calendar",
@@ -117,10 +231,15 @@
     "filterFrench": "French"
   },
   "profile": {
+    "title": "My Profile",
+    "personalInfo": "Personal Information",
+    "userIdLabel": "User ID:",
+    "nameLabel": "Name:",
     "editButton": "Edit Profile",
     "saveButton": "Save Changes",
     "cancelButton": "Cancel",
     "logoutButton": "Logout",
+    "saveSuccess": "Profile updated successfully.",
     "journalTitle": "My Trading Journal",
     "journalDescription": "Access your trading journal to record and analyze your trades.",
     "journalButton": "Go to Journal"
@@ -144,6 +263,20 @@
       "strategies": "Trading strategies based on news"
     }
   },
+  "educatorCard": {
+    "schedule": "Class Schedule",
+    "comingSoon": "New schedules coming soon",
+    "viewChannel": "View Channel",
+    "days": {
+      "sunday": "Sunday",
+      "monday": "Monday",
+      "tuesday": "Tuesday",
+      "wednesday": "Wednesday",
+      "thursday": "Thursday",
+      "friday": "Friday",
+      "saturday": "Saturday"
+    }
+  },
   "academy": {
     "pageTitle": "Academy",
     "tabbar": {
@@ -157,5 +290,191 @@
     "selectedClass": "Selected Class",
     "noTitle": "Untitled Video"
   },
-  "filterAllLanguages": "All languages"
+  "filterAllLanguages": "All languages",
+  "journal": {
+    "title": "My Trading Journal",
+    "loginRequired": "Please log in to use your trading journal.",
+    "folders": "Folders",
+    "newFolder": "New folder name",
+    "createFolder": "Create Folder",
+    "newTrade": "New Trade",
+    "createTrade": "Create Trade",
+    "trades": "Trades",
+    "totalTrades": "Total Trades",
+    "winRate": "Win Rate",
+    "totalProfitLoss": "Total Profit/Loss",
+    "date": "Date",
+    "tradeTitle": "Title",
+    "pair": "Pair",
+    "type": "Type",
+    "buy": "Buy",
+    "sell": "Sell",
+    "entryPrice": "Entry Price",
+    "exitPrice": "Exit Price",
+    "lotSize": "Lot Size",
+    "profitLoss": "Profit/Loss",
+    "strategy": "Strategy",
+    "notes": "Notes",
+    "tradeTitlePlaceholder": "Trade title",
+    "pairPlaceholder": "EUR/USD",
+    "entryPricePlaceholder": "1.2345",
+    "exitPricePlaceholder": "1.2345",
+    "lotSizePlaceholder": "0.1",
+    "profitLossPlaceholder": "100",
+    "strategyPlaceholder": "Strategy used",
+    "notesPlaceholder": "Additional notes about the trade..."
+  },
+  "markups": {
+    "pageTitle": "Mark Ups",
+    "comingSoon": "Coming Soon",
+    "subtitle": "We're working on something amazing for you",
+    "description": "The Mark Ups section will be available very soon with new features and advanced tools to enhance your trading experience.",
+    "selectEducator": "Select an educator to view their profile and add trades to follow their performance",
+    "addTrader": "Add Trade",
+    "addTraderDescription": "Add and track this educator's trades to follow their performance",
+    "addNewTrade": "Add New Trade",
+    "lastTrades": "Latest Trades",
+    "noTradesAvailable": "No trades available",
+    "addFirstTrade": "This educator hasn't shared trades yet. Add the first trade!",
+    "allEducators": "All Educators",
+    "following": "Following",
+    "followingEducators": "Educators you are following",
+    "notFollowingAny": "You are not following any educators",
+    "clickFollowInstruction": "Click 'Follow' on any educator to add them to your following list",
+    "followingButton": "Following",
+    "followButton": "Follow",
+    "viewProfile": "View Profile",
+    "educatorProfile": "Educator Profile",
+    "subscribers": "subscribers",
+    "subscribed": "Subscribed",
+    "subscribe": "Subscribe",
+    "profitability": "Profitability",
+    "totalTrades": "Total Trades",
+    "winRate": "Win Rate",
+    "tracking": "Tracking",
+    "trackingDescription": "View all trades from educators you are following",
+    "noTrackedTrades": "No tracked trades available",
+    "startFollowingEducators": "Start following educators to see their trades here",
+    "entryPrice": "Entry Price",
+    "exitPrice": "Exit Price",
+    "result": "Result",
+    "reason": "Reason",
+    "loadingSubscriptions": "Loading subscriptions...",
+    "loadingTrades": "Loading trades...",
+    "loginRequired": "Please log in to follow educators",
+    "subscriptionError": "Error changing subscription. Please try again.",
+    "errorLoadingTrades": "Error loading trades",
+    "date": "Date",
+    "status": "Status", 
+    "open": "Open",
+    "closed": "Closed",
+    "pending": "Pending",
+    "editTrade": "Edit Trade",
+    "instrument": "Instrument",
+    "direction": "Direction", 
+    "currentStatus": "Current Status",
+    "editTradeForm": "Edit Trade",
+    "exitPriceRequired": "Exit price is required to close the trade",
+    "save": "Save",
+    "cancel": "Cancel",
+    "tradeStatus": "Trade Status",
+    "exitPriceLabel": "Exit Price *",
+    "resultLabel": "Result (calculated automatically)",
+    "saveChanges": "Save Changes",
+    "notAuthorizedToCreateTrades": "You don't have permissions to create trades",
+    "onlyAuthorizedUsers": "Only authorized users can create and edit trades",
+    "confirmDeleteTrade": "Are you sure you want to delete this trade?",
+    "errorDeletingTrade": "Error deleting trade. Please try again.",
+    "loadingSubscribers": "Loading followers..."
+  },
+  "tradingForm": {
+    "title": "Create New Trade (Open)",
+    "instrument": "Instrument / Pair",
+    "selectInstrument": "Select instrument",
+    "direction": "Direction",
+    "buy": "Buy",
+    "sell": "Sell",
+    "entryPrice": "Entry Price",
+    "exitPrice": "Exit Price / Take Profit",
+    "stopLoss": "Stop Loss",
+    "result": "Result",
+    "dateTime": "Date & Time",
+    "tradeReason": "Trade Reason",
+    "reasonPlaceholder": "Describe the technical or fundamental reason for this operation...",
+    "attachImage": "Attach Image/Chart (optional)",
+    "optionalPlaceholder": "0.00 (optional)",
+    "cancel": "Cancel",
+    "saving": "Saving...",
+    "uploading": "Uploading image...",
+    "saveOperation": "Save Operation",
+    "orderType": "Order Type",
+    "market": "Market",
+    "buyLimit": "Buy Limit",
+    "sellLimit": "Sell Limit",
+    "buyStop": "Buy Stop",
+    "sellStop": "Sell Stop"
+  },
+  "crm": {
+    "title": "CRM - Scanner Access Requests",
+    "loading": "Loading data...",
+    "stats": {
+      "totalRequests": "Total Requests",
+      "pending": "Pending",
+      "approved": "Approved",
+      "rejected": "Rejected",
+      "olympus": "Olympus",
+      "skywalker": "Skywalker"
+    },
+    "search": {
+      "placeholder": "Search by name, email, NvisionU ID or TradingView username...",
+      "allStatuses": "All statuses",
+      "pending": "Pending",
+      "approved": "Approved",
+      "rejected": "Rejected",
+      "allScannerTypes": "All scanner types"
+    },
+    "table": {
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "nvisionId": "NvisionU ID",
+      "tradingView": "TradingView",
+      "scannerType": "Scanner Type",
+      "date": "Date",
+      "status": "Status",
+      "actions": "Actions",
+      "copy": "Copy",
+      "approve": "Approve",
+      "reject": "Reject"
+    },
+    "pagination": {
+      "previous": "Previous",
+      "next": "Next"
+    },
+    "modal": {
+      "title": "Request Details",
+      "close": "×",
+      "fullName": "Full Name",
+      "email": "Email",
+      "nvisionId": "NvisionU ID",
+      "tradingViewUsername": "TradingView Username",
+      "scannerType": "Scanner Type",
+      "requestDate": "Request Date",
+      "currentStatus": "Current Status",
+      "copy": "Copy",
+      "approve": "Approve",
+      "reject": "Reject"
+    },
+    "update": {
+      "alertTitle": "{count} records without scanner type found.",
+      "alertDescription": "These are previous records that need to be marked as \"Olympus\".",
+      "buttonText": "Update {count} records",
+      "buttonUpdating": "Updating...",
+      "successMessage": "{count} records updated successfully",
+      "errorMessage": "Error: {error}"
+    },
+    "scannerTypes": {
+      "olympusLegacy": "Olympus (legacy)"
+    }
+  }
 } 

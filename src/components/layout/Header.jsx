@@ -122,25 +122,9 @@ const UserProfile = styled.div`
   }
 `;
 
-const Avatar = styled.div`
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background-color: #222; /* Fondo oscuro para avatar */
-  overflow: hidden;
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-`;
-
 const UserInfo = styled.div`
   font-size: 0.85rem;
   color: rgb(255,255,255);
-  @media (max-width: 992px) {
-    display: none;
-  }
 `;
 
 const UserName = styled.div`
@@ -200,7 +184,7 @@ const DropdownItem = styled.div`
 `;
 
 const Header = ({ onToggleSidebar, isSidebarOpen }) => {
-  const { i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
   const [isLangDropdownOpen, setIsLangDropdownOpen] = useState(false);
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
   const langDropdownRef = useRef(null);
@@ -252,9 +236,9 @@ const Header = ({ onToggleSidebar, isSidebarOpen }) => {
   }, [langDropdownRef, userDropdownRef]);
 
   const languageLabels = {
-    es: 'Español',
-    en: 'English',
-    fr: 'Français'
+    es: t('calendar.filterSpanish', 'Español'),
+    en: t('calendar.filterEnglish', 'Inglés'), 
+    fr: t('calendar.filterFrench', 'Francés')
   };
   const currentLanguageLabel = languageLabels[i18n.language.split('-')[0]] || 'Idioma';
 
@@ -273,9 +257,6 @@ const Header = ({ onToggleSidebar, isSidebarOpen }) => {
       <RightSection>
         <UserDropdownContainer ref={userDropdownRef}>
           <UserProfile onClick={() => setIsUserDropdownOpen(v => !v)}>
-            <Avatar>
-              <img src={userData.avatar || "/images/stock-user.png"} alt="User Avatar" />
-            </Avatar>
             <UserInfo>
               <UserName>{userData.name}</UserName>
               {userData.email && <UserEmail>{userData.email}</UserEmail>}
@@ -283,8 +264,8 @@ const Header = ({ onToggleSidebar, isSidebarOpen }) => {
           </UserProfile>
           {isUserDropdownOpen && (
             <UserDropdownMenu>
-              <UserDropdownItem onClick={handleProfileClick}>Perfil</UserDropdownItem>
-              <UserDropdownItem onClick={handleLogout}>Cerrar sesión</UserDropdownItem>
+              <UserDropdownItem onClick={handleProfileClick}>{t('profile.title')}</UserDropdownItem>
+              <UserDropdownItem onClick={handleLogout}>{t('profile.logoutButton')}</UserDropdownItem>
             </UserDropdownMenu>
           )}
         </UserDropdownContainer>
@@ -295,9 +276,9 @@ const Header = ({ onToggleSidebar, isSidebarOpen }) => {
           </LanguageSelector>
           {isLangDropdownOpen && (
             <LanguageDropdown>
-              <DropdownItem onClick={() => handleLanguageSelect('es')}>Español</DropdownItem>
-              <DropdownItem onClick={() => handleLanguageSelect('en')}>English</DropdownItem>
-              <DropdownItem onClick={() => handleLanguageSelect('fr')}>Français</DropdownItem>
+              <DropdownItem onClick={() => handleLanguageSelect('es')}>{t('calendar.filterSpanish', 'Español')}</DropdownItem>
+              <DropdownItem onClick={() => handleLanguageSelect('en')}>{t('calendar.filterEnglish', 'Inglés')}</DropdownItem>
+              <DropdownItem onClick={() => handleLanguageSelect('fr')}>{t('calendar.filterFrench', 'Francés')}</DropdownItem>
             </LanguageDropdown>
           )}
         </LanguageSelectorContainer>

@@ -496,12 +496,12 @@ const TradingJournal = () => {
   };
 
   if (!userId) {
-    return <PageContainer><PageTitle>{t('journal.title', 'My Trading Journal')}</PageTitle><p style={{color:'white'}}>{t('journal.loginRequired', 'Please log in to use your trading journal.')}</p></PageContainer>;
+    return <PageContainer><PageTitle>{t('journal.title')}</PageTitle><p style={{color:'white'}}>{t('journal.loginRequired', 'Please log in to use your trading journal.')}</p></PageContainer>;
   }
 
   return (
     <PageContainer>
-      <PageTitle>{t('journal.title', 'My Trading Journal')}</PageTitle>
+      <PageTitle>{t('journal.title')}</PageTitle>
       
       <StatsContainer>
         <StatCard>
@@ -596,7 +596,7 @@ const TradingJournal = () => {
         <MainContent>
           <div className="form-header">
             <h3>
-              {t('journal.newTrade', 'New Trade')}
+              {t('journal.newTrade')}
               <InfoIcon data-tooltip-id="tt-new-trade">&#9432;</InfoIcon>
               <Tooltip id="tt-new-trade" place="top">Completa este formulario para registrar una nueva operación en tu diario.</Tooltip>
             </h3>
@@ -612,7 +612,7 @@ const TradingJournal = () => {
             <>
               <FormGrid>
                 <FormGroup>
-                  <Label>Date</Label>
+                  <Label>{t('journal.date')}</Label>
                   <Input
                     type="date"
                     value={newNote.date}
@@ -620,84 +620,84 @@ const TradingJournal = () => {
                   />
                 </FormGroup>
                 <FormGroup>
-                  <Label>Title</Label>
+                  <Label>{t('journal.tradeTitle')}</Label>
                   <Input
-                    placeholder="Trade title"
+                    placeholder={t('journal.tradeTitlePlaceholder')}
                     value={newNote.title}
                     onChange={(e) => setNewNote({ ...newNote, title: e.target.value })}
                   />
                 </FormGroup>
                 <FormGroup>
-                  <Label>Pair</Label>
+                  <Label>{t('journal.pair')}</Label>
                   <Input
-                    placeholder="EUR/USD"
+                    placeholder={t('journal.pairPlaceholder')}
                     value={newNote.pair}
                     onChange={(e) => setNewNote({ ...newNote, pair: e.target.value })}
                   />
                 </FormGroup>
                 <FormGroup>
-                  <Label>Type</Label>
+                  <Label>{t('journal.type')}</Label>
                   <Select
                     value={newNote.type}
                     onChange={(e) => setNewNote({ ...newNote, type: e.target.value })}
                   >
-                    <option value="buy">Buy</option>
-                    <option value="sell">Sell</option>
+                    <option value="buy">{t('journal.buy')}</option>
+                    <option value="sell">{t('journal.sell')}</option>
                   </Select>
                 </FormGroup>
                 <FormGroup>
-                  <Label>Entry Price</Label>
+                  <Label>{t('journal.entryPrice')}</Label>
                   <Input
                     type="number"
                     step="any"
-                    placeholder="1.2345"
+                    placeholder={t('journal.entryPricePlaceholder')}
                     value={newNote.entryPrice}
                     onChange={(e) => setNewNote({ ...newNote, entryPrice: e.target.value })}
                   />
                 </FormGroup>
                 <FormGroup>
-                  <Label>Exit Price</Label>
+                  <Label>{t('journal.exitPrice')}</Label>
                   <Input
                     type="number"
                     step="any"
-                    placeholder="1.2345"
+                    placeholder={t('journal.exitPricePlaceholder')}
                     value={newNote.exitPrice}
                     onChange={(e) => setNewNote({ ...newNote, exitPrice: e.target.value })}
                   />
                 </FormGroup>
                 <FormGroup>
-                  <Label>Lot Size</Label>
+                  <Label>{t('journal.lotSize')}</Label>
                   <Input
                     type="number"
                     step="any"
-                    placeholder="0.1"
+                    placeholder={t('journal.lotSizePlaceholder')}
                     value={newNote.lotSize}
                     onChange={(e) => setNewNote({ ...newNote, lotSize: e.target.value })}
                   />
                 </FormGroup>
                 <FormGroup>
-                  <Label>Profit/Loss</Label>
+                  <Label>{t('journal.profitLoss')}</Label>
                   <Input
                     type="number"
                     step="any"
-                    placeholder="100"
+                    placeholder={t('journal.profitLossPlaceholder')}
                     value={newNote.profitLoss}
                     onChange={(e) => setNewNote({ ...newNote, profitLoss: e.target.value })}
                   />
                 </FormGroup>
               </FormGrid>
               <FormGroup>
-                <Label>Strategy</Label>
+                <Label>{t('journal.strategy')}</Label>
                 <Input
-                  placeholder="Strategy used"
+                  placeholder={t('journal.strategyPlaceholder')}
                   value={newNote.strategy}
                   onChange={(e) => setNewNote({ ...newNote, strategy: e.target.value })}
                 />
               </FormGroup>
               <FormGroup>
-                <Label>Notes</Label>
+                <Label>{t('journal.notes')}</Label>
                 <TextArea
-                  placeholder="Additional notes about the trade..."
+                  placeholder={t('journal.notesPlaceholder')}
                   value={newNote.notes}
                   onChange={(e) => setNewNote({ ...newNote, notes: e.target.value })}
                 />

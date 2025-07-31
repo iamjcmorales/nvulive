@@ -17,13 +17,13 @@ const TabButton = styled.button`
   font-size: 14px;
   font-weight: 500;
   transition: background-color 0.2s, color 0.2s, border-color 0.2s;
-  background-color: ${props => props.active ? 'rgb(0,150,136)' : 'rgb(24,24,24)'};
-  color: ${props => props.active ? 'white' : 'rgb(200,200,200)'};
-  border-color: ${props => props.active ? 'rgb(0,150,136)' : 'rgb(40,40,40)'};
+  background-color: ${props => props.$active ? 'rgb(0,150,136)' : 'rgb(24,24,24)'};
+  color: ${props => props.$active ? 'white' : 'rgb(200,200,200)'};
+  border-color: ${props => props.$active ? 'rgb(0,150,136)' : 'rgb(40,40,40)'};
 
   &:hover {
-    background-color: ${props => props.active ? 'rgb(0,200,180)' : 'rgb(40,40,40)'};
-    border-color: ${props => props.active ? 'rgb(0,200,180)' : 'rgb(60,60,60)'};
+    background-color: ${props => props.$active ? 'rgb(0,200,180)' : 'rgb(40,40,40)'};
+    border-color: ${props => props.$active ? 'rgb(0,200,180)' : 'rgb(60,60,60)'};
     color: white;
   }
 `;
@@ -34,7 +34,7 @@ const TabBar = ({ tabs, activeTab, onTabClick }) => {
       {tabs.map(tab => (
         <TabButton 
           key={tab.key} 
-          active={tab.key === activeTab}
+          $active={tab.key === activeTab}
           onClick={() => onTabClick(tab.key)}
         >
           {tab.label}

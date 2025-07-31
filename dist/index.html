@@ -8,13 +8,34 @@
     <meta name="theme-color" content="#000000" />
     <meta
       name="description"
-      content="Web site created using Vite + React"
+      content="NVU LIVE - NVISIONU "
     />
-    <link rel="apple-touch-icon" href="/logo192.png" />
+    <link rel="apple-touch-icon" href="/logo login.png" />
     <link rel="manifest" href="/manifest.json" />
     
-    <title>NVU LIVE</title> 
-    <script type="module" crossorigin src="/assets/index-C5JlfFB0.js"></script>
+    <title>NVU LIVE</title>
+    
+    <!-- Suppress Google Cast errors -->
+    <script>
+      // Prevent Google Cast related errors from showing in console
+      window.__onGCastApiAvailable = function(isAvailable) {
+        if (!isAvailable) {
+          // Cast API not available, ignore silently
+          return;
+        }
+      };
+      
+      // Suppress fetch errors for chrome-extension URLs
+      const originalFetch = window.fetch;
+      window.fetch = function(...args) {
+        const url = args[0];
+        if (typeof url === 'string' && url.includes('chrome-extension://')) {
+          return Promise.reject(new Error('Chrome extension blocked'));
+        }
+        return originalFetch.apply(this, args);
+      };
+    </script>
+    <script type="module" crossorigin src="/assets/index-PYHt6SOZ.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-_3P0p2ZL.css">
   </head>
   <body>

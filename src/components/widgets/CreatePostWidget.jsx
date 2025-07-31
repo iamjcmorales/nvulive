@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { db } from '../../firebase'; // Solo necesitamos db, no storage
+import { db } from '../../firebase/config'; // Solo necesitamos db, no storage
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 // Ya no necesitamos ref, uploadBytesResumable, getDownloadURL de firebase/storage
 import { useTranslation } from 'react-i18next';

@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useParams, Link } from 'react-router-dom';
-import { FaArrowLeft, FaInstagram, FaLinkedin, FaFacebookF, FaUserClock, FaWifi } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
+import { FaStar, FaList, FaCog } from 'react-icons/fa';
 import educatorsData from '../../../data/educatorsData'; // Importar datos para buscar IDs
+import { currentUserCanManageFavorites } from '../../../utils/permissions';
+import { getEducatorFavoriteSessions } from '../../../services/favoriteSessions';
+import FavoriteSessionsModal from '../../ui/FavoriteSessionsModal';
 
 // --- Styled Components ---
 const EducatorSessionsContainer = styled.div`
@@ -76,18 +80,6 @@ const EducatorName = styled.h2`
   color: rgb(255,255,255);
 `;
 
-const StatusBadge = styled.div`
-  display: inline-flex; 
-  align-items: center;
-  gap: 5px;
-  padding: 4px 8px;
-  border-radius: 6px;
-  font-size: 12px;
-  font-weight: 500;
-  color: rgb(255,255,255);
-  background-color: ${props => props.$isLive ? 'rgb(0,150,136)' : 'rgb(48,48,48)'};
-`;
-
 const BioText = styled.p`
   font-size: 14px;
   color: rgb(158,158,158);
@@ -119,9 +111,36 @@ const SessionCard = styled.div`
   box-shadow: 0 2px 8px rgba(0,150,136,0.08);
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  
   &:hover {
       transform: translateY(-4px);
       box-shadow: 0 4px 16px rgba(0, 150, 136, 0.18);
+  }
+`;
+
+const FavoriteButton = styled.button`
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(0,0,0,0.7);
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: ${props => props.$isFavorite ? '#FFD700' : 'rgba(255,255,255,0.7)'};
+  font-size: 14px;
+  transition: all 0.2s ease;
+  z-index: 2;
+  
+  &:hover {
+    background: rgba(0,0,0,0.9);
+    color: #FFD700;
+    transform: scale(1.1);
   }
 `;
 
@@ -176,6 +195,74 @@ const NoDataMessage = styled.p`
   padding: 20px;
 `;
 
+// TabBar Styles
+const TabBarContainer = styled.div`
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: flex-start;
+  border-bottom: 2px solid rgb(40,40,40);
+`;
+
+const TabButton = styled.button`
+  background: none;
+  border: none;
+  color: ${props => props.$isActive ? 'rgb(0,150,136)' : 'rgb(158,158,158)'};
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 24px;
+  position: relative;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    color: ${props => props.$isActive ? 'rgb(0,150,136)' : 'rgb(255,255,255)'};
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: rgb(0,150,136);
+    transform: scaleX(${props => props.$isActive ? '1' : '0'});
+    transition: transform 0.3s ease;
+  }
+  
+  svg {
+    font-size: 16px;
+  }
+`;
+
+const AdminButton = styled.button`
+  background: rgb(0,150,136);
+  border: none;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  margin-left: auto;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    background: rgb(0,180,160);
+    transform: translateY(-1px);
+  }
+  
+  svg {
+    font-size: 12px;
+  }
+`;
+
 // Helper para buscar educador por ID (similar al de EducatorDetail)
 const findEducatorById = (id) => {
   for (const category in educatorsData) {
@@ -187,6 +274,7 @@ const findEducatorById = (id) => {
 
 // --- Componente ---
 const EducatorSessions = () => {
+  const { t } = useTranslation();
   const { educatorId } = useParams();
   const educator = findEducatorById(educatorId); // Buscar datos del educador
 
@@ -194,61 +282,69 @@ const EducatorSessions = () => {
   const [selectedVimeoId, setSelectedVimeoId] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [activeFilter, setActiveFilter] = useState('favorites'); // 'favorites' or 'all'
+  const [educatorFavoriteSessions, setEducatorFavoriteSessions] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [canManage, setCanManage] = useState(false);
 
-  // Obtener el nombre del educador para el enlace de vuelta
-  const educatorName = educator ? educator.name : educatorId;
+
+  // Función para manejar la selección de video con scroll automático
+  const handleVideoSelect = (vimeoId) => {
+    setSelectedVimeoId(vimeoId);
+    // Hacer scroll hacia arriba suavemente
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
 
   useEffect(() => {
-    // Solo intentar buscar si encontramos al educador y tiene IDs de Vimeo
-    if (!educator || !educator.vimeoUserId || !educator.vimeoFolderId) {
-      console.log('Educador no encontrado o sin configuración de Vimeo (userId/folderId).');
-      setError('Este educador no tiene sesiones configuradas.');
+    if (!educator) return;
+    
+    // Check if vimeoFolderId is empty or missing
+    if (!educator.vimeoFolderId || educator.vimeoFolderId.trim() === '') {
       setLoading(false);
-      return; // No hacer la llamada a la API
+      setError(t('educatorSessions.noSessionsAvailable'));
+      return;
     }
-
-    const fetchEducatorSessions = async () => {
+    
+    const fetchSessions = async () => {
       setLoading(true);
       setError(null);
-      
-      // Usar IDs del educador encontrado
-      const userId = educator.vimeoUserId;
-      const folderId = educator.vimeoFolderId;
-      const backendUrl = `/.netlify/functions/vimeo-sessions?userId=${userId}&folderId=${folderId}`;
-
       try {
-        console.log(`Fetching sessions from backend: ${backendUrl}`);
-        const response = await fetch(backendUrl);
-        
-        if (!response.ok) {
-          let errorDetails = 'Error desconocido del servidor';
-          try {
-            const errorData = await response.json();
-            errorDetails = errorData.details || errorData.error || `Status: ${response.status}`;
-          } catch (e) { 
-             errorDetails = `Status: ${response.status}`;
-          }
-          throw new Error(`Error al cargar sesiones: ${errorDetails}`);
-        }
-
+        let videos = [];
+        let apiUrl = `https://api.vimeo.com/users/${educator.vimeoUserId}/folders/${educator.vimeoFolderId}/videos?fields=uri,name,description,duration,pictures,stats,link&per_page=50`;
+        const VIMEO_ACCESS_TOKEN = "99b1a15a9f21cc8f4ffdb1e925103e99";
+        while (apiUrl) {
+          const response = await fetch(apiUrl, {
+            headers: {
+              Authorization: `Bearer ${VIMEO_ACCESS_TOKEN}`,
+              Accept: "application/vnd.vimeo.*+json;version=3.4",
+              "Content-Type": "application/json",
+            },
+          });
+          if (!response.ok) throw new Error(`HTTP error: ${response.status}`);
         const data = await response.json();
-        setSessions(data);
-        // Si no hay sesiones, mostrar mensaje específico en lugar de error
-        if (data.length === 0) {
-          // No establecer error, el renderizado manejará el array vacío
+          if (data.data && Array.isArray(data.data)) {
+            videos = videos.concat(data.data.map(video => ({
+              vimeoId: video.uri.replace("/videos/", ""),
+              title: video.name,
+              description: video.description || "",
+              thumbnailUrl: video.pictures?.base_link || '',
+              link: video.link,
+            })));
+          }
+          apiUrl = data.paging && data.paging.next ? `https://api.vimeo.com${data.paging.next}` : null;
         }
-
+        setSessions(videos);
       } catch (err) {
-        console.error("Error fetching sessions from backend:", err);
-        setError(err.message || "No se pudieron cargar las sesiones.");
+        setError(err.message);
       } finally {
         setLoading(false);
       }
     };
-
-    fetchEducatorSessions();
-
-  }, [educator]); // Depender del objeto educator completo
+    fetchSessions();
+  }, [educator]);
 
   // Mensaje si el educador no existe en los datos
   if (!educator && !loading) {
@@ -261,9 +357,42 @@ const EducatorSessions = () => {
   }
 
   // Preparar datos para la plantilla
-  const isLive = educator.status === 'En vivo';
-  // TODO: Filtrar sesiones basadas en activeFilter ('ultimas'/'pasadas') si es necesario
-  const sessionsToShow = sessions; 
+  
+  // Check if current user can manage favorites
+  useEffect(() => {
+    setCanManage(currentUserCanManageFavorites());
+  }, []);
+
+  // Load educator's favorite sessions from Firebase
+  useEffect(() => {
+    if (educatorId) {
+      loadEducatorFavorites();
+    }
+  }, [educatorId]);
+
+  const loadEducatorFavorites = async () => {
+    try {
+      const favorites = await getEducatorFavoriteSessions(educatorId);
+      setEducatorFavoriteSessions(favorites);
+    } catch (error) {
+      console.error('Error loading educator favorites:', error);
+    }
+  };
+  
+  // Filter sessions based on active filter
+  const sessionsToShow = activeFilter === 'favorites' 
+    ? sessions.filter(session => educatorFavoriteSessions.includes(session.vimeoId))
+    : sessions;
+  
+  // Handle tab selection
+  const handleTabSelect = (filter) => {
+    setActiveFilter(filter);
+  };
+  
+  // Handle favorite sessions modal save
+  const handleFavoritesSave = (newFavorites) => {
+    setEducatorFavoriteSessions(newFavorites);
+  }; 
 
   // --- Determinar la imagen del banner ---
   // Usar la imagen de portada del educador si existe, sino la imagen general
@@ -308,10 +437,6 @@ const EducatorSessions = () => {
                 <BioColumn>
                     <BioHeader>
                         <EducatorName>{educator.name}</EducatorName>
-                        <StatusBadge $isLive={isLive}>
-                            {isLive ? <FaWifi /> : <FaUserClock />}
-                            {educator.status}
-                        </StatusBadge>
                     </BioHeader>
                     <BioText>{educator.description || 'Biografía no disponible.'}</BioText>
                 </BioColumn>
@@ -319,38 +444,65 @@ const EducatorSessions = () => {
 
             {/* Sección Sesiones */}
             <SessionsSection>
-                <SectionTitle>Sesiones</SectionTitle>
-                
+                {/* <SectionTitle>Sesiones</SectionTitle> */}
                 {/* --- MOVER EL REPRODUCTOR AQUÍ --- */}
                 {selectedVimeoId && (
                     <div style={{ marginBottom: '30px', position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden', backgroundColor:'#000', borderRadius: '8px' }}>
                     <iframe 
                         src={`https://player.vimeo.com/video/${selectedVimeoId}?autoplay=1`} 
-                        frameBorder="0" 
+                        style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 'none' }}
                         allow="autoplay; fullscreen; picture-in-picture" 
                         allowFullScreen
-                        style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
                         title="Vimeo video player">
                         </iframe>
                     </div>
                 )}
                 {/* --- FIN DEL REPRODUCTOR MOVIDO --- */}
 
+                {/* TabBar */}
+                <TabBarContainer>
+                    <TabButton 
+                        $isActive={activeFilter === 'favorites'}
+                        onClick={() => handleTabSelect('favorites')}
+                    >
+                        <FaStar /> {t('educatorSessions.favoriteSessions') || 'Sesiones Favoritas'}
+                    </TabButton>
+                    <TabButton 
+                        $isActive={activeFilter === 'all'}
+                        onClick={() => handleTabSelect('all')}
+                    >
+                        <FaList /> {t('educatorSessions.allSessions') || 'Todas las Sesiones'}
+                    </TabButton>
+                    {canManage && (
+                        <AdminButton onClick={() => setIsModalOpen(true)}>
+                            <FaCog /> Gestionar Favoritas
+                        </AdminButton>
+                    )}
+                </TabBarContainer>
+
                 {/* Mensajes de carga/error y Grid de Sesiones */}
-                {loading && <LoadingMessage>Cargando sesiones...</LoadingMessage>}
+                {loading && <LoadingMessage>Loading sessions...</LoadingMessage>}
                 {error && error !== 'Este educador no tiene sesiones configuradas.' && <ErrorMessage>{error}</ErrorMessage>}
                 
                 {!loading && (
                     <SessionsGrid>
                         {sessionsToShow.length > 0 ? (
-                        sessionsToShow.map(session => (
-                            <SessionCard key={session.id} onClick={() => setSelectedVimeoId(session.vimeoId)}>
+                        sessionsToShow.map((session, index) => (
+                            <SessionCard key={session.id || session.vimeoId || `session-${index}`} onClick={() => handleVideoSelect(session.vimeoId)}>
+                                {activeFilter === 'favorites' && (
+                                    <FavoriteButton 
+                                        $isFavorite={true}
+                                        title="Sesión favorita del educador"
+                                    >
+                                        <FaStar />
+                                    </FavoriteButton>
+                                )}
                                 <SessionThumbnail src={session.thumbnailUrl || `https://vumbnail.com/${session.vimeoId}.jpg`} alt={session.title} />
                                 <SessionInfo>
                                     <SessionTitle>{session.title || 'Video sin título'}</SessionTitle>
                                     <SessionEducator>
                                         <EducatorAvatarSmall 
-                                            src={educator.profileImageFilename ? `/images/perfil/${educator.profileImageFilename}` : '/images/placeholder.jpg'} 
+                                            src={educator.profileImageFilename ? (educator.id === 'lucas-longmire' ? `/images/perfil/${educator.profileImageFilename}` : `/PERFIL/${educator.profileImageFilename}`) : '/images/placeholder.jpg'} 
                                             alt={educator.name}
                                         />
                                         {educator.name} NVU
@@ -359,13 +511,27 @@ const EducatorSessions = () => {
                             </SessionCard>
                         ))
                         ) : (
-                        <NoDataMessage>{error === 'Este educador no tiene sesiones configuradas.' ? error : 'No hay sesiones disponibles.'}</NoDataMessage>
+                        <NoDataMessage>
+                            {activeFilter === 'favorites' 
+                                ? 'Este educador no ha seleccionado sesiones favoritas aún.'
+                                : (error === 'Este educador no tiene sesiones configuradas.' ? error : 'No hay sesiones disponibles.')
+                            }
+                        </NoDataMessage>
                         )}
                     </SessionsGrid>
                 )}
 
             </SessionsSection>
        </ContentWrapper>
+       
+       {/* Modal for managing favorite sessions */}
+       <FavoriteSessionsModal
+         isOpen={isModalOpen}
+         onClose={() => setIsModalOpen(false)}
+         educatorId={educatorId}
+         sessions={sessions}
+         onSave={handleFavoritesSave}
+       />
     </EducatorSessionsContainer>
   );
 };

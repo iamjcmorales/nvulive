@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { useTranslation } from 'react-i18next';
-import { FaPlay, FaCalendarAlt, FaUsers, FaArrowLeft } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
+import { FaPlay } from 'react-icons/fa';
 
 const PageContainer = styled.div`
   padding: 0;
@@ -27,50 +25,6 @@ const BannerContainer = styled.div`
   }
 `;
 
-const BackButton = styled.button`
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  background: rgba(0,0,0,0.5);
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  transition: all 0.3s ease;
-
-  &:hover {
-    background: rgba(0,0,0,0.8);
-  }
-`;
-
-const BannerContent = styled.div`
-  text-align: center;
-  color: white;
-  padding: 20px;
-  max-width: 800px;
-`;
-
-const ChannelTitle = styled.h1`
-  font-size: 48px;
-  font-weight: 700;
-  margin-bottom: 15px;
-  background: linear-gradient(90deg, #00bcd4 0%, #009688 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-`;
-
-const ChannelDescription = styled.p`
-  font-size: 18px;
-  max-width: 600px;
-  margin: 0 auto;
-  color: #ccc;
-  line-height: 1.6;
-`;
-
 const ContentContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
@@ -78,43 +32,6 @@ const ContentContainer = styled.div`
   padding-right: 0;
   @media (max-width: 768px) {
     padding: 0 12px;
-  }
-`;
-
-const StatsContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  margin-bottom: 40px;
-`;
-
-const StatCard = styled.div`
-  background: #1a1a1a;
-  padding: 20px;
-  border-radius: 8px;
-  text-align: center;
-  border: 1px solid rgba(255,255,255,0.1);
-  transition: all 0.3s ease;
-
-  &:hover {
-    transform: translateY(-5px);
-    border-color: rgba(0,150,136,0.3);
-  }
-
-  h3 {
-    color: #888;
-    font-size: 14px;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-  }
-
-  p {
-    color: white;
-    font-size: 24px;
-    font-weight: 600;
   }
 `;
 
@@ -211,29 +128,45 @@ const SessionTitle = styled.h3`
   line-height: 1.4;
 `;
 
-const SessionDate = styled.p`
+const SessionDescription = styled.p`
   color: #888;
   font-size: 14px;
   margin: 5px 0 0 0;
 `;
 
 const VideoContainer = styled.div`
-  position: relative;
-  padding-bottom: 56.25%;
-  height: 0;
-  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+`;
+
+const VideoPlayer = styled.div`
   background: #000;
   border-radius: 8px;
-  margin-bottom: 20px;
+  overflow: hidden;
+  width: 90vw;
+  max-width: 800px;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.7);
+  position: relative;
+`;
 
-  iframe {
+const CloseButton = styled.button`
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+  top: 10px;
+  right: 10px;
+  background: none;
     border: none;
-  }
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 1001;
 `;
 
 const LoadingMessage = styled.div`
@@ -257,40 +190,47 @@ const NoDataMessage = styled.div`
   font-size: 16px;
 `;
 
-const NextCallContainer = styled.div`
-  width: 100%;
-  background: #111;
-  color: #fff;
-  padding: 32px 0 16px 0;
-  text-align: center;
-  font-size: 1.5rem;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-`;
-
 const BeyondCharts = () => {
-  const { t } = useTranslation();
-  const navigate = useNavigate();
-  const [sessions, setSessions] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [videos, setVideos] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [selectedVimeoId, setSelectedVimeoId] = useState(null);
-  const VIMEO_USER_ID = '221550365';
-  const FOLDER_ID = '24833856';
+  const VIMEO_USER_ID = "221550365";
+  const FOLDER_ID = "24833856";
+  const VIMEO_ACCESS_TOKEN = "99b1a15a9f21cc8f4ffdb1e925103e99"; // ¡Visible en frontend, solo para pruebas!
 
   useEffect(() => {
-    loadSessions();
+    fetchVideos();
   }, []);
 
-  const loadSessions = async () => {
+  const fetchVideos = async () => {
+    setLoading(true);
+    setError(null);
     try {
-      setLoading(true);
-      const response = await fetch(`/.netlify/functions/vimeo-sessions?userId=${VIMEO_USER_ID}&folderId=${FOLDER_ID}`);
-      if (!response.ok) {
-        throw new Error('Failed to load sessions');
-      }
+      let videos = [];
+      let apiUrl = `https://api.vimeo.com/users/${VIMEO_USER_ID}/folders/${FOLDER_ID}/videos?fields=uri,name,description,duration,pictures,stats,link&per_page=50`;
+      while (apiUrl) {
+        const response = await fetch(apiUrl, {
+          headers: {
+            Authorization: `Bearer ${VIMEO_ACCESS_TOKEN}`,
+            Accept: "application/vnd.vimeo.*+json;version=3.4",
+            "Content-Type": "application/json",
+          },
+        });
+        if (!response.ok) throw new Error(`HTTP error: ${response.status}`);
       const data = await response.json();
-      setSessions(data);
+        if (data.data && Array.isArray(data.data)) {
+          videos = videos.concat(data.data.map(video => ({
+            id: video.uri.replace("/videos/", ""),
+            title: video.name,
+            description: video.description || "",
+            thumbnail: video.pictures?.base_link || "",
+            link: video.link,
+          })));
+        }
+        apiUrl = data.paging && data.paging.next ? `https://api.vimeo.com${data.paging.next}` : null;
+      }
+      setVideos(videos);
     } catch (err) {
       setError(err.message);
     } finally {
@@ -298,50 +238,58 @@ const BeyondCharts = () => {
     }
   };
 
+  const handleVideoClick = (videoId) => {
+    setSelectedVimeoId(videoId);
+  };
+
+  const handleCloseVideo = () => {
+    setSelectedVimeoId(null);
+  };
+
   return (
     <PageContainer>
       <BannerContainer />
       <ContentContainer>
-        {selectedVimeoId && (
-          <VideoContainer>
-            <iframe 
-              src={`https://player.vimeo.com/video/${selectedVimeoId}?autoplay=1`} 
-              frameBorder="0" 
-              allow="autoplay; fullscreen; picture-in-picture" 
-              allowFullScreen
-              title="Vimeo video player">
-            </iframe>
-          </VideoContainer>
-        )}
-
-        <SectionTitle>Últimas Sesiones</SectionTitle>
-
-        {loading && <LoadingMessage>{t('beyondCharts.loading', 'Cargando sesiones...')}</LoadingMessage>}
-        {error && <ErrorMessage>{t('beyondCharts.error', error || 'No se pudieron cargar las sesiones.')}</ErrorMessage>}
-        
+        {/* <SectionTitle>Últimas Sesiones</SectionTitle> */}
+        {loading && <LoadingMessage>Cargando sesiones...</LoadingMessage>}
+        {error && <ErrorMessage>{error}</ErrorMessage>}
         {!loading && !error && (
           <SessionsGrid>
-            {sessions.length > 0 ? (
-              sessions.map(session => (
-                <SessionCard key={session.vimeoId || session.id} onClick={() => setSelectedVimeoId(session.vimeoId)}>
+            {videos.length > 0 ? (
+              videos.map(video => (
+                <SessionCard key={video.id} onClick={() => handleVideoClick(video.id)}>
                   <ThumbnailContainer>
-                    <ThumbnailImage src={session.thumbnailUrl || '/images/placeholder_course.jpg'} alt={session.title} />
+                    <ThumbnailImage src={video.thumbnail || '/images/placeholder_course.jpg'} alt={video.title} />
                     <PlayButton>
                       <FaPlay />
                     </PlayButton>
                   </ThumbnailContainer>
                   <CardBody>
-                    <SessionTitle>{session.title || t('beyondCharts.noTitle', 'Video sin título')}</SessionTitle>
-                    <SessionDate>
-                      {session.createdAt ? new Date(session.createdAt).toLocaleDateString() : 'Fecha no disponible'}
-                    </SessionDate>
+                    <SessionTitle>{video.title || 'Video sin título'}</SessionTitle>
+                    <SessionDescription>{video.description}</SessionDescription>
                   </CardBody>
                 </SessionCard>
               ))
             ) : (
-              <NoDataMessage>{t('beyondCharts.noSessions', 'No hay sesiones disponibles.')}</NoDataMessage>
+              <NoDataMessage>No hay sesiones disponibles.</NoDataMessage>
             )}
           </SessionsGrid>
+        )}
+        {selectedVimeoId && (
+          <VideoContainer onClick={handleCloseVideo}>
+            <VideoPlayer onClick={e => e.stopPropagation()}>
+              <CloseButton onClick={handleCloseVideo}>&times;</CloseButton>
+              <iframe
+                src={`https://player.vimeo.com/video/${selectedVimeoId}?autoplay=1`}
+                width="100%"
+                height="450"
+                frameBorder="0"
+                allow="autoplay; fullscreen; picture-in-picture"
+                allowFullScreen
+                title="Vimeo video player"
+              />
+            </VideoPlayer>
+          </VideoContainer>
         )}
       </ContentContainer>
     </PageContainer>

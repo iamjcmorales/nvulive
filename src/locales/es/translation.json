@@ -1,28 +1,120 @@
 {
   "sidebar": {
     "home": "Inicio",
+    "newMembers": "Nuevos Miembros",
     "calendar": "Calendario",
     "educators": "Educadores",
     "academy": "Academia",
     "forum": "Foro",
     "backoffice": "Back Office",
     "scanner": "Scanner",
+    "crm": "CRM",
     "menu": "Menú",
-    "liveMarkups": "Live Markups",
+    "liveMarkups": "Señales en Vivo",
     "beyondCharts": "Beyond the Charts",
+    "tntTraining": "TNT Training",
     "news": "Noticias",
-    "markups": "Markups",
+    "markups": "Señales de Trading",
     "tradingJournal": "Diario de Trading",
     "social": {
       "instagram": "Instagram",
       "telegram": "Telegram"
+    },
+    "appModal": {
+      "title": "Descarga TNT App",
+      "subtitle": "Accede a todas las funciones de trading desde tu dispositivo móvil",
+      "downloadIOS": "Descargar para iOS",
+      "downloadAndroid": "Descargar para Android"
     }
   },
   "scanner": {
     "title": "Scanners",
     "gold": "GOLD SCANNER",
     "abi": "ABI SCANNER",
-    "pops": "POPS SCANNER"
+    "pops": "POPS SCANNER",
+    "earlyAccess": {
+      "title": "¿Quieres ser parte del Early Access?",
+      "description": "Obtén acceso exclusivo a nuestros scanners antes que nadie. Únete al programa de acceso anticipado y mejora tu trading.",
+      "buttonText": "Quiero tener los scanners",
+      "olympusButton": "Quiero el Scanner Olympus",
+      "skywalkerButton": "Quiero el Scanner Skywalker",
+      "modal": {
+        "title": "Pasos para Obtener Acceso al Scanner Olympus",
+        "videoTitle": "Cómo Crear una Cuenta de TradingView",
+        "step1": {
+          "title": "1. Completa el Formulario de Solicitud de Acceso",
+          "description": "Por favor completa el formulario designado con la siguiente información requerida:"
+        },
+        "step2": {
+          "title": "2. Envía el Formulario",
+          "description": "Asegúrate de que toda la información sea correcta antes de enviar el formulario. Detalles incompletos o incorrectos pueden retrasar el acceso."
+        },
+        "step3": {
+          "title": "3. Recibe tu Invitación",
+          "description": "Una vez que tu formulario haya sido revisado y verificado, recibirás una invitación que te otorgará acceso al Scanner Olympus."
+        },
+        "step4": {
+          "title": "4. Accede al Scanner Olympus en TradingView",
+          "description": "Después de recibir tu invitación, podrás acceder y usar el Scanner Olympus directamente dentro de tu cuenta de TradingView."
+        },
+        "form": {
+          "firstName": "Nombre",
+          "lastName": "Apellido",
+          "email": "Correo Electrónico",
+          "nvisionId": "ID de NvisionU",
+          "tradingViewUsername": "Usuario de TradingView",
+          "submitButton": "Enviar Solicitud",
+          "successMessage": "¡Formulario enviado exitosamente! Recibirás una respuesta pronto.",
+          "errorMessage": "Error al enviar el formulario. Inténtalo de nuevo.",
+          "requiredField": "Este campo es obligatorio",
+          "requestFor": "Solicitud para:",
+          "emailInvalid": "El formato del correo electrónico es inválido",
+          "submitting": "Enviando..."
+        }
+      },
+      "skywalker": {
+        "title": "Pasos para Obtener Acceso al Scanner Skywalker",
+        "step1": {
+          "title": "1. Completa el Formulario de Solicitud de Acceso",
+          "description": "Por favor completa el formulario con la información requerida para acceder al Scanner Skywalker:"
+        },
+        "step2": {
+          "title": "2. Envía el Formulario",
+          "description": "Asegúrate de que toda la información sea correcta antes de enviar el formulario. Detalles incompletos o incorrectos pueden retrasar el acceso."
+        },
+        "step3": {
+          "title": "3. Recibe tu Invitación",
+          "description": "Una vez que tu formulario haya sido revisado y verificado, recibirás una invitación que te otorgará acceso al Scanner Skywalker."
+        },
+        "step4": {
+          "title": "4. Accede al Scanner Skywalker en TradingView",
+          "description": "Después de recibir tu invitación, podrás acceder y usar el Scanner Skywalker directamente dentro de tu cuenta de TradingView."
+        }
+      }
+    }
+  },
+  "educatorSessions": {
+    "noSessionsAvailable": "No hay sesiones disponibles para este educador.",
+    "favoriteSessions": "Sesiones Favoritas",
+    "allSessions": "Todas las Sesiones",
+    "noFavorites": "No tienes sesiones favoritas. Marca algunas sesiones como favoritas haciendo clic en la estrella."
+  },
+  "liveChat": {
+    "title": "NVU Chat en Vivo",
+    "liveUsers": "en vivo",
+    "closeChat": "Cerrar Chat",
+    "openChat": "Chat en Vivo",
+    "messagePlaceholder": "Escribe un mensaje como {{username}}...",
+    "sendMessage": "Enviar mensaje",
+    "loading": "Cargando chat...",
+    "emptyChat": "¡Sé el primero en escribir en este chat!",
+    "connected": "Conectado",
+    "disconnected": "Desconectado",
+    "sending": "Enviando...",
+    "retry": "Reintentar",
+    "connectionError": "Error de conexión",
+    "permissionError": "Sin permisos para enviar mensajes",
+    "generalError": "Error al enviar mensaje"
   },
   "home": {
     "welcome": "Bienvenido",
@@ -50,6 +142,35 @@
     "streamNotAvailable": "La transmisión en vivo no está disponible actualmente",
     "favoriteSessions": "Sesiones Destacadas"
   },
+  "educatorsBio": {
+    "seb-garcia": "Seb García es un educador de trading con más de 10 años de experiencia en los mercados financieros, especializado en análisis técnico y estrategias de inversión de riesgo controlado.",
+    "abi-belity": "Abi Belity es un trader profesional con más de 7 años de experiencia en el trading de forex, conocido por su enfoque disciplinado y estrategias de gestión de riesgo efectivas.",
+    "frank-araujo": "Frank Araujo es un trader especializado en EUR/USD con experiencia en análisis técnico y fundamental, dedicado a enseñar estrategias de trading rentables y sostenibles.",
+    "maur-gaytan": "Mauricio Gaytán es ingeniero y coach certificado en liderazgo empresarial, con una pasión por ayudar a otros a alcanzar su máximo potencial tanto en el trading como en la vida.",
+    "arin-long-fx": "Arin Long es un ingeniero mecánico convertido en trader, que combina su formación analítica con la psicología del trading para desarrollar estrategias sistemáticas exitosas.",
+    "marcelo-t-fx": "Marcelo T es un experto en comercio electrónico y marketing digital que aplica sus habilidades empresariales al trading, enfocándose en la construcción de riqueza a largo plazo.",
+    "richard-p-fx": "Educador experto en su campo, comprometido con el éxito de los estudiantes.",
+    "jorge-damelines": "Experto en desarrollo humano y evolución, guía de experiencias transformadoras, acompañando procesos de autoconocimiento, poder interior y acción consciente.",
+    "paulina": "Educadora experta en su campo, comprometida con el éxito de los estudiantes.",
+    "henry-tyson": "Soy una persona fuerte y apasionada por lo que hago. Mientras ponga mi mente en ello, puedo lograrlo. Pongo a Dios primero en todo lo que hago.",
+    "corey-williams": "Educador experto en su campo, comprometido con el éxito de los estudiantes.",
+    "dani-curtis": "Raquel Curtis, MBA, es una educadora financiera, emprendedora y autora de bestsellers internacionales dedicada a ayudar a las mujeres a tomar control de sus finanzas y construir riqueza. Nativa de Georgia y madre de tres hijos, Raquel convirtió los reveses personales en éxito a través del presupuesto y la inversión, inspirando la creación de la marca The Boujee Banker. Enseña a las mujeres cómo presupuestar, ahorrar, invertir y hacer crecer negocios en línea. Raquel es autora de Mastering Your Money Mindset y coautora del bestseller de Amazon MoneyTalk$, con prólogo de Les Brown. Oradora dinámica y candidata doctoral, ha impactado a miles a nivel mundial, guiando a individuos hacia el empoderamiento financiero duradero.",
+    "annie-toney": "Educadora experta en su campo, comprometida con el éxito de los estudiantes.",
+    "al-blue": "Dr. A.L.Blue, Sr. es un autor de bestsellers, Evangelista de la Riqueza e Inversionista de Capital Privado que se desempeña como Socio Senior y Director General de Blue Wealth Solutions Consolidated LLC, una empresa de empoderamiento financiero, construcción de riqueza y educación para una vida mejor enfocada en la verdadera creación de riqueza y acumulación de activos en metales preciosos, así como soluciones de creación de riqueza generacional y fondos fiduciarios. También se desempeña como Evangelista de la Riqueza enseñando principios bíblicos sobre creación de riqueza y mejor vida desde una perspectiva espiritual como Financiero del Reino.",
+    "stephon-r": "Stephon Royal es un educador de redes sociales apasionado y dinámico dedicado a empoderar a individuos y empresas para dominar el arte de la narrativa digital y la influencia en línea. Con años de experiencia en la creación de contenido viral y la construcción de marcas en línea impactantes, Stephon combina creatividad con estrategia para ayudar a los estudiantes a desbloquear todo el potencial de las plataformas de redes sociales.\n\nEspecializado en creación de contenido, participación de audiencia y estrategias de monetización, Stephon se ha ganado una reputación por brindar información práctica, técnicas innovadoras y soluciones accionables. Ya seas un influencer principiante, propietario de una pequeña empresa o un marketero experimentado, el estilo de enseñanza accesible de Stephon asegura que cada estudiante se vaya con las habilidades y la confianza para prosperar en el mundo en constante evolución de las redes sociales.\n\nConocido por sus talleres energéticos y coaching personalizado, la misión de Stephon es simple: ayudarte a construir una marca que no solo se destaque, sino que también conecte, convierta y cree un impacto duradero.",
+    "tamara-minto": "Tamara Minto es autora, oradora, emprendedora y educadora, con una gran experiencia en marketing, bienes raíces e inversiones. En 2018, Tamara fundó una organización sin fines de lucro, iTrade Junior Investor Trading Game, como plataforma para empoderar y educar a jóvenes de 10 a 17 años sobre el poder del mercado financiero. Es una inversora apasionada y defensora de la alfabetización financiera, enfocándose en la importancia de equipar a nuestras familias para desarrollar una mentalidad de riqueza.",
+    "angie-toney": "Educadora especializada en alfabetización financiera, ayudando a las personas a tomar control de sus finanzas y construir riqueza a largo plazo."
+  },
+  "tntTraining": {
+    "welcomeTitle": "TNT Training",
+    "welcomeDescription": "Bienvenido a TNT Training. El programa más completo de educación en trading diseñado para llevarte desde principiante hasta trader profesional.",
+    "onboardingTitle": "Onboarding TNT",
+    "onboardingDescription": "Bienvenido al programa de incorporación de TNT Training. Aquí encontrarás todo lo que necesitas para comenzar tu viaje de trading con las mejores herramientas y conocimientos.",
+    "comingSoon": "Próximamente",
+    "loadingSessions": "Cargando sesiones...",
+    "noSessionsAvailable": "No hay sesiones disponibles.",
+    "videoUntitled": "Video sin título"
+  },
   "login": {
     "title": "Iniciar Sesión",
     "emailPlaceholder": "Correo electrónico",
@@ -67,13 +188,23 @@
   },
   "educators": {
     "pageTitle": "Educadores",
-    "noEducatorsInCategory": "No hay educadores disponibles en esta categoría."
+    "noEducatorsInCategory": "No hay educadores disponibles en esta categoría.",
+    "noEducatorsAvailable": "Próximamente",
+    "categories": {
+      "forex": "Educador Forex",
+      "crypto": "Educador Crypto",
+      "finance": "Educador en finanzas",
+      "marketing": "Educador Marketing"
+    }
   },
   "categories": {
     "forex": "Forex",
+    "futures": "Futuros",
+    "stock": "Acciones",
     "crypto": "Cripto",
     "financial_literacy": "Educación Financiera",
-    "marketing_digital": "Marketing Digital"
+    "marketing_digital": "Marketing Digital",
+    "mindset": "Mindset"
   },
   "calendar": {
     "pageTitle": "Calendario",
@@ -99,10 +230,15 @@
     "filterFrench": "Francés"
   },
   "profile": {
+    "title": "Mi Perfil",
+    "personalInfo": "Información Personal",
+    "userIdLabel": "ID Usuario:",
+    "nameLabel": "Nombre:",
     "editButton": "Editar Perfil",
     "saveButton": "Guardar Cambios",
     "cancelButton": "Cancelar",
     "logoutButton": "Cerrar Sesión",
+    "saveSuccess": "Perfil actualizado con éxito.",
     "journalTitle": "Mi Diario de Trading",
     "journalDescription": "Accede a tu diario de trading para registrar y analizar tus operaciones.",
     "journalButton": "Ir al Diario"
@@ -126,11 +262,25 @@
       "strategies": "Estrategias de trading basadas en noticias"
     }
   },
+  "educatorCard": {
+    "schedule": "Horarios de Clases",
+    "comingSoon": "Próximamente nuevos horarios",
+    "viewChannel": "Ver Canal",
+    "days": {
+      "sunday": "Domingo",
+      "monday": "Lunes",
+      "tuesday": "Martes",
+      "wednesday": "Miércoles",
+      "thursday": "Jueves",
+      "friday": "Viernes",
+      "saturday": "Sábado"
+    }
+  },
   "academy": {
     "pageTitle": "Academia",
     "tabbar": {
-      "es": "Español",
       "en": "Inglés",
+      "es": "Español",
       "fr": "Francés"
     },
     "loading": "Cargando sesiones...",
@@ -150,7 +300,180 @@
     "trades": "Operaciones",
     "totalTrades": "Operaciones Totales",
     "winRate": "Porcentaje de Éxito",
-    "totalProfitLoss": "Ganancia/Pérdida Total"
+    "totalProfitLoss": "Ganancia/Pérdida Total",
+    "date": "Fecha",
+    "tradeTitle": "Título",
+    "pair": "Par",
+    "type": "Tipo",
+    "buy": "Compra",
+    "sell": "Venta",
+    "entryPrice": "Precio de Entrada",
+    "exitPrice": "Precio de Salida",
+    "lotSize": "Tamaño de Lote",
+    "profitLoss": "Ganancia/Pérdida",
+    "strategy": "Estrategia",
+    "notes": "Notas",
+    "tradeTitlePlaceholder": "Título de la operación",
+    "pairPlaceholder": "EUR/USD",
+    "entryPricePlaceholder": "1.2345",
+    "exitPricePlaceholder": "1.2345",
+    "lotSizePlaceholder": "0.1",
+    "profitLossPlaceholder": "100",
+    "strategyPlaceholder": "Estrategia utilizada",
+    "notesPlaceholder": "Notas adicionales sobre la operación..."
   },
-  "filterAllLanguages": "Todos los idiomas"
+  "markups": {
+    "pageTitle": "Señales de Trading",
+    "comingSoon": "Próximamente",
+    "subtitle": "Estamos trabajando en algo increíble para ti",
+    "description": "La sección de Señales de Trading estará disponible muy pronto con nuevas funcionalidades y herramientas avanzadas para mejorar tu experiencia de trading.",
+    "selectEducator": "Selecciona un educador para ver su perfil y agregar operaciones a su seguimiento",
+    "addTrader": "Agregar Operaciones",
+    "addTraderDescription": "Agrega y rastrea las operaciones de este educador para seguir su rendimiento",
+    "addNewTrade": "Agregar Nueva Operación",
+    "lastTrades": "Últimas Operaciones",
+    "noTradesAvailable": "No hay operaciones disponibles",
+    "addFirstTrade": "Este educador aún no ha compartido operaciones. ¡Agrega la primera operación!",
+    "tracking": "Seguimiento",
+    "trackingDescription": "Ve todas las operaciones de los educadores que estás siguiendo",
+    "allEducators": "Todos los Educadores",
+    "following": "Siguiendo",
+    "followingEducators": "Estos son los educadores que estás siguiendo actualmente",
+    "noTrackedTrades": "No hay operaciones en seguimiento",
+    "startFollowingEducators": "Comienza siguiendo educadores para ver sus operaciones aquí",
+    "entryPrice": "Precio de Entrada",
+    "exitPrice": "Precio de Salida",
+    "result": "Resultado",
+    "reason": "Razón",
+    "loadingSubscriptions": "Cargando suscripciones...",
+    "followButton": "Seguir",
+    "followingButton": "Siguiendo",
+    "viewProfile": "Ver Perfil",
+    "notFollowingAny": "No estás siguiendo a ningún educador",
+    "clickFollowInstruction": "Haz clic en 'Seguir' en cualquier educador para agregarlo a tu lista de seguimiento",
+    "educatorProfile": "Perfil del Educador",
+    "subscribers": "suscriptores", 
+    "subscribed": "Suscrito",
+    "subscribe": "Suscribirse",
+    "profitability": "Rentabilidad",
+    "totalTrades": "Total de Operaciones",
+    "winRate": "Tasa de Éxito",
+    "loginRequired": "Por favor, inicia sesión para seguir educadores",
+    "subscriptionError": "Error al cambiar suscripción. Inténtalo de nuevo.",
+    "loadingTrades": "Cargando operaciones...",
+    "errorLoadingTrades": "Error al cargar las operaciones",
+    "date": "Fecha",
+    "status": "Estado",
+    "open": "Abierto",
+    "closed": "Cerrado",
+    "pending": "Pendiente",
+    "editTrade": "Editar Trade",
+    "instrument": "Instrumento",
+    "direction": "Dirección",
+    "currentStatus": "Estado Actual",
+    "editTradeForm": "Editar Trade",
+    "exitPriceRequired": "El precio de salida es requerido para cerrar el trade",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "tradeStatus": "Estado del Trade",
+    "exitPriceLabel": "Precio de Salida *",
+    "resultLabel": "Resultado (se calcula automáticamente)",
+    "saveChanges": "Guardar Cambios",
+    "notAuthorizedToCreateTrades": "No tienes permisos para crear trades",
+    "onlyAuthorizedUsers": "Solo usuarios autorizados pueden crear y editar trades",
+    "confirmDeleteTrade": "¿Estás seguro de que quieres eliminar este trade?",
+    "errorDeletingTrade": "Error al eliminar el trade. Inténtalo de nuevo.",
+    "loadingSubscribers": "Cargando seguidores..."
+  },
+  "tradingForm": {
+    "title": "Crear Nuevo Trade (Abierto)",
+    "instrument": "Instrumento / Par",
+    "selectInstrument": "Seleccionar instrumento",
+    "direction": "Dirección",
+    "buy": "Compra (Buy)",
+    "sell": "Venta (Sell)",
+    "entryPrice": "Precio de Entrada",
+    "exitPrice": "Precio de Salida / Take Profit",
+    "stopLoss": "Stop Loss",
+    "result": "Resultado",
+    "dateTime": "Fecha y Hora",
+    "tradeReason": "Razón del Trade",
+    "reasonPlaceholder": "Describe la razón técnica o fundamental para esta operación...",
+    "attachImage": "Adjuntar Imagen/Gráfico (opcional)",
+    "optionalPlaceholder": "0.00 (opcional)",
+    "cancel": "Cancelar",
+    "saving": "Guardando...",
+    "uploading": "Subiendo imagen...",
+    "saveOperation": "Guardar Operación",
+    "orderType": "Tipo de Orden",
+    "market": "Mercado",
+    "buyLimit": "Buy Limit",
+    "sellLimit": "Sell Limit",
+    "buyStop": "Buy Stop",
+    "sellStop": "Sell Stop"
+  },
+  "filterAllLanguages": "Todos los idiomas",
+  "crm": {
+    "title": "CRM - Solicitudes de Acceso a Scanner",
+    "loading": "Cargando datos...",
+    "stats": {
+      "totalRequests": "Total de Solicitudes",
+      "pending": "Pendientes",
+      "approved": "Aprobados",
+      "rejected": "Rechazados",
+      "olympus": "Olympus",
+      "skywalker": "Skywalker"
+    },
+    "search": {
+      "placeholder": "Buscar por nombre, email, NvisionU ID o TradingView username...",
+      "allStatuses": "Todos los estados",
+      "pending": "Pendientes",
+      "approved": "Aprobados",
+      "rejected": "Rechazados",
+      "allScannerTypes": "Todos los tipos de scanner"
+    },
+    "table": {
+      "firstName": "Nombre",
+      "lastName": "Apellido",
+      "email": "Email",
+      "nvisionId": "NvisionU ID",
+      "tradingView": "TradingView",
+      "scannerType": "Tipo de Scanner",
+      "date": "Fecha",
+      "status": "Estado",
+      "actions": "Acciones",
+      "copy": "Copiar",
+      "approve": "Aprobar",
+      "reject": "Rechazar"
+    },
+    "pagination": {
+      "previous": "Anterior",
+      "next": "Siguiente"
+    },
+    "modal": {
+      "title": "Detalles de la Solicitud",
+      "close": "×",
+      "fullName": "Nombre Completo",
+      "email": "Email",
+      "nvisionId": "NvisionU ID",
+      "tradingViewUsername": "Usuario de TradingView",
+      "scannerType": "Tipo de Scanner",
+      "requestDate": "Fecha de Solicitud",
+      "currentStatus": "Estado Actual",
+      "copy": "Copiar",
+      "approve": "Aprobar",
+      "reject": "Rechazar"
+    },
+    "update": {
+      "alertTitle": "Se encontraron {count} registros sin tipo de scanner.",
+      "alertDescription": "Estos son registros anteriores que necesitan ser marcados como \"Olympus\".",
+      "buttonText": "Actualizar {count} registros",
+      "buttonUpdating": "Actualizando...",
+      "successMessage": "{count} registros actualizados correctamente",
+      "errorMessage": "Error: {error}"
+    },
+    "scannerTypes": {
+      "olympusLegacy": "Olympus (legacy)"
+    }
+  }
 } 

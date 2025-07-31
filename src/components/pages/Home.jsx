@@ -32,6 +32,17 @@ const getFirstNEducators = (data, n) => {
   return allEducators.slice(0, n);
 };
 
+// Nueva función para filtrar por idioma
+const getFirstNEducatorsByLanguage = (data, n, lang) => {
+  const allEducators = [];
+  for (const category in data) {
+    if (Array.isArray(data[category])) {
+      allEducators.push(...data[category].filter(edu => edu.language && edu.language.startsWith(lang)));
+    }
+  }
+  return allEducators.slice(0, n);
+};
+
 const getTopEducatorsByLanguage = (data, n, lang) => {
   const allEducators = [];
   for (const category in data) {
@@ -39,6 +50,26 @@ const getTopEducatorsByLanguage = (data, n, lang) => {
       allEducators.push(...data[category].filter(edu => edu.language && edu.language.startsWith(lang)));
     }
   }
+  
+  // Ordenamiento especial para educadores destacados
+  if (lang === 'en') {
+    // Para inglés: Pops primero, Andre al final, excluir Lucas
+    const pops = allEducators.find(edu => edu.id === 'richard-hall-pops');
+    const andre = allEducators.find(edu => edu.id === 'henry-tyson');
+    const others = allEducators.filter(edu => 
+      edu.id !== 'richard-hall-pops' && 
+      edu.id !== 'henry-tyson' &&
+      edu.id !== 'lucas-longmire' // Excluir Lucas específicamente
+    );
+    
+    const ordered = [];
+    if (pops) ordered.push(pops);
+    ordered.push(...others);
+    if (andre) ordered.push(andre);
+    
+    return ordered.slice(0, n);
+  }
+  
   return allEducators.slice(0, n);
 };
 
@@ -75,23 +106,25 @@ const Banner = styled.div`
   text-align: center;
   background-size: cover;
   background-position: left center;
-  background-image: url('${props => props.imageUrl}');
-  width: 0;
-  flex: 2 1 0%;
-  max-width: 1000px;
-  aspect-ratio: 2146 / 700;
+  background-image: url('${props => props.$imageUrl}');
+  width: 100vw;
+  max-width: 100vw;
+  aspect-ratio: 16 / 4;
   height: auto;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin-left: 0;
-  margin-right: 0;
-  
+  margin: 0 calc(-1 * (100vw - 100%) / 2);
+  padding-left: 0;
+  padding-right: 0;
   @media (max-width: 768px) {
-    border-radius: 16px;
+    border-radius: 0;
     aspect-ratio: 2146 / 966;
-    width: 100%;
+    width: 100vw;
+    max-width: 100vw;
+    margin: 0;
+    padding: 0;
     flex: unset;
   }
   h1 {
@@ -100,7 +133,6 @@ const Banner = styled.div`
     text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
     color: rgb(0,150,136);
   }
-
   @media (max-width: 768px) {
     h1 {
       font-size: 2.5rem;
@@ -392,8 +424,8 @@ const BeyondBanner = styled.div`
   cursor: pointer;
   @media (max-width: 768px) {
     border-radius: 16px;
-    aspect-ratio: 4455 / 1200;
-    min-height: 30px;
+    aspect-ratio: 16 / 4;
+    min-height: 50px;
   }
 `;
 
@@ -415,7 +447,7 @@ const Home = () => {
   console.log("Datos Educadores Importados:", educatorsData);
   
   const topEducators = getTopEducatorsByLanguage(educatorsData, 5, currentLang);
-  const previewEducators = getFirstNEducators(educatorsData, 5);
+  const previewEducators = getFirstNEducatorsByLanguage(educatorsData, 5, currentLang);
   
   console.log("Top Educators Derivados:", topEducators);
   console.log("Preview Educators Derivados:", previewEducators);
@@ -434,18 +466,13 @@ const Home = () => {
   return (
     <PageContainer>
       {/* Fila Superior */}
-      <TopRowContainer>
-        <Banner imageUrl={bannerImage} />
-        <TradingViewContainer>
-        <TradingViewWidget />
-        </TradingViewContainer>
-      </TopRowContainer>
+      <Banner $imageUrl={bannerImage} />
 
       {/* Sección Educadores Top */}
       <Section>
         <SectionTitle>
-          {t('home.topEducators')}
-          <Link to="/educadores">{t('home.viewAll')} {'>'}</Link> 
+          {String(t('home.topEducators') || 'Top Educators')}
+          <Link to="/educadores">{String(t('home.viewAll') || 'View All')} {'>'}</Link> 
         </SectionTitle>
         <TopEducatorsContainer>
           {Array.isArray(topEducators) && topEducators.length > 0 ? (
@@ -458,17 +485,17 @@ const Home = () => {
                 <Link key={edu.id || `top-edu-${index}`} to={`/educadores/${edu.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
                   <TopEducatorAvatar>
                     <img 
-                      src={edu.profileImageFilename ? `/images/perfil/${edu.profileImageFilename}` : '/images/placeholder.jpg'} 
-                      alt={edu.name || t('common.nameNotAvailable')}
+                      src={edu.profileImageFilename ? (edu.id === 'lucas-longmire' ? `/images/perfil/${edu.profileImageFilename}` : `/PERFIL/${edu.profileImageFilename}`) : '/images/placeholder.jpg'} 
+                      alt={String(edu.name || t('common.nameNotAvailable') || 'Educator')}
                       onError={(e) => { e.target.onerror = null; e.target.src='/images/placeholder.jpg'; }}
                     />
-                    <span>{edu.name || t('common.nameNotAvailable')}</span>
+                    <span>{String(edu.name || t('common.nameNotAvailable') || 'Educator')}</span>
                   </TopEducatorAvatar>
                 </Link>
               );
             })
           ) : (
-            <p>{t('home.noTopEducators')}</p> 
+            <p>{String(t('home.noTopEducators') || 'No top educators available')}</p> 
           )}
         </TopEducatorsContainer>
       </Section>
@@ -479,8 +506,8 @@ const Home = () => {
       {/* Sección Educadores Preview */}
       <Section>
         <SectionTitle>
-          {t('home.ourEducators')} 
-          <Link to="/educadores">{t('home.viewAll')} {'>'}</Link> 
+          {String(t('home.ourEducators') || 'Our Educators')} 
+          <Link to="/educadores">{String(t('home.viewAll') || 'View All')} {'>'}</Link> 
         </SectionTitle>
         
         <EducatorsPreviewGrid>
@@ -493,31 +520,31 @@ const Home = () => {
                     return (
                         <EducatorCard key={edu.id || `prev-edu-${index}`} to={`/educadores/${edu.id}`}> 
                             <EducatorImage 
-                                src={edu.profileImageFilename ? `/images/perfil/${edu.profileImageFilename}` : '/images/placeholder.jpg'} 
-                                alt={edu.name || t('common.nameNotAvailable')} 
+                                src={edu.profileImageFilename ? (edu.id === 'lucas-longmire' ? `/images/perfil/${edu.profileImageFilename}` : `/PERFIL/${edu.profileImageFilename}`) : '/images/placeholder.jpg'} 
+                                alt={String(edu.name || t('common.nameNotAvailable') || 'Educator')} 
                                 onError={(e) => { e.target.onerror = null; e.target.src='/images/placeholder.jpg'; }}
                             />
                             <EducatorCardInfo>
-                                <EducatorCardName>{edu.name || t('common.nameNotAvailable')}</EducatorCardName>
-                                <EducatorCardTitle>{edu.title || t('common.specialist')}</EducatorCardTitle>
+                                <EducatorCardName>{String(edu.name || t('common.nameNotAvailable') || 'Educator')}</EducatorCardName>
+                                <EducatorCardTitle>{String(t(`educators.categories.${edu.category}`) || t('common.specialist') || 'Specialist')}</EducatorCardTitle>
                             </EducatorCardInfo>
                         </EducatorCard>
                     );
                  })
             ) : (
-                 <p>{t('home.noEducatorsPreview')}</p> 
+                 <p>{String(t('home.noEducatorsPreview') || 'No educators available')}</p> 
             )}
         </EducatorsPreviewGrid>
 
         <ViewMoreButton to="/educadores">
-            Ver más
+            {String(t('common.viewMore') || 'View More')}
         </ViewMoreButton>
       </Section>
       
       {/* Banner TELEGRAM */}
-      <TelegramBanner 
+      {/* <TelegramBanner 
         imageUrl={telegramBanner} 
-      />
+      /> */}
 
     </PageContainer>
   );

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import { 
@@ -14,8 +14,9 @@ import {
   MdChevronLeft,
   MdShowChart
 } from 'react-icons/md';
-import { FaInstagram, FaTelegram, FaHome, FaGraduationCap, FaChalkboardTeacher, FaNewspaper, FaChartLine, FaQrcode, FaBook, FaCalendarAlt, FaVideo } from 'react-icons/fa';
+import { FaInstagram, FaTelegram, FaHome, FaGraduationCap, FaChalkboardTeacher, FaNewspaper, FaChartLine, FaQrcode, FaBook, FaCalendarAlt, FaVideo, FaMobileAlt, FaUserPlus } from 'react-icons/fa';
 import SidebarItem from '../ui/SidebarItem';
+import AppDownloadModal from '../ui/AppDownloadModal';
 import { useTranslation } from 'react-i18next';
 
 const SIDEBAR_WIDTH = 250;
@@ -143,20 +144,27 @@ const SocialLinkItem = styled.li`
 const Sidebar = ({ isOpen, isCollapsed, onClose, onToggleCollapse }) => {
   const location = useLocation();
   const { t, i18n } = useTranslation();
+  const [isAppModalOpen, setIsAppModalOpen] = useState(false);
   
   const menuItems = [
     { path: '/', icon: <FaHome />, label: t('sidebar.home') },
+    // { path: '/new-members', icon: <FaUserPlus />, label: t('sidebar.newMembers') },
     { path: '/academia', icon: <FaGraduationCap />, label: t('sidebar.academy') },
     { path: '/educadores', icon: <FaChalkboardTeacher />, label: t('sidebar.educators') },
     { path: '/calendario', icon: <FaCalendarAlt />, label: t('sidebar.calendar') },
-    { path: '/beyond-charts', icon: <FaVideo />, label: t('sidebar.beyondCharts') },
-    { path: '/news', icon: <FaNewspaper />, label: t('sidebar.news') },
+    { path: '/tnt-training', icon: <FaGraduationCap />, label: t('sidebar.tntTraining') },
+    // { path: '/news', icon: <FaNewspaper />, label: t('sidebar.news') },
     { path: '/markups', icon: <FaChartLine />, label: t('sidebar.markups') },
     { path: '/scanner', icon: <FaQrcode />, label: t('sidebar.scanner') },
     { path: '/trading-journal', icon: <FaBook />, label: t('sidebar.tradingJournal') },
   ];
   
   const actuallyCollapsed = isCollapsed && window.innerWidth >= 992;
+
+  // Enlaces de Telegram según el idioma
+  const telegramLink = i18n.language.startsWith('es') 
+    ? 'https://t.me/+PdwdBLEt3xNkNzcx'  // Español
+    : 'https://t.me/+BCoD1D3xmiU4MGEx'; // Inglés/Francés
 
   return (
     <SidebarContainer $isOpen={isOpen} $isCollapsed={actuallyCollapsed}>
@@ -184,19 +192,44 @@ const Sidebar = ({ isOpen, isCollapsed, onClose, onToggleCollapse }) => {
       <SocialSection $isCollapsed={actuallyCollapsed}>
         <SocialLinks>
           <SocialLinkItem>
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+            <button 
+              onClick={() => setIsAppModalOpen(true)}
+              style={{ 
+                background: 'none', 
+                border: 'none', 
+                color: 'inherit', 
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '12px',
+                fontSize: '14px',
+                width: '100%',
+                padding: 0
+              }}
+            >
+              <FaMobileAlt style={{ color: '#009688', fontSize: '1.5rem', minWidth: '24px' }} />
+              <span>TNT - APP</span>
+            </button>
+          </SocialLinkItem>
+          <SocialLinkItem>
+            <a href="https://www.instagram.com/nvulive/" target="_blank" rel="noopener noreferrer">
               <FaInstagram style={{ color: '#E1306C' }} />
               <span>{t('sidebar.social.instagram')}</span>
             </a>
           </SocialLinkItem>
           <SocialLinkItem>
-            <a href="https://telegram.org" target="_blank" rel="noopener noreferrer">
+            <a href={telegramLink} target="_blank" rel="noopener noreferrer">
               <FaTelegram style={{ color: '#0088cc' }} />
               <span>{t('sidebar.social.telegram')}</span>
             </a>
           </SocialLinkItem>
         </SocialLinks>
       </SocialSection>
+      
+      <AppDownloadModal 
+        isOpen={isAppModalOpen} 
+        onClose={() => setIsAppModalOpen(false)} 
+      />
     </SidebarContainer>
   );
 };

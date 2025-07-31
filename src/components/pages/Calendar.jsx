@@ -176,71 +176,73 @@ const nameToId = {
   'Abi Belilty': 'abi-belity',
   'Franklin Araujo': 'frank-araujo',
   'Richard Hall Pops': 'richard-hall-pops',
-  'Nikki Sutherland': 'nikki-sutherland',
   'Ana Paulina': 'paulina',
-  'Stephon Royal': 'stephon-royal',
-  'Raquel Curtis': 'raquel-curtis',
+  'Stephon Royal': 'stephon-r',
+  'Raquel Curtis': 'dani-curtis',
   'Mauricio Gaytán': 'maur-gaytan',
   'Angie Toney': 'angie-toney',
-  'Jorge Damelines': 'jorge-damelines',
+  'Jorge Damelines': 'jorge-d',
   'Sebastian Garcia': 'seb-garcia',
   'Javier Perez': 'javier-perez',
   'Raphael Msica': 'raphael-msica',
-  'Andre Tyson': 'andre-tyson',
+  'Andre Tyson': 'henry-tyson',
   'Arin Long': 'arin-long',
-  'Corey Williams': 'corey-williams'
+  'Corey Williams': 'corey-williams',
+  'Lucas Longmire': 'lucas-longmire',
+  'Tamara Minto': 'tamara-minto'
 };
 
 const sessionsByDay = {
   Sunday: [
     // Inglés
-    { time: '21:00', educator: 'Andre Tyson', title: '', lang: 'English' },
+    { time: '21:00', educator: 'Andre Tyson', title: 'Talk yo pips', lang: 'English' },
     // Español
-    { time: '20:00', educator: 'Sebastian Garcia', title: '', lang: 'Español' },
+    { time: '14:00', educator: 'Sebastian Garcia', title: 'Market open', lang: 'Español' },
   ],
   Monday: [
     // Inglés
     { time: '14:00', educator: 'Ana Paulina', title: '', lang: 'English' },
-    { time: '11:00', educator: 'Franklin Araujo', title: '', lang: 'Español' },
-    { time: '20:00', educator: 'Mauricio Gaytán', title: '', lang: 'Español' },
+    { time: '21:00', educator: 'Tamara Minto', title: 'Onboarding For Beginners', lang: 'English' },
+    // Español
+    { time: '11:00', educator: 'Franklin Araujo', title: 'Análisis del Mercado', lang: 'Español' },
+    { time: '20:00', educator: 'Mauricio Gaytán', title: 'GOLDEN HOUR', lang: 'Español' },
   ],
   Tuesday: [
     // Inglés
+    { time: '08:00', educator: 'Lucas Longmire', title: '', lang: 'English' },
     { time: '14:00', educator: 'Ana Paulina', title: '', lang: 'English' },
-    { time: '17:00', educator: 'Nikki Sutherland', title: '', lang: 'English' },
     { time: '19:00', educator: 'Angie Toney', title: '', lang: 'English' },
-    { time: '20:00', educator: 'Arin Long', title: '', lang: 'English' },
+    { time: '20:00', educator: 'Arin Long', title: 'Forex Basics and Market Bully Strategy', lang: 'English' },
     { time: '23:00', educator: 'Richard Hall Pops', title: '', lang: 'English' },
     // Español
-    { time: '09:00', educator: 'Javier Perez', title: '', lang: 'Español' },
-    { time: '10:00', educator: 'Jorge Damelines', title: '', lang: 'Español' },
-    { time: '20:00', educator: 'Sebastian Garcia', title: '', lang: 'Español' },
+    { time: '10:00', educator: 'Jorge Damelines', title: 'Mentalidad Visionaria', lang: 'Español' },
   ],
   Wednesday: [
     // Inglés
+    { time: '08:00', educator: 'Lucas Longmire', title: '', lang: 'English' },
     { time: '10:00', educator: 'Richard Hall Pops', title: '', lang: 'English' },
-    { time: '16:00', educator: 'Raphael Msica', title: '', lang: 'Français' },
-    { time: '19:00', educator: 'Arin Long', title: '', lang: 'English' },
-    { time: '20:00', educator: 'Corey Williams', title: '', lang: 'English' },
-    { time: '21:00', educator: 'Stephon Royal', title: '', lang: 'English' },
+    { time: '15:00', educator: 'Andre Tyson', title: 'Talk yo pips', lang: 'English' },
+    { time: '16:00', educator: 'Raphael Msica', title: 'Générer des Revenus avec le Trading Forex', lang: 'Français' },
+    { time: '19:00', educator: 'Arin Long', title: 'Forex Basics and Market Bully Strategy', lang: 'English' },
+    { time: '20:00', educator: 'Corey Williams', title: 'Crypto and Coffee', lang: 'English' },
+    { time: '21:00', educator: 'Stephon Royal', title: 'VVS', lang: 'English' },
     // Español
-    { time: '10:00', educator: 'Abi Belilty', title: '', lang: 'Español' },
-    { time: '20:00', educator: 'Mauricio Gaytán', title: '', lang: 'Español' },
+    { time: '10:00', educator: 'Abi Belilty', title: 'TRADING INSTITUCIONAL', lang: 'Español' },
+    { time: '20:00', educator: 'Mauricio Gaytán', title: 'GOLDEN HOUR', lang: 'Español' },
   ],
   Thursday: [
     // Inglés
-    { time: '17:00', educator: 'Nikki Sutherland', title: '', lang: 'English' },
-    { time: '19:00', educator: 'Raquel Curtis', title: '', lang: 'English' },
-    { time: '20:00', educator: 'Andre Tyson', title: '', lang: 'English' },
+    { time: '08:00', educator: 'Lucas Longmire', title: '', lang: 'English' },
+    { time: '19:00', educator: 'Raquel Curtis', title: 'Stocks 101', lang: 'English' },
+    { time: '20:00', educator: 'Andre Tyson', title: 'Talk yo pips', lang: 'English' },
     { time: '23:00', educator: 'Richard Hall Pops', title: '', lang: 'English' },
     // Español
-    { time: '09:00', educator: 'Javier Perez', title: '', lang: 'Español' },
-    { time: '11:00', educator: 'Franklin Araujo', title: '', lang: 'Español' },
-    { time: '22:00', educator: 'Abi Belilty', title: '', lang: 'Español' },
+    { time: '11:00', educator: 'Franklin Araujo', title: 'Educación y Formación Completa', lang: 'Español' },
+    { time: '22:00', educator: 'Abi Belilty', title: 'TRADING INSTITUCIONAL', lang: 'Español' },
   ],
   Friday: [
     // Francés
-    { time: '16:00', educator: 'Raphael Msica', title: '', lang: 'Français' },
+    { time: '16:00', educator: 'Raphael Msica', title: 'Générer des Revenus avec le Trading Forex', lang: 'Français' },
   ],
   Saturday: [],
 };
@@ -334,6 +336,32 @@ const Calendar = () => {
     setRerender(r => r + 1);
   }, [i18n.language]);
 
+  // Función de depuración para verificar educadores
+  React.useEffect(() => {
+    console.log('🔍 Verificando educadores en calendario...');
+    const allSessionEducators = [];
+    Object.values(sessionsByDay).forEach(daySessions => {
+      daySessions.forEach(session => {
+        if (!allSessionEducators.includes(session.educator)) {
+          allSessionEducators.push(session.educator);
+        }
+      });
+    });
+    
+    allSessionEducators.forEach(educatorName => {
+      const educatorId = nameToId[educatorName];
+      const educatorObj = findEducatorById(educatorId);
+      
+      if (!educatorId) {
+        console.warn(`❌ Educador sin mapeo ID: "${educatorName}"`);
+      } else if (!educatorObj) {
+        console.warn(`❌ Educador no encontrado en datos: "${educatorName}" (ID: ${educatorId})`);
+      } else {
+        console.log(`✅ Educador OK: "${educatorName}" → ${educatorId}`);
+      }
+    });
+  }, []);
+
   // Opciones de idioma para el filtro
   const langOptions = [
     { value: 'all', label: t('calendar.filterAll') },
@@ -419,14 +447,14 @@ const Calendar = () => {
                         <img 
                           src={
                             educatorObj?.profileImageFilename
-                              ? `/images/perfil/${educatorObj.profileImageFilename}`
+                              ? (educatorObj.id === 'lucas-longmire' ? `/images/perfil/${educatorObj.profileImageFilename}` : `/PERFIL/${educatorObj.profileImageFilename}`)
                               : educatorObj?.img || '/images/placeholder.jpg'
                           }
                           alt={educatorObj?.name || educator}
                           onError={e => { e.target.onerror = null; e.target.src='/images/placeholder.jpg'; }}
                         />
                       </EducatorAvatar>
-                      <div style={{fontWeight:600,fontSize:15,marginTop:2}}>{educator}</div>
+                      <div style={{fontWeight:600,fontSize:15,marginTop:2}}>{educatorObj?.name || educator}</div>
                     </div>
                   </td>
                   {weekDays.map(day => {
@@ -436,9 +464,16 @@ const Calendar = () => {
                       <td key={day} style={{background:'#23272a',color:'#fff',padding:'12px',minWidth:90,textAlign:'center',borderBottom:'1px solid rgba(0,188,212,0.10)',fontSize:'1rem'}}>
                         {session ? (
                           <div>
+                            <div style={{ fontWeight: 600, fontSize: 15, marginBottom: 2 }}>
+                              {educatorObj?.name || session.educator}
+                            </div>
                             <SessionTime>{convertTime(session.time)}</SessionTime>
                             <SessionTitle>{session.title}</SessionTitle>
-                            <div style={{fontSize:13,color:'#00fff7',marginTop:2}}>{session.lang}</div>
+                            <div style={{ fontSize: '13px', color: '#00fff7', marginTop: 2 }}>{
+                              session.lang === 'English' ? t('calendar.filterEnglish') :
+                              session.lang === 'Español' ? t('calendar.filterSpanish') :
+                              session.lang === 'Français' ? t('calendar.filterFrench') : session.lang
+                            }</div>
                           </div>
                         ) : null}
                       </td>
@@ -472,22 +507,54 @@ const Calendar = () => {
           {(filterSessions(sessionsByDay[day]) && filterSessions(sessionsByDay[day]).length > 0) ? (
             filterSessions(sessionsByDay[day]).map((session, idx) => {
               if (session.educator === 'Jeff Beausoleil') return null;
+              
               const educatorId = nameToId[session.educator];
               const educatorObj = findEducatorById(educatorId);
+              
+              // Si no se encuentra el educador, usar datos por defecto pero aún permitir navegación
+              const displayName = educatorObj?.name || session.educator;
+              const imageUrl = educatorObj?.profileImageFilename 
+                ? (educatorObj.id === 'lucas-longmire' ? `/images/perfil/${educatorObj.profileImageFilename}` : `/PERFIL/${educatorObj.profileImageFilename}`)
+                : educatorObj?.img || '/images/placeholder.jpg';
+              
+              // Solo crear enlace si tenemos un ID válido de educador
+              const handleClick = () => {
+                if (educatorId && educatorObj) {
+                  window.location.href = `/educadores/${educatorId}`;
+                } else {
+                  console.warn(`Educador no encontrado: ${session.educator}`);
+                  // Opcional: mostrar mensaje al usuario
+                }
+              };
+              
               return (
-                <MobileSessionCard key={idx} onClick={() => window.location.href = `/educadores/${educatorId}`} style={{cursor:'pointer'}}>
+                <MobileSessionCard 
+                  key={idx} 
+                  onClick={handleClick} 
+                  style={{
+                    cursor: educatorId && educatorObj ? 'pointer' : 'default',
+                    opacity: educatorId && educatorObj ? 1 : 0.7
+                  }}
+                >
                   <EducatorAvatar style={{width:32,height:32,minWidth:32}}>
                     <img 
-                      src={educatorObj?.profileImageFilename ? `/images/perfil/${educatorObj.profileImageFilename}` : educatorObj?.img || '/images/placeholder.jpg'}
-                      alt={educatorObj?.name || session.educator}
-                      onError={e => { e.target.onerror = null; e.target.src='/images/placeholder.jpg'; }}
+                      src={imageUrl}
+                      alt={displayName}
+                      onError={e => { 
+                        e.target.onerror = null; 
+                        e.target.src='/images/placeholder.jpg'; 
+                      }}
                     />
                   </EducatorAvatar>
                   <MobileSessionInfo>
                     <MobileSessionTime>{convertTime(session.time)}</MobileSessionTime>
                     <MobileSessionTitle>{session.title}</MobileSessionTitle>
-                    <MobileSessionEducator>{session.educator}</MobileSessionEducator>
-                    <MobileSessionLang>{session.lang}</MobileSessionLang>
+                    <MobileSessionEducator>{displayName}</MobileSessionEducator>
+                    <MobileSessionLang>{
+                      session.lang === 'English' ? t('calendar.filterEnglish') :
+                      session.lang === 'Español' ? t('calendar.filterSpanish') :
+                      session.lang === 'Français' ? t('calendar.filterFrench') : session.lang
+                    }</MobileSessionLang>
                   </MobileSessionInfo>
                 </MobileSessionCard>
               );
@@ -516,7 +583,16 @@ const Calendar = () => {
         right: '50%',
         transform: 'translateX(-50%)',
         maxWidth: '100vw'
-      }} />
+      }} 
+      className="calendar-banner"
+      />
+      <style>{`
+        .calendar-banner {
+          @media (max-width: 768px) {
+            height: 80px !important;
+          }
+        }
+      `}</style>
       {/* Dropdown de zonas horarias y botón en la misma fila */}
       <ButtonRow>
         {/* Filtro de idioma a la izquierda */}
@@ -564,16 +640,22 @@ const Calendar = () => {
                           <SessionCardWrapper key={idx} onClick={() => window.location.href = `/educadores/${educatorId}`} style={{cursor:'pointer'}}>
                             <EducatorAvatar>
                               <img 
-                                src={educatorObj.profileImageFilename ? `/images/perfil/${educatorObj.profileImageFilename}` : educatorObj.img || '/images/placeholder.jpg'}
+                                src={educatorObj.profileImageFilename ? (educatorObj.id === 'lucas-longmire' ? `/images/perfil/${educatorObj.profileImageFilename}` : `/PERFIL/${educatorObj.profileImageFilename}`) : educatorObj.img || '/images/placeholder.jpg'}
                                 alt={educatorObj.name}
                                 onError={e => { e.target.onerror = null; e.target.src='/images/placeholder.jpg'; }}
                               />
                             </EducatorAvatar>
                             <SessionInfo>
+                              <div style={{ fontWeight: 600, fontSize: 15, marginBottom: 2 }}>
+                                {educatorObj?.name || session.educator}
+                              </div>
                               <SessionTime>{convertTime(session.time)}</SessionTime>
                               <SessionTitle>{session.title}</SessionTitle>
-                              <div style={{ fontSize: '13px', color: '#00fff7', marginTop: 2 }}>{session.educator}</div>
-                              <div style={{ fontSize: '12px', color: '#b0b0b0', marginTop: 2 }}>{session.lang}</div>
+                              <div style={{ fontSize: '13px', color: '#00fff7', marginTop: 2 }}>{
+                                session.lang === 'English' ? t('calendar.filterEnglish') :
+                                session.lang === 'Español' ? t('calendar.filterSpanish') :
+                                session.lang === 'Français' ? t('calendar.filterFrench') : session.lang
+                              }</div>
                             </SessionInfo>
                           </SessionCardWrapper>
                         ) : null;

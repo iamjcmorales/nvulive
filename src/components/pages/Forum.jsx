@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { MdSearch, MdFilterList, MdChatBubbleOutline, MdKeyboardBackspace } from 'react-icons/md';
 import { useTranslation } from 'react-i18next';
-import { db } from '../../firebase'; // Importar db desde la configuración de Firebase
+import { db } from '../../firebase/config'; // Importar db desde la configuración de Firebase
 import { collection, query, orderBy, onSnapshot, addDoc, serverTimestamp } from 'firebase/firestore';
 import CreatePostWidget from '../widgets/CreatePostWidget'; // Importar el widget para crear posts
 

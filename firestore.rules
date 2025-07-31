@@ -1,0 +1,27 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Reglas para el Live Chat
+    match /liveChat/{document} {
+      // Permitir lectura y escritura para todos (desarrollo)
+      // En producción, deberías añadir autenticación
+      allow read, write: if true;
+    }
+    
+    // Reglas para Scanner Form (ya existente)
+    match /scannerForm/{document} {
+      allow read, write: if true;
+    }
+    
+    // Reglas para otras colecciones existentes
+    match /trades/{document} {
+      allow read, write: if true;
+    }
+    
+    // Regla por defecto - denegar acceso
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

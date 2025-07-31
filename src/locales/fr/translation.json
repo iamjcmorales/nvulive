@@ -1,24 +1,120 @@
 {
   "sidebar": {
     "home": "Accueil",
+    "newMembers": "Nouveaux Membres",
     "calendar": "Calendrier",
     "educators": "Éducateurs",
     "academy": "Académie",
     "forum": "Forum",
     "backoffice": "Back Office",
     "scanner": "Scanner",
+    "crm": "CRM",
     "menu": "Menu",
     "liveMarkups": "Live Markups",
     "beyondCharts": "Beyond the Charts",
+    "tntTraining": "TNT Training",
     "news": "Actualités",
     "markups": "Markups",
-    "tradingJournal": "Journal de Trading"
+    "tradingJournal": "Journal de Trading",
+    "social": {
+      "instagram": "Instagram",
+      "telegram": "Telegram"
+    },
+    "appModal": {
+      "title": "Télécharger TNT App",
+      "subtitle": "Accédez à toutes les fonctionnalités de trading depuis votre appareil mobile",
+      "downloadIOS": "Télécharger pour iOS",
+      "downloadAndroid": "Télécharger pour Android"
+    }
   },
   "scanner": {
     "title": "Scanners",
     "gold": "GOLD SCANNER",
     "abi": "ABI SCANNER",
-    "pops": "POPS SCANNER"
+    "pops": "POPS SCANNER",
+    "earlyAccess": {
+      "title": "Voulez-vous faire partie de l'accès anticipé?",
+      "description": "Obtenez un accès exclusif à nos scanners avant tout le monde. Rejoignez notre programme d'accès anticipé et améliorez votre trading.",
+      "buttonText": "Je veux les scanners",
+      "olympusButton": "Je veux le Scanner Olympus",
+      "skywalkerButton": "Je veux le Scanner Skywalker",
+      "modal": {
+        "title": "Étapes pour Obtenir l'Accès au Scanner Olympus",
+        "videoTitle": "Comment Créer un Compte TradingView",
+        "step1": {
+          "title": "1. Complétez le Formulaire de Demande d'Accès",
+          "description": "Veuillez remplir le formulaire désigné avec les informations requises suivantes :"
+        },
+        "step2": {
+          "title": "2. Soumettez le Formulaire",
+          "description": "Assurez-vous que toutes les informations sont exactes avant de soumettre le formulaire. Des détails incomplets ou incorrects peuvent retarder l'accès."
+        },
+        "step3": {
+          "title": "3. Recevez Votre Invitation",
+          "description": "Une fois que votre formulaire a été examiné et vérifié, vous recevrez une invitation vous accordant l'accès au Scanner Olympus."
+        },
+        "step4": {
+          "title": "4. Accédez au Scanner Olympus sur TradingView",
+          "description": "Après avoir reçu votre invitation, vous pourrez accéder et utiliser le Scanner Olympus directement dans votre compte TradingView."
+        },
+        "form": {
+          "firstName": "Prénom",
+          "lastName": "Nom de Famille",
+          "email": "Adresse Email",
+          "nvisionId": "ID NvisionU",
+          "tradingViewUsername": "Nom d'Utilisateur TradingView",
+          "submitButton": "Soumettre la Demande",
+          "successMessage": "Formulaire soumis avec succès ! Vous recevrez une réponse bientôt.",
+          "errorMessage": "Erreur lors de la soumission du formulaire. Veuillez réessayer.",
+          "requiredField": "Ce champ est obligatoire",
+          "requestFor": "Demande pour :",
+          "emailInvalid": "Le format de l'email est invalide",
+          "submitting": "Soumission en cours..."
+        }
+      },
+      "skywalker": {
+        "title": "Étapes pour Obtenir l'Accès au Scanner Skywalker",
+        "step1": {
+          "title": "1. Complétez le Formulaire de Demande d'Accès",
+          "description": "Veuillez compléter le formulaire avec les informations requises pour accéder au Scanner Skywalker :"
+        },
+        "step2": {
+          "title": "2. Soumettez le Formulaire",
+          "description": "Assurez-vous que toutes les informations sont exactes avant de soumettre le formulaire. Des détails incomplets ou incorrects peuvent retarder l'accès."
+        },
+        "step3": {
+          "title": "3. Recevez Votre Invitation",
+          "description": "Une fois que votre formulaire a été examiné et vérifié, vous recevrez une invitation vous accordant l'accès au Scanner Skywalker."
+        },
+        "step4": {
+          "title": "4. Accédez au Scanner Skywalker sur TradingView",
+          "description": "Après avoir reçu votre invitation, vous pourrez accéder et utiliser le Scanner Skywalker directement dans votre compte TradingView."
+        }
+      }
+    }
+  },
+  "educatorSessions": {
+    "noSessionsAvailable": "Aucune session disponible pour cet éducateur.",
+    "favoriteSessions": "Sessions Favorites",
+    "allSessions": "Toutes les Sessions",
+    "noFavorites": "Aucune session favorite. Marquez des sessions comme favorites en cliquant sur l'étoile."
+  },
+  "liveChat": {
+    "title": "NVU Chat en Direct",
+    "liveUsers": "en direct",
+    "closeChat": "Fermer Chat",
+    "openChat": "Chat en Direct",
+    "messagePlaceholder": "Tapez un message en tant que {{username}}...",
+    "sendMessage": "Envoyer message",
+    "loading": "Chargement du chat...",
+    "emptyChat": "Soyez le premier à écrire dans ce chat!",
+    "connected": "Connecté",
+    "disconnected": "Déconnecté",
+    "sending": "Envoi...",
+    "retry": "Réessayer",
+    "connectionError": "Erreur de connexion",
+    "permissionError": "Pas de permission pour envoyer des messages",
+    "generalError": "Erreur lors de l'envoi du message"
   },
   "home": {
     "welcome": "Bienvenue",
@@ -53,10 +149,10 @@
     "abi-belity": "Abi Belilty est un trader professionnel avec plus de 7 ans d'expérience sur les marchés financiers. Avec une passion innée pour le trading, Abi a consacré des années de sa vie à perfectionner ses compétences et ses connaissances dans le monde des investissements.\n\nAvec une vision unique et perspicace, Abi invite les personnes du monde entier à se connecter à ses sessions, où il partage ses stratégies préférées et des conseils clés pour amener le trading à un niveau supérieur. Son approche pratique et sa capacité à simplifier des concepts complexes rendent ses sessions accessibles et précieuses pour les traders de tous niveaux.",
     "frank-araujo": "Trader avec plus de 5 ans d'expérience sur les marchés financiers, spécialisé sur la paire EUR/USD. En tant que swing trader, je vous fournirai les bons outils pour apprendre le trading des bases à l'avancé, avec un accent clair sur la maîtrise des graphiques et la compréhension professionnelle du comportement du marché.",
     "maur-gaytan": "Ingénieur de profession, Coach en Leadership Certifié, 4 ans en tant que Trader, spécialisé dans le trading du XAU et des paires JPY avec sa propre stratégie, marié et père de deux filles.",
-    "aring-long-fx": "Arin Long a une véritable passion pour l'éducation et une solide base en résolution de problèmes et optimisation des processus, qu'elle a développée pendant sa carrière d'ingénieure mécanique. Avec une affinité naturelle pour l'analyse technique, elle s'est tournée vers le trading il y a cinq ans et a rapidement développé une passion profonde pour les marchés. L'approche de trading d'Arin est ancrée dans sa mentalité technique et son attention méticuleuse aux détails, des compétences qu'elle a encore affinées grâce au mentorat de Richard Hall (alias Market Bully). En maîtrisant des stratégies simples mais puissantes, Arin reste engagée dans l'apprentissage continu, affinant constamment ses techniques et élargissant ses connaissances du marché.",
+    "arin-long-fx": "Arin Long a une véritable passion pour l'éducation et une solide base en résolution de problèmes et optimisation des processus, qu'elle a développée pendant sa carrière d'ingénieure mécanique. Avec une affinité naturelle pour l'analyse technique, elle s'est tournée vers le trading il y a cinq ans et a rapidement développé une passion profonde pour les marchés. L'approche de trading d'Arin est ancrée dans son état d'esprit technique et son souci du détail, des compétences qu'elle a encore perfectionnées grâce au mentorat de Richard Hall (alias Market Bully). En maîtrisant des stratégies simples mais puissantes, Arin reste engagée dans un apprentissage continu, affinant constamment ses techniques et élargissant ses connaissances du marché.",
     "marcelo-t-fx": "Je suis Marcelo Trullen, expert en E-commerce et Marketing Digital. Ma passion pour la croissance numérique et la recherche continue de solutions efficaces m'a permis d'aider les équipes à faire passer leurs entreprises au niveau supérieur. Je m'engage dans l'apprentissage continu et la mise en œuvre de solutions de pointe dans le monde du commerce électronique.",
     "richard-p-fx": "Éducateur expert dans son domaine, engagé dans la réussite des étudiants.",
-    "about-nikki-fx": "Éducatrice experte dans son domaine, engagée dans la réussite des étudiants.",
+
     "jorge-damelines": "Expert en développement et évolution humaine, guide d'expériences transformatrices, accompagnant des processus de connaissance de soi, de pouvoir intérieur et d'action consciente.",
     "paulina": "Éducatrice experte dans son domaine, engagée dans la réussite des étudiants.",
     "henry-tyson": "Je suis une personne forte et passionnée par ce que je fais. Tant que je m'y applique, je peux y arriver. Je mets Dieu en premier dans tout ce que je fais.",
@@ -64,7 +160,19 @@
     "dani-curtis": "Raquel Curtis, MBA, est une éducatrice financière, entrepreneure et auteure de best-sellers internationaux dédiée à aider les femmes à prendre le contrôle de leurs finances et à bâtir leur richesse. Originaire de Géorgie et mère de trois enfants, Raquel a transformé les revers personnels en succès grâce à la budgétisation et à l'investissement, inspirant la création de la marque The Boujee Banker. Elle enseigne aux femmes comment budgétiser, épargner, investir et développer des entreprises en ligne. Raquel est l'auteure de Mastering Your Money Mindset et co-auteure du best-seller Amazon MoneyTalk$, avec une préface de Les Brown. Conférencière dynamique et doctorante, elle a eu un impact sur des milliers de personnes dans le monde, guidant les individus vers une autonomisation financière durable.",
     "annie-toney": "Éducatrice experte dans son domaine, engagée dans la réussite des étudiants.",
     "al-blue": "Dr. A.L.Blue, Sr. est un auteur de best-sellers, Évangéliste de la Richesse et Investisseur en Capital Privé, agissant en tant que Partenaire Senior et Directeur Général de Blue Wealth Solutions Consolidated LLC, une société d'autonomisation financière, de création de richesse et d'éducation pour une vie meilleure, axée sur la véritable création de richesse et l'accumulation d'actifs en métaux précieux, ainsi que sur les solutions de création de richesse générationnelle et de fonds fiduciaires. Il agit également en tant qu'Évangéliste de la Richesse enseignant les principes bibliques sur la création de richesse et une vie meilleure d'un point de vue spirituel en tant que Financier du Royaume.",
-    "steph-royal": "Stephon Royal est un éducateur de médias sociaux passionné et dynamique dédié à autonomiser les individus et les entreprises à maîtriser l'art du storytelling numérique et de l'influence en ligne. Avec des années d'expérience dans la création de contenu viral et la construction de marques en ligne percutantes, Stephon combine créativité et stratégie pour aider les étudiants à libérer tout le potentiel des plateformes de médias sociaux.\n\nSpécialisé dans la création de contenu, l'engagement du public et les stratégies de monétisation, Stephon s'est forgé une réputation pour fournir des informations pratiques, des techniques innovantes et des solutions concrètes. Que vous soyez un influenceur débutant, un propriétaire de petite entreprise ou un marketeur expérimenté, le style d'enseignement accessible de Stephon garantit que chaque étudiant repart avec les compétences et la confiance nécessaires pour prospérer dans le monde en constante évolution des médias sociaux.\n\nConnu pour ses ateliers énergiques et son coaching personnalisé, la mission de Stephon est simple : vous aider à construire une marque qui non seulement se démarque, mais qui connecte, convertit et crée un impact durable."
+    "stephon-r": "Stephon Royal est un éducateur de médias sociaux passionné et dynamique dédié à autonomiser les individus et les entreprises à maîtriser l'art du storytelling numérique et de l'influence en ligne. Avec des années d'expérience dans la création de contenu viral et la construction de marques en ligne percutantes, Stephon combine créativité et stratégie pour aider les étudiants à libérer tout le potentiel des plateformes de médias sociaux.\n\nSpécialisé dans la création de contenu, l'engagement du public et les stratégies de monétisation, Stephon s'est forgé une réputation pour fournir des informations pratiques, des techniques innovantes et des solutions concrètes. Que vous soyez un influenceur débutant, un propriétaire de petite entreprise ou un marketeur expérimenté, le style d'enseignement accessible de Stephon garantit que chaque étudiant repart avec les compétences et la confiance nécessaires pour prospérer dans le monde en constante évolution des médias sociaux.\n\nConnu pour ses ateliers énergiques et son coaching personnalisé, la mission de Stephon est simple : vous aider à construire une marque qui non seulement se démarque, mais qui connecte, convertit et crée un impact durable.",
+    "tamara-minto": "Tamara Minto est auteure, conférencière, entrepreneure et éducatrice, avec une vaste expérience en marketing, immobilier et investissements. En 2018, Tamara a fondé une organisation à but non lucratif, iTrade Junior Investor Trading Game, comme plateforme pour autonomiser et éduquer les jeunes de 10 à 17 ans sur le pouvoir du marché financier. Elle est une investisseuse passionnée et défenseure de l'alphabétisation financière, se concentrant sur l'importance d'équiper nos familles pour développer un état d'esprit de richesse.",
+    "angie-toney": "Éducatrice spécialisée en alphabétisation financière, aidant les gens à prendre le contrôle de leurs finances et à construire une richesse à long terme."
+  },
+  "tntTraining": {
+    "welcomeTitle": "TNT Training",
+    "welcomeDescription": "Bienvenue à TNT Training. Le programme d'éducation au trading le plus complet conçu pour vous faire passer de débutant à trader professionnel.",
+    "onboardingTitle": "Intégration TNT",
+    "onboardingDescription": "Bienvenue au programme d'intégration TNT Training. Ici vous trouverez tout ce dont vous avez besoin pour commencer votre parcours de trading avec les meilleurs outils et connaissances.",
+    "comingSoon": "Bientôt disponible",
+    "loadingSessions": "Chargement des sessions...",
+    "noSessionsAvailable": "Aucune session disponible.",
+    "videoUntitled": "Vidéo sans titre"
   },
   "login": {
     "title": "Connexion",
@@ -83,13 +191,23 @@
   },
   "educators": {
     "pageTitle": "Éducateurs",
-    "noEducatorsInCategory": "Aucun éducateur disponible dans cette catégorie."
+    "noEducatorsInCategory": "Aucun éducateur disponible dans cette catégorie.",
+    "noEducatorsAvailable": "Bientôt Disponible",
+    "categories": {
+      "forex": "Éducateur Forex",
+      "crypto": "Éducateur Crypto",
+      "finance": "Éducateur en Finance",
+      "marketing": "Éducateur Marketing"
+    }
   },
   "categories": {
     "forex": "Forex",
+    "futures": "Contrats à Terme",
+    "stock": "Actions",
     "crypto": "Crypto",
     "financial_literacy": "Littératie Financière",
-    "marketing_digital": "Marketing Numérique"
+    "marketing_digital": "Marketing Numérique",
+    "mindset": "État d'Esprit"
   },
   "calendar": {
     "pageTitle": "Calendrier",
@@ -115,12 +233,17 @@
     "filterFrench": "Français"
   },
   "profile": {
+    "title": "Mon Profil",
+    "personalInfo": "Informations Personnelles",
+    "userIdLabel": "ID Utilisateur :",
+    "nameLabel": "Nom :",
     "editButton": "Modifier le Profil",
     "saveButton": "Enregistrer les Modifications",
     "cancelButton": "Annuler",
     "logoutButton": "Déconnexion",
+    "saveSuccess": "Profil mis à jour avec succès.",
     "journalTitle": "Mon Journal de Trading",
-    "journalDescription": "Accédez à votre journal de trading pour enregistrer et analyser vos trades.",
+    "journalDescription": "Accédez à votre journal de trading pour enregistrer et analyser vos opérations.",
     "journalButton": "Aller au Journal"
   },
   "news": {
@@ -142,11 +265,25 @@
       "strategies": "Stratégies de trading basées sur l'actualité"
     }
   },
+  "educatorCard": {
+    "schedule": "Horaires des Cours",
+    "comingSoon": "Nouveaux horaires prochainement",
+    "viewChannel": "Voir la Chaîne",
+    "days": {
+      "sunday": "Dimanche",
+      "monday": "Lundi",
+      "tuesday": "Mardi",
+      "wednesday": "Mercredi",
+      "thursday": "Jeudi",
+      "friday": "Vendredi",
+      "saturday": "Samedi"
+    }
+  },
   "academy": {
     "pageTitle": "Académie",
     "tabbar": {
-      "es": "Espagnol",
       "en": "Anglais",
+      "es": "Espagnol",
       "fr": "Français"
     },
     "loading": "Chargement des sessions...",
@@ -166,7 +303,180 @@
     "trades": "Opérations",
     "totalTrades": "Opérations Totales",
     "winRate": "Taux de Réussite",
-    "totalProfitLoss": "Gain/Perte Total(e)"
+    "totalProfitLoss": "Gain/Perte Total(e)",
+    "date": "Date",
+    "tradeTitle": "Titre",
+    "pair": "Pair",
+    "type": "Type",
+    "buy": "Achat",
+    "sell": "Vente",
+    "entryPrice": "Prix d'entrée",
+    "exitPrice": "Prix de sortie",
+    "lotSize": "Taille du lot",
+    "profitLoss": "Gain/Perte",
+    "strategy": "Stratégie",
+    "notes": "Notes",
+    "tradeTitlePlaceholder": "Titre de l'opération",
+    "pairPlaceholder": "EUR/USD",
+    "entryPricePlaceholder": "1.2345",
+    "exitPricePlaceholder": "1.2345",
+    "lotSizePlaceholder": "0.1",
+    "profitLossPlaceholder": "100",
+    "strategyPlaceholder": "Stratégie utilisée",
+    "notesPlaceholder": "Notes supplémentaires sur l'opération..."
   },
-  "filterAllLanguages": "Toutes les langues"
+  "markups": {
+    "pageTitle": "Mark Ups",
+    "comingSoon": "Bientôt Disponible",
+    "subtitle": "Nous travaillons sur quelque chose d'incroyable pour vous",
+    "description": "La section Mark Ups sera disponible très bientôt avec de nouvelles fonctionnalités et des outils avancés pour améliorer votre expérience de trading.",
+    "selectEducator": "Sélectionnez un éducateur pour voir son profil et ajouter des trades à suivre",
+    "addTrader": "Ajouter Trade",
+    "addTraderDescription": "Ajoutez et suivez les trades de cet éducateur pour suivre ses performances",
+    "addNewTrade": "Ajouter Nouveau Trade",
+    "lastTrades": "Derniers Trades",
+    "noTradesAvailable": "Aucun trade disponible",
+    "addFirstTrade": "Cet éducateur n'a pas encore partagé de trades. Ajoutez le premier trade!",
+    "allEducators": "Tous les Éducateurs",
+    "following": "Suivis",
+    "followingEducators": "Éducateurs que vous suivez",
+    "notFollowingAny": "Vous ne suivez aucun éducateur",
+    "clickFollowInstruction": "Cliquez sur 'Suivre' sur n'importe quel éducateur pour l'ajouter à votre liste de suivis",
+    "followingButton": "Suivi",
+    "followButton": "Suivre",
+    "viewProfile": "Voir le Profil",
+    "educatorProfile": "Profil de l'Éducateur",
+    "subscribers": "abonnés",
+    "subscribed": "Abonné",
+    "subscribe": "S'abonner",
+    "profitability": "Rentabilité",
+    "totalTrades": "Total des Trades",
+    "winRate": "Taux de Réussite",
+    "tracking": "Suivi",
+    "trackingDescription": "Voir tous les trades des éducateurs que vous suivez",
+    "noTrackedTrades": "Aucun trade suivi disponible",
+    "startFollowingEducators": "Commencez à suivre des éducateurs pour voir leurs trades ici",
+    "entryPrice": "Prix d'Entrée",
+    "exitPrice": "Prix de Sortie",
+    "result": "Résultat",
+    "reason": "Raison",
+    "loadingSubscriptions": "Chargement des abonnements...",
+    "loadingTrades": "Chargement des trades...",
+    "loginRequired": "Veuillez vous connecter pour suivre les éducateurs", 
+    "subscriptionError": "Erreur lors du changement d'abonnement. Veuillez réessayer.",
+    "errorLoadingTrades": "Erreur lors du chargement des trades",
+    "date": "Date",
+    "status": "Statut",
+    "open": "Ouvert",
+    "closed": "Fermé", 
+    "pending": "En attente",
+    "editTrade": "Modifier Trade",
+    "instrument": "Instrument",
+    "direction": "Direction",
+    "currentStatus": "Statut Actuel", 
+    "editTradeForm": "Modifier Trade",
+    "exitPriceRequired": "Le prix de sortie est requis pour fermer le trade",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "tradeStatus": "Statut du Trade",
+    "exitPriceLabel": "Prix de Sortie *",
+    "resultLabel": "Résultat (calculé automatiquement)",
+    "saveChanges": "Enregistrer les Modifications",
+    "notAuthorizedToCreateTrades": "Vous n'avez pas les permissions pour créer des trades",
+    "onlyAuthorizedUsers": "Seuls les utilisateurs autorisés peuvent créer et modifier des trades",
+    "confirmDeleteTrade": "Êtes-vous sûr de vouloir supprimer ce trade?",
+    "errorDeletingTrade": "Erreur lors de la suppression du trade. Veuillez réessayer.",
+    "loadingSubscribers": "Chargement des abonnés..."
+  },
+  "tradingForm": {
+    "title": "Créer Nouveau Trade (Ouvert)",
+    "instrument": "Instrument / Paire",
+    "selectInstrument": "Sélectionner instrument",
+    "direction": "Direction",
+    "buy": "Achat",
+    "sell": "Vente",
+    "entryPrice": "Prix d'Entrée",
+    "exitPrice": "Prix de Sortie / Take Profit",
+    "stopLoss": "Stop Loss",
+    "result": "Résultat",
+    "dateTime": "Date et Heure",
+    "tradeReason": "Raison du Trade",
+    "reasonPlaceholder": "Décrivez la raison technique ou fondamentale de cette opération...",
+    "attachImage": "Joindre Image/Graphique (optionnel)",
+    "optionalPlaceholder": "0.00 (optionnel)",
+    "cancel": "Annuler",
+    "saving": "Enregistrement...",
+    "uploading": "Téléchargement de l'image...",
+    "saveOperation": "Enregistrer l'Opération",
+    "orderType": "Type d'Ordre",
+    "market": "Marché",
+    "buyLimit": "Buy Limit",
+    "sellLimit": "Sell Limit",
+    "buyStop": "Buy Stop",
+    "sellStop": "Sell Stop"
+  },
+  "filterAllLanguages": "Toutes les langues",
+  "crm": {
+    "title": "CRM - Demandes d'Accès au Scanner",
+    "loading": "Chargement des données...",
+    "stats": {
+      "totalRequests": "Total des Demandes",
+      "pending": "En Attente",
+      "approved": "Approuvées",
+      "rejected": "Rejetées",
+      "olympus": "Olympus",
+      "skywalker": "Skywalker"
+    },
+    "search": {
+      "placeholder": "Rechercher par nom, email, ID NvisionU ou nom d'utilisateur TradingView...",
+      "allStatuses": "Tous les statuts",
+      "pending": "En attente",
+      "approved": "Approuvées",
+      "rejected": "Rejetées",
+      "allScannerTypes": "Tous les types de scanner"
+    },
+    "table": {
+      "firstName": "Prénom",
+      "lastName": "Nom de Famille",
+      "email": "Email",
+      "nvisionId": "ID NvisionU",
+      "tradingView": "TradingView",
+      "scannerType": "Type de Scanner",
+      "date": "Date",
+      "status": "Statut",
+      "actions": "Actions",
+      "copy": "Copier",
+      "approve": "Approuver",
+      "reject": "Rejeter"
+    },
+    "pagination": {
+      "previous": "Précédent",
+      "next": "Suivant"
+    },
+    "modal": {
+      "title": "Détails de la Demande",
+      "close": "×",
+      "fullName": "Nom Complet",
+      "email": "Email",
+      "nvisionId": "ID NvisionU",
+      "tradingViewUsername": "Nom d'Utilisateur TradingView",
+      "scannerType": "Type de Scanner",
+      "requestDate": "Date de Demande",
+      "currentStatus": "Statut Actuel",
+      "copy": "Copier",
+      "approve": "Approuver",
+      "reject": "Rejeter"
+    },
+    "update": {
+      "alertTitle": "{count} enregistrements sans type de scanner trouvés.",
+      "alertDescription": "Ce sont des enregistrements précédents qui doivent être marqués comme \"Olympus\".",
+      "buttonText": "Mettre à jour {count} enregistrements",
+      "buttonUpdating": "Mise à jour...",
+      "successMessage": "{count} enregistrements mis à jour avec succès",
+      "errorMessage": "Erreur : {error}"
+    },
+    "scannerTypes": {
+      "olympusLegacy": "Olympus (legacy)"
+    }
+  }
 } 

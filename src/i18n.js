@@ -16,6 +16,7 @@ i18n
   // Initialize i18next
   .init({
     debug: true, // Enable console logs (useful for development)
+    lng: 'en', // Forzar idioma por defecto a inglés
     fallbackLng: 'en', // Default language if detection fails or translation is missing
     supportedLngs: ['en', 'es', 'fr'], // Supported languages
     interpolation: {
@@ -40,5 +41,8 @@ i18n
       caches: ['localStorage'], // Where to store the selected language
     }
   });
+
+// Mantener idioma inglés por defecto
+i18n.changeLanguage('en');
 
 export default i18n; 

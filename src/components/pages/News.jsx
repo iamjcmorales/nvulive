@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { MdChatBubbleOutline, MdKeyboardBackspace, MdThumbUp } from 'react-icons/md';
 import { useTranslation } from 'react-i18next';
-import { db } from '../../firebase';
+import { db } from '../../firebase/config';
 import { collection, query, orderBy, onSnapshot, addDoc, serverTimestamp, getCountFromServer, deleteDoc, doc } from 'firebase/firestore';
 import CreatePostWidget from '../widgets/CreatePostWidget';
 

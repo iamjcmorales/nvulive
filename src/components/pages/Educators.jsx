@@ -56,9 +56,12 @@ const LanguageFilter = styled.select`
 // Definir las claves de las pestañas
 const TAB_KEYS = [
   'forex', 
+  'futures',
+  'stock',
   'crypto', 
   'financial-literacy',
   'marketing-digital',
+  'mindset',
 ];
 
 const Educators = () => {
@@ -76,9 +79,16 @@ const Educators = () => {
   const currentEducators = educatorsData[activeTab] || [];
 
   // Filtrar educadores por idioma
-  const filteredEducators = selectedLanguage === 'all' 
-    ? currentEducators 
-    : currentEducators.filter(edu => edu.language === selectedLanguage);
+  let filteredEducators = [];
+  if (selectedLanguage === 'all') {
+    // Ordenar: primero inglés, luego español, luego el resto
+    const en = currentEducators.filter(edu => edu.language && edu.language.startsWith('en'));
+    const es = currentEducators.filter(edu => edu.language && edu.language.startsWith('es'));
+    const other = currentEducators.filter(edu => edu.language && !['en','es'].includes(edu.language.slice(0,2)));
+    filteredEducators = [...en, ...es, ...other];
+  } else {
+    filteredEducators = currentEducators.filter(edu => edu.language === selectedLanguage);
+  }
 
   // Obtener la categoría actual para pasarla a las cards
   const currentCategoryKey = activeTab;
@@ -99,8 +109,8 @@ const Educators = () => {
             onChange={(e) => setSelectedLanguage(e.target.value)}
           >
             <option value="all">{t('filterAllLanguages', 'Todos los idiomas')}</option>
-            <option value="es">{t('academy.tabbar.es', 'Español')}</option>
             <option value="en">{t('academy.tabbar.en', 'Inglés')}</option>
+            <option value="es">{t('academy.tabbar.es', 'Español')}</option>
             <option value="fr">{t('academy.tabbar.fr', 'Francés')}</option>
           </LanguageFilter>
         </FilterContainer>

@@ -1,2 +1,42 @@
-[build.environment]
-VITE_VIMEO_ALLOWED_DOMAINS = "*.netlify.app, nvulive.com, www.nvulive.com" 
+[build]
+  command = "npm run build"
+  publish = "dist"
+  functions = "netlify/functions"
+
+[functions]
+  node_bundler = "esbuild"
+  external_node_modules = ["node-fetch"]
+
+[[redirects]]
+  from = "/en"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/*"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/es"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/es/*"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/api/vimeo/folder-videos"
+  to = "/.netlify/functions/videos"
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
