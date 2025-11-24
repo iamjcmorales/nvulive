@@ -56,12 +56,9 @@ const LanguageFilter = styled.select`
 // Definir las claves de las pestañas
 const TAB_KEYS = [
   'forex', 
-  'futures',
-  'stock',
   'crypto', 
   'financial-literacy',
   'marketing-digital',
-  'mindset',
 ];
 
 const Educators = () => {

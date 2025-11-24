@@ -23,6 +23,7 @@ import BeyondCharts from './components/pages/BeyondCharts';
 import TNTTraining from './components/pages/TNTTraining';
 import CRM from './components/pages/CRM';
 import NewMembers from './components/pages/NewMembers';
+import NMO from './components/pages/NMO';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -71,6 +72,7 @@ function App() {
         <Route path="/trading-journal" element={<RequireAuth><Layout><TradingJournal /></Layout></RequireAuth>} />
         <Route path="/beyond-charts" element={<RequireAuth><Layout><BeyondCharts /></Layout></RequireAuth>} />
         <Route path="/tnt-training" element={<RequireAuth><Layout><TNTTraining /></Layout></RequireAuth>} />
+        <Route path="/nmo" element={<RequireAuth><Layout><NMO /></Layout></RequireAuth>} />
         <Route path="/crm" element={<RequireAuth><Layout><CRM /></Layout></RequireAuth>} />
         
         {/* Puedes añadir una ruta comodín 404 si lo deseas */}

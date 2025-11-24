@@ -1,0 +1,395 @@
+# Guía de API - NVU Live Login
+
+## Información General
+
+Esta guía documenta la implementación actual del sistema de login de NVU Live utilizando la nueva API migrada desde `api.nvu-integrations.com` a `trading-middleware.nvu-dev.com`.
+
+## Endpoint de Login
+
+### URL Base
+```
+https://trading-middleware.nvu-dev.com/api/user-login-api
+```
+
+### Método
+`POST`
+
+### Headers Requeridos
+```json
+{
+  "Content-Type": "application/json",
+  "AccessToken": "aiTsv5jjy3XdbmM9fRalWP5oOcJbLPpXPFdEmu6kG7H7JHAFAxXtixlMKpORo307"
+}
+```
+
+### Request Body
+```json
+{
+  "EmailAddress": "usuario@ejemplo.com",
+  "Password": "contraseña_del_usuario"
+}
+```
+
+### Response Exitosa (200 OK)
+```json
+{
+  "status": true,
+  "Name": "Nombre del Usuario",
+  "CustomerId": 1234567,
+  "Email": "usuario@ejemplo.com",
+  "ReplicateSite": "https://sitio-replica.com",
+  "Services": [
+    {
+      "ServiceId": 1,
+      "ServiceName": "NVU Live Premium",
+      "ExpirationDate": "2024-12-31T23:59:59Z",
+      "IsActive": true
+    },
+    {
+      "ServiceId": 2,
+      "ServiceName": "Scanner Access",
+      "ExpirationDate": "2024-12-31T23:59:59Z",
+      "IsActive": true
+    }
+  ]
+}
+```
+
+### Response de Error (400/401/500)
+```json
+{
+  "status": false,
+  "Message": "Invalid credentials or login failed."
+}
+```
+
+## Implementación en JavaScript
+
+### Función de Login Completa
+```javascript
+const loginUser = async (email, password) => {
+  const api_url = 'https://trading-middleware.nvu-dev.com/api/user-login-api';
+  const body_data = { 
+    EmailAddress: email, 
+    Password: password 
+  };
+
+  try {
+    const response = await fetch(api_url, {
+      method: 'POST',
+      headers: { 
+        'Content-Type': 'application/json',
+        'AccessToken': 'aiTsv5jjy3XdbmM9fRalWP5oOcJbLPpXPFdEmu6kG7H7JHAFAxXtixlMKpORo307'
+      },
+      body: JSON.stringify(body_data),
+    });
+
+    const data = await response.json();
+
+    if (response.ok && data?.status === true) {
+      // Login exitoso - guardar datos del usuario
+      const userData = {
+        name: data.Name,
+        id: data.CustomerId,
+        email: data.Email,
+        replicateSite: data.ReplicateSite,
+        services: data.Services || []
+      };
+      
+      localStorage.setItem('nvuUserData', JSON.stringify(userData));
+      localStorage.setItem('userName', data.Name);
+      
+      return { success: true, userData };
+    } else {
+      const apiErrorMessage = data?.Message || 'Invalid credentials or login failed.';
+      return { success: false, error: apiErrorMessage };
+    }
+  } catch (err) {
+    console.error('API connection error:', err);
+    return { success: false, error: 'Connection error' };
+  }
+};
+```
+
+## Ejemplo con cURL
+
+### Login Exitoso
+```bash
+curl -X POST "https://trading-middleware.nvu-dev.com/api/user-login-api" \
+  -H "Content-Type: application/json" \
+  -H "AccessToken: aiTsv5jjy3XdbmM9fRalWP5oOcJbLPpXPFdEmu6kG7H7JHAFAxXtixlMKpORo307" \
+  -d '{
+    "EmailAddress": "usuario@ejemplo.com",
+    "Password": "mi_contraseña_segura"
+  }'
+```
+
+### Respuesta Esperada
+```json
+{
+  "status": true,
+  "Name": "Juan Pérez",
+  "CustomerId": 1037070,
+  "Email": "usuario@ejemplo.com",
+  "ReplicateSite": "https://replica.nvu-dev.com",
+  "Services": [
+    {
+      "ServiceId": 1,
+      "ServiceName": "NVU Live Premium",
+      "ExpirationDate": "2024-12-31T23:59:59Z",
+      "IsActive": true
+    }
+  ]
+}
+```
+
+## Integración en Otras Plataformas
+
+### Python (requests)
+```python
+import requests
+import json
+
+def nvu_login(email, password):
+    url = "https://trading-middleware.nvu-dev.com/api/user-login-api"
+    
+    headers = {
+        "Content-Type": "application/json",
+        "AccessToken": "aiTsv5jjy3XdbmM9fRalWP5oOcJbLPpXPFdEmu6kG7H7JHAFAxXtixlMKpORo307"
+    }
+    
+    payload = {
+        "EmailAddress": email,
+        "Password": password
+    }
+    
+    try:
+        response = requests.post(url, headers=headers, json=payload)
+        data = response.json()
+        
+        if response.status_code == 200 and data.get("status") == True:
+            return {
+                "success": True,
+                "user_data": {
+                    "name": data.get("Name"),
+                    "id": data.get("CustomerId"),
+                    "email": data.get("Email"),
+                    "replicate_site": data.get("ReplicateSite"),
+                    "services": data.get("Services", [])
+                }
+            }
+        else:
+            return {
+                "success": False,
+                "error": data.get("Message", "Login failed")
+            }
+    except Exception as e:
+        return {
+            "success": False,
+            "error": f"Connection error: {str(e)}"
+        }
+
+# Uso
+result = nvu_login("usuario@ejemplo.com", "mi_contraseña")
+if result["success"]:
+    print(f"Login exitoso para: {result['user_data']['name']}")
+else:
+    print(f"Error en login: {result['error']}")
+```
+
+### Node.js (axios)
+```javascript
+const axios = require('axios');
+
+async function nvuLogin(email, password) {
+  const url = 'https://trading-middleware.nvu-dev.com/api/user-login-api';
+  
+  const headers = {
+    'Content-Type': 'application/json',
+    'AccessToken': 'aiTsv5jjy3XdbmM9fRalWP5oOcJbLPpXPFdEmu6kG7H7JHAFAxXtixlMKpORo307'
+  };
+  
+  const payload = {
+    EmailAddress: email,
+    Password: password
+  };
+  
+  try {
+    const response = await axios.post(url, payload, { headers });
+    const data = response.data;
+    
+    if (data?.status === true) {
+      return {
+        success: true,
+        userData: {
+          name: data.Name,
+          id: data.CustomerId,
+          email: data.Email,
+          replicateSite: data.ReplicateSite,
+          services: data.Services || []
+        }
+      };
+    } else {
+      return {
+        success: false,
+        error: data?.Message || 'Login failed'
+      };
+    }
+  } catch (error) {
+    return {
+      success: false,
+      error: `Connection error: ${error.message}`
+    };
+  }
+}
+
+// Uso
+nvuLogin('usuario@ejemplo.com', 'mi_contraseña')
+  .then(result => {
+    if (result.success) {
+      console.log(`Login exitoso para: ${result.userData.name}`);
+    } else {
+      console.log(`Error en login: ${result.error}`);
+    }
+  });
+```
+
+### PHP
+```php
+<?php
+function nvuLogin($email, $password) {
+    $url = 'https://trading-middleware.nvu-dev.com/api/user-login-api';
+    
+    $headers = [
+        'Content-Type: application/json',
+        'AccessToken: aiTsv5jjy3XdbmM9fRalWP5oOcJbLPpXPFdEmu6kG7H7JHAFAxXtixlMKpORo307'
+    ];
+    
+    $payload = json_encode([
+        'EmailAddress' => $email,
+        'Password' => $password
+    ]);
+    
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    
+    $response = curl_exec($ch);
+    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    curl_close($ch);
+    
+    $data = json_decode($response, true);
+    
+    if ($httpCode === 200 && isset($data['status']) && $data['status'] === true) {
+        return [
+            'success' => true,
+            'userData' => [
+                'name' => $data['Name'],
+                'id' => $data['CustomerId'],
+                'email' => $data['Email'],
+                'replicateSite' => $data['ReplicateSite'],
+                'services' => $data['Services'] ?? []
+            ]
+        ];
+    } else {
+        return [
+            'success' => false,
+            'error' => $data['Message'] ?? 'Login failed'
+        ];
+    }
+}
+
+// Uso
+$result = nvuLogin('usuario@ejemplo.com', 'mi_contraseña');
+if ($result['success']) {
+    echo "Login exitoso para: " . $result['userData']['name'];
+} else {
+    echo "Error en login: " . $result['error'];
+}
+?>
+```
+
+## Sistema de Permisos
+
+### Estructura de Datos del Usuario
+Una vez autenticado, los datos del usuario se almacenan en `localStorage` con la siguiente estructura:
+
+```javascript
+{
+  "name": "Nombre del Usuario",
+  "id": 1234567,
+  "email": "usuario@ejemplo.com",
+  "replicateSite": "https://sitio-replica.com",
+  "services": [
+    {
+      "ServiceId": 1,
+      "ServiceName": "NVU Live Premium",
+      "ExpirationDate": "2024-12-31T23:59:59Z",
+      "IsActive": true
+    }
+  ]
+}
+```
+
+### Verificación de Permisos
+El sistema actual utiliza una lista de IDs autorizados para ciertas funcionalidades:
+
+```javascript
+// IDs autorizados para crear trades
+const AUTHORIZED_TRADE_CREATORS = [
+  1037070, // MAURICIO GAYTAN ESTRADA
+  1028214, // ANA PAULINA
+  1073317, // COREY WILLIAMS
+  // ... más IDs
+];
+
+// Función para verificar permisos
+export const canCreateTrades = (userId) => {
+  const numericUserId = typeof userId === 'string' ? parseInt(userId, 10) : userId;
+  return AUTHORIZED_TRADE_CREATORS.includes(numericUserId);
+};
+```
+
+## Manejo de Errores
+
+### Códigos de Error Comunes
+- **400 Bad Request**: Datos de entrada inválidos
+- **401 Unauthorized**: Credenciales incorrectas o AccessToken inválido
+- **500 Internal Server Error**: Error del servidor
+
+### Mensajes de Error
+- `"Invalid credentials or login failed."` - Credenciales incorrectas
+- `"Connection error"` - Error de conexión de red
+- `"AccessToken required"` - Falta el header AccessToken
+
+## Consideraciones de Seguridad
+
+1. **AccessToken**: El token de acceso está hardcodeado en el cliente. En producción, considerar obtenerlo de variables de entorno.
+
+2. **HTTPS**: Todas las comunicaciones deben realizarse sobre HTTPS.
+
+3. **Almacenamiento**: Los datos del usuario se almacenan en localStorage. Para mayor seguridad, considerar usar sessionStorage o cookies httpOnly.
+
+4. **Validación**: Siempre validar la respuesta del servidor antes de procesar los datos.
+
+## Migración desde la API Anterior
+
+### Cambios Principales
+- **Endpoint**: `api.nvu-integrations.com/v1/auth/nvu-live/sign-in` → `trading-middleware.nvu-dev.com/api/user-login-api`
+- **Headers**: Agregado `AccessToken` requerido
+- **Request**: `{email, password}` → `{EmailAddress, Password}`
+- **Response**: Nueva estructura con `CustomerId`, `Services`, `ReplicateSite`
+
+### Beneficios de la Nueva API
+- Sistema de permisos más robusto basado en servicios suscritos
+- Información detallada de servicios con fechas de expiración
+- Mejor estructura de datos para escalabilidad futura
+
+---
+
+**Última actualización**: Septiembre 2024  
+**Versión de la API**: v1  
+**Contacto**: Equipo de desarrollo NVU

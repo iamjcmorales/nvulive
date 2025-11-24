@@ -177,36 +177,45 @@ const LoginPage = () => {
     setLoading(true);
     setError('');
 
-    const api_url = 'https://api.nvu-integrations.com/v1/auth/nvu-live/sign-in';
-    const body_data = { email, password };
+    const api_url = 'https://trading-middleware.nvu-dev.com/api/user-login-api';
+    const body_data = { 
+      EmailAddress: email, 
+      Password: password 
+    };
 
     try {
       const response = await fetch(api_url, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          'Content-Type': 'application/json',
+          'AccessToken': 'aiTsv5jjy3XdbmM9fRalWP5oOcJbLPpXPFdEmu6kG7H7JHAFAxXtixlMKpORo307'
+        },
         body: JSON.stringify(body_data),
       });
 
       const data = await response.json();
 
-      if (response.ok && data?.nvulive?.status === 'Active') {
+      if (response.ok && data?.status === true) {
         console.log('Login successful:', data);
-        const userData = data.nvulive;
-        localStorage.setItem('nvuUserData', JSON.stringify({
-          name: userData.customerName,
-          id: userData.customerID,
-          status: userData.status
-        }));
-        localStorage.setItem('userName', userData.customerName);
+        
+        // Guardar datos del usuario con la nueva estructura
+        const userData = {
+          name: data.Name,
+          id: data.CustomerId,
+          email: data.Email,
+          replicateSite: data.ReplicateSite,
+          services: data.Services || []
+        };
+        
+        localStorage.setItem('nvuUserData', JSON.stringify(userData));
+        localStorage.setItem('userName', data.Name);
         navigate('/'); 
       } else {
-        const apiErrorMessage = data?.message || 'Invalid credentials or inactive membership.';
+        const apiErrorMessage = data?.Message || 'Invalid credentials or login failed.';
         console.error('Login failed:', apiErrorMessage, data);
         let translatedError = t('login.error.generic');
-        if (apiErrorMessage === 'FL2 membership expired.') {
-          translatedError = t('login.error.expired');
-        } else if (apiErrorMessage.includes('Invalid credentials')) {
-            translatedError = t('login.error.invalidCredentials');
+        if (apiErrorMessage.includes('Invalid credentials') || apiErrorMessage.includes('login failed')) {
+          translatedError = t('login.error.invalidCredentials');
         }
         setError(translatedError);
       }

@@ -13,6 +13,7 @@
     "liveMarkups": "Live Markups",
     "beyondCharts": "Beyond the Charts",
     "tntTraining": "TNT Training",
+    "nmo": "NMO",
     "news": "News",
     "markups": "Markups",
     "tradingJournal": "Trading Journal",
@@ -97,7 +98,8 @@
     "noSessionsAvailable": "No sessions available for this educator.",
     "favoriteSessions": "Favorite Sessions",
     "allSessions": "All Sessions",
-    "noFavorites": "No favorite sessions. Mark some sessions as favorites by clicking the star."
+    "noFavorites": "No favorite sessions. Mark some sessions as favorites by clicking the star.",
+    "noFavoriteSessionsYet": "This educator has not selected favorite sessions yet."
   },
   "liveChat": {
     "title": "NVU Live Chat",
@@ -159,7 +161,7 @@
     "annie-toney": "Expert educator in their field, committed to student success.",
     "al-blue": "Dr. A.L.Blue, Sr. is a bestselling Author, Wealth Evangelist & Private Equity Investor serving as Senior Partner & Managing Director of Blue Wealth Solutions Consolidated LLC, a better life financial empowerment, Wealth Building, & Educational Company focused on true wealth creation and asset accumulation in Precious Metals as well as generational wealth and trust fund creation solutions. He also serves as a Wealth Evangelist teaching biblical principles on wealth creation and better living from a spiritual perspective as a Kingdom Financier.",
     "stephon-r": "Stephon Royal is a passionate and dynamic social media educator dedicated to empowering individuals and businesses to master the art of digital storytelling and online influence. With years of experience in creating viral-worthy content and building impactful online brands, Stephon combines creativity with strategy to help students unlock the full potential of social media platforms.\n\nSpecializing in content creation, audience engagement, and monetization strategies, Stephon has developed a reputation for delivering practical insights, innovative techniques, and actionable solutions. Whether you're a beginner influencer, a small business owner, or a seasoned marketer, Stephon's approachable teaching style ensures every student walks away with the skills and confidence to thrive in the ever-evolving world of social media.\n\nKnown for his energetic workshops and personalized coaching, Stephon's mission is simple: to help you build a brand that not only stands out but also connects, converts, and creates lasting impact.",
-    "tamara-minto": "Tamara Minto is an author, speaker, entrepreneur, and educator with extensive experience in marketing, real estate, and investments. In 2018, Tamara founded a non-profit organization, iTrade Junior Investor Trading Game, as a platform to empower and educate young people aged 10 to 17 about the power of the financial market. She is a passionate investor and advocate for financial literacy, focusing on the importance of equipping our families to develop a wealth mindset.",
+    "tamara-minto": "Tamara Mckenzie is an author, speaker, entrepreneur, and educator with extensive experience in marketing, real estate, and investments. In 2018, Tamara founded a non-profit organization, iTrade Junior Investor Trading Game, as a platform to empower and educate young people aged 10 to 17 about the power of the financial market. She is a passionate investor and advocate for financial literacy, focusing on the importance of equipping our families to develop a wealth mindset.",
     "angie-toney": "Educator specialized in financial literacy, helping people take control of their finances and build long-term wealth."
   },
   "login": {
@@ -194,8 +196,13 @@
     "stock": "Stock",
     "crypto": "Crypto",
     "financial_literacy": "Financial Literacy",
-    "marketing_digital": "Digital Marketing",
-    "mindset": "Mindset"
+    "marketing_digital": "Digital Marketing"
+  },
+  "nmo": {
+    "onboardingSessions": "New Members Orientation",
+    "loadingSessions": "Loading sessions...",
+    "videoUntitled": "Untitled Video",
+    "noSessionsAvailable": "No sessions available"
   },
   "tntTraining": {
     "welcomeTitle": "TNT Training",

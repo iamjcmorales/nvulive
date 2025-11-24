@@ -245,13 +245,30 @@ const EducatorDetail = () => {
     setShowChat(!showChat);
   };
   
-  // Habilitar chat para todos los educadores
-  const shouldShowChatFeature = true;
+  // Mapeo de URLs de chat de Vimeo para todos los educadores
+  const educatorChatMapping = {
+    'henry-tyson': 'https://vimeo.com/live/interaction_tools/live_event/4932282?theme=light',
+    'lucas-longmire': 'https://vimeo.com/live/interaction_tools/live_event/5189586?theme=light',
+    'richard-hall-pops': 'https://vimeo.com/live/interaction_tools/live_event/4650337?theme=light',
+    'arin-long': 'https://vimeo.com/live/interaction_tools/live_event/4865934?theme=light',
+    'paulina': 'https://vimeo.com/live/interaction_tools/live_event/4650299?theme=light',
+    'seb-garcia': 'https://vimeo.com/live/interaction_tools/live_event/4650284?theme=light',
+    'abi-belity': 'https://vimeo.com/live/interaction_tools/live_event/4650278?theme=light',
+    'frank-araujo': 'https://vimeo.com/live/interaction_tools/live_event/4827795?theme=light',
+    'maur-gaytan': 'https://vimeo.com/live/interaction_tools/live_event/5033739?theme=light',
+    'raphael-msica': 'https://vimeo.com/live/interaction_tools/live_event/5104251?theme=light',
+    'tamara-minto': 'https://vimeo.com/live/interaction_tools/live_event/5238191?theme=light',
+    'dani-curtis': 'https://vimeo.com/live/interaction_tools/live_event/4839563?theme=light',
+    'corey-williams': 'https://vimeo.com/live/interaction_tools/live_event/4839566?theme=light',
+    'angie-toney': 'https://vimeo.com/live/interaction_tools/live_event/4650197?theme=light',
+    'stephon-r': 'https://vimeo.com/live/interaction_tools/live_event/4849959?theme=light',
+    'jorge-d': 'https://vimeo.com/live/interaction_tools/live_event/5032569?theme=light',
+    'jimmy-el-andre': 'https://vimeo.com/live/interaction_tools/live_event/5325661?theme=light'
+  };
   
-  // Educadores que usan Vimeo interaction tools en lugar de LiveChat
-  const vimeoInteractionEducators = ['henry-tyson', 'lucas-longmire', 'richard-hall-pops', 'arin-long', 'paulina'];
-  const hasVimeoInteraction = vimeoInteractionEducators.includes(educatorId);
-  const shouldShowSideBySide = (showChat && shouldShowChatFeature) || hasVimeoInteraction;
+  // Todos los educadores ahora usan Vimeo interaction tools
+  const chatUrl = educatorChatMapping[educatorId];
+  const shouldShowSideBySide = chatUrl ? true : false;
 
   if (!educator) {
     return (
@@ -436,87 +453,18 @@ const EducatorDetail = () => {
               />
             </div>
           )}
-          {shouldShowChatFeature && !showChat && !hasVimeoInteraction && (
-            <ChatToggleButton onClick={handleToggleChat}>
-              <FaComments />
-              {t('liveChat.openChat')}
-            </ChatToggleButton>
-          )}
         </StreamArea>
         </StreamSection>
         
-        {shouldShowChatFeature && !hasVimeoInteraction && (
-          <ChatSection $showChat={showChat}>
-            {showChat && (
-              <LiveChat 
-                onClose={() => setShowChat(false)} 
-                educatorName={educator.name}
-              />
-            )}
-          </ChatSection>
-        )}
-        
-        {educatorId === 'henry-tyson' && (
+        {chatUrl && (
           <ChatSection $showChat={true}>
             <iframe 
-              src="https://vimeo.com/live/interaction_tools/live_event/4932282?theme=light" 
+              src={chatUrl}
               width="100%" 
               height="100%" 
               frameborder="0"
               style={{ borderRadius: '8px' }}
-              title="Andre Tyson Live Chat"
-            />
-          </ChatSection>
-        )}
-        
-        {educatorId === 'lucas-longmire' && (
-          <ChatSection $showChat={true}>
-            <iframe 
-              src="https://vimeo.com/live/interaction_tools/live_event/5189586?theme=light" 
-              width="100%" 
-              height="100%" 
-              frameborder="0"
-              style={{ borderRadius: '8px' }}
-              title="Lucas L Live Chat"
-            />
-          </ChatSection>
-        )}
-        
-        {educatorId === 'richard-hall-pops' && (
-          <ChatSection $showChat={true}>
-            <iframe 
-              src="https://vimeo.com/live/interaction_tools/live_event/4650337?theme=light" 
-              width="100%" 
-              height="100%" 
-              frameborder="0"
-              style={{ borderRadius: '8px' }}
-              title="Pops Live Chat"
-            />
-          </ChatSection>
-        )}
-        
-        {educatorId === 'arin-long' && (
-          <ChatSection $showChat={true}>
-            <iframe 
-              src="https://vimeo.com/live/interaction_tools/live_event/4865934?theme=light" 
-              width="100%" 
-              height="100%" 
-              frameborder="0"
-              style={{ borderRadius: '8px' }}
-              title="Arin Long Live Chat"
-            />
-          </ChatSection>
-        )}
-        
-        {educatorId === 'paulina' && (
-          <ChatSection $showChat={true}>
-            <iframe 
-              src="https://vimeo.com/live/interaction_tools/live_event/4650299?theme=light" 
-              width="100%" 
-              height="100%" 
-              frameborder="0"
-              style={{ borderRadius: '8px' }}
-              title="Ana Paulina Live Chat"
+              title={`${educator.name} Live Chat`}
             />
           </ChatSection>
         )}

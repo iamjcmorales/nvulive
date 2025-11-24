@@ -153,9 +153,9 @@ const Sidebar = ({ isOpen, isCollapsed, onClose, onToggleCollapse }) => {
     { path: '/educadores', icon: <FaChalkboardTeacher />, label: t('sidebar.educators') },
     { path: '/calendario', icon: <FaCalendarAlt />, label: t('sidebar.calendar') },
     { path: '/tnt-training', icon: <FaGraduationCap />, label: t('sidebar.tntTraining') },
+    { path: '/nmo', icon: <FaUserPlus />, label: t('sidebar.nmo') },
     // { path: '/news', icon: <FaNewspaper />, label: t('sidebar.news') },
     { path: '/markups', icon: <FaChartLine />, label: t('sidebar.markups') },
-    { path: '/scanner', icon: <FaQrcode />, label: t('sidebar.scanner') },
     { path: '/trading-journal', icon: <FaBook />, label: t('sidebar.tradingJournal') },
   ];
   
@@ -210,6 +210,12 @@ const Sidebar = ({ isOpen, isCollapsed, onClose, onToggleCollapse }) => {
               <FaMobileAlt style={{ color: '#009688', fontSize: '1.5rem', minWidth: '24px' }} />
               <span>TNT - APP</span>
             </button>
+          </SocialLinkItem>
+          <SocialLinkItem>
+            <a href="https://nvutools.com" target="_blank" rel="noopener noreferrer">
+              <FaChartLine style={{ color: '#009688' }} />
+              <span>NVU Tools</span>
+            </a>
           </SocialLinkItem>
           <SocialLinkItem>
             <a href="https://www.instagram.com/nvulive/" target="_blank" rel="noopener noreferrer">

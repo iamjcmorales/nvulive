@@ -25,24 +25,6 @@ const educatorsData = {
       vimeoFolderId: '22599057'
     },
     {
-      id: 'abi-belity',
-      name: 'Abi Belilty',
-      category: 'forex',
-      img: 'https://picsum.photos/seed/forex2/400/300',
-      profileImageFilename: 'Abi.jpg',
-      coverImageFilename: 'Abi Belilty.jpg',
-      description: `Abi Belilty es un trader profesional con más de 7 años de experiencia en los mercados financieros. Con una pasión innata por el trading, Abi ha dedicado años de su vida a perfeccionar sus habilidades y conocimientos en el mundo de las inversiones.\n\nCon una visión única y perspicaz, Abi invita a personas de todo el mundo a conectarse a sus sesiones, donde comparte sus estrategias favoritas y consejos clave para llevar el trading a un nivel superior. Su enfoque práctico y su capacidad para simplificar conceptos complejos hacen que sus sesiones sean accesibles y valiosas para traders de todos los niveles.`,
-      language: 'es',
-      socialLinks: {
-          instagram: 'https://instagram.com/abibelity',
-          linkedin: 'https://linkedin.com/in/abibelity',
-          facebook: 'https://facebook.com/abibelity'
-      },
-      vimeoLiveEmbed: 'https://vimeo.com/event/4650278/embed',
-      vimeoUserId: '221550365',
-      vimeoFolderId: '22599055'
-    },
-    {
       id: 'frank-araujo', 
       name: 'Franklin Araujo', 
       category: 'forex',
@@ -55,20 +37,6 @@ const educatorsData = {
       vimeoLiveEmbed: 'https://vimeo.com/event/4827795/embed',
       vimeoUserId: '221550365',
       vimeoFolderId: '25090053'
-    },
-    {
-      id: 'maur-gaytan', 
-      name: 'Mauricio Gaytán', 
-      category: 'forex',
-      img: 'https://picsum.photos/seed/forex4/400/300',
-      profileImageFilename: 'Mauricio G.jpg',
-      coverImageFilename: 'Mauricio Gaytan.jpg',
-      description: `Ingeniero de Profesión, Coach de Liderazgo Certificado, 4 años como Trader, especializado en operar el XAU y los JPY con estrategia propia, casado con dos hijas.`,
-      language: 'es',
-      socialLinks: placeholderSocial,
-      vimeoLiveEmbed: 'https://vimeo.com/event/5033739/embed',
-      vimeoUserId: '221550365',
-      vimeoFolderId: '24795411'
     },
     {
       id: 'arin-long',
@@ -86,35 +54,6 @@ const educatorsData = {
     },
 
 
-    {
-      id: 'paulina',
-      name: 'Ana Paulina',
-      category: 'forex',
-      img: 'https://picsum.photos/seed/estate2/400/300',
-      profileImageFilename: 'Ana P.jpg',
-      coverImageFilename: 'Ana Paulina.jpg',
-      description: placeholderDesc,
-      language: 'en',
-      socialLinks: placeholderSocial,
-      vimeoLiveEmbed: 'https://vimeo.com/event/4650299/embed',
-      vimeoUserId: '221550365',
-      vimeoFolderId: '22599101'
-    },
-    {
-      id: 'raphael-msica',
-      name: 'Raphael Msica',
-      category: 'forex',
-      img: 'https://picsum.photos/seed/raphaelmsica/400/300',
-      profileImageFilename: 'Raphael M.jpg',
-      coverImageFilename: 'Raphael Msica copy.jpg',
-      sessionsBanner: 'Raphael Msica copy.jpg',
-      description: 'Éducateur spécialisé en Forex.',
-      language: 'fr',
-      socialLinks: placeholderSocial,
-      vimeoLiveEmbed: 'https://vimeo.com/event/5104251/embed',
-      vimeoUserId: '221550365',
-      vimeoFolderId: '25156807'
-    },
     {
       id: 'richard-hall-pops',
       name: 'Richard Hall Pops',
@@ -145,11 +84,11 @@ const educatorsData = {
     },
     {
       id: 'tamara-minto',
-      name: 'Tamara Minto',
+      name: 'Tamara Mckenzie',
       category: 'forex',
       img: 'https://picsum.photos/seed/tamaraminto/400/300',
       profileImageFilename: 'tamara m.jpg',
-      coverImageFilename: 'Tamara Minto (1).jpg',
+      coverImageFilename: '/nvu live - fotos educadores/Tamara MacKenzie.jpg',
       description: `Tamara Minto es autora, oradora, emprendedora y educadora, con una gran experiencia en marketing, bienes raíces e inversiones. En 2018, Tamara fundó una organización sin fines de lucro, iTrade Junior Investor Trading Game, como plataforma para empoderar y educar a jóvenes de 10 a 17 años sobre el poder del mercado financiero. Es una inversora apasionada y defensora de la alfabetización financiera, enfocándose en la importancia de equipar a nuestras familias para desarrollar una mentalidad de riqueza.`,
       language: 'en',
       socialLinks: placeholderSocial,
@@ -157,39 +96,44 @@ const educatorsData = {
       vimeoUserId: '221550365',
       vimeoFolderId: '25864432'
     },
-  ],
-  futures: [
     {
-      id: 'henry-tyson',
-      name: 'Andre Tyson',
-      category: 'futures',
-      img: 'https://picsum.photos/seed/estate5/400/300',
-      profileImageFilename: 'Andre Tyson.jpg',
-      coverImageFilename: 'Andre Tyson.jpg',
-      description: `I am strong and passionate person about what I do. As long as I put my mind to it I can achieve it. I put god first into everything I do`,
-      language: 'en',
+      id: 'jimmy-el-andre',
+      name: 'Jimmy el André',
+      category: 'forex',
+      img: '/nvu live - fotos educadores/jimmuy.jpg',
+      profileImageFilename: 'Jimmy A.jpg',
+      coverImageFilename: 'JimmyPortada.jpg',
+      description: `Jimmy André: De Forces Spéciales et Champion MMA vers Leader NvisionU
+
+Un Focus de Combattant sur le Trading et le Bien-être
+Jimmy André, ancien membre des forces spéciales et champion européen de MMA, a effectué une transition puissante dans le monde du marketing d'affiliation avec NvisionU. Reconnu pour sa discipline et sa poursuite implacable de l'excellence, Jimmy a construit une présence mondiale dans le trading et le bien-être.
+
+Il a d'abord réalisé un million de revenus en seulement un an en travaillant avec Brandon Stevens chez Kyäni, une entreprise de santé et richesse—un accomplissement qui a marqué le début de son ascension fulgurante dans l'industrie.
+
+Maîtriser les Marchés
+Au cours des sept dernières années, Jimmy a développé et prouvé une stratégie de scalping très efficace sur le forex, l'or et le Bitcoin. Son approche précise des marchés reflète la concentration et l'adaptabilité qu'il a perfectionnées dans les arènes militaires et d'arts martiaux.
+
+Pour rendre le trading plus accessible, Jimmy a créé son propre scanner propriétaire, directement intégré dans le graphique, permettant à quiconque—même aux débutants complets—d'appliquer sa stratégie simple et éprouvée sans nécessiter de connaissances préalables du marché.
+
+Une Nouvelle Arène d'Accomplissement
+Avant d'entrer dans le marketing d'affiliation, la vie de Jimmy était façonnée par les exigences rigoureuses de l'Armée de l'Air française et l'intensité compétitive des arts martiaux. Quand il a découvert le potentiel du marketing de réseau, cela lui a offert une nouvelle arène pour canaliser sa concentration et son engagement.
+
+"Quand j'ai vu le style de vie que cela créait pour ma famille et moi, j'ai su que j'avais trouvé ma voie. Après une année de dévouement total, j'ai atteint mon premier million de revenus," réfléchit Jimmy.
+
+Sa décision de s'y engager complètement a été alimentée par la promesse de liberté géographique, la capacité d'inspirer des gens dans le monde entier, et l'élan qui vient d'aider les autres à réussir.
+
+Construire l'Élan et Changer des Vies
+Aujourd'hui, Jimmy André incarne l'esprit d'un vrai champion—se battant non seulement pour son propre succès, mais pour créer des opportunités pour les autres. Au sein de la communauté NvisionU, il est un catalyseur de croissance, mélangeant sa précision militaire, sa mentalité de combattant, et sa vision entrepreneuriale pour inspirer des affiliés autour du globe.
+
+Son histoire prouve que diverses expériences de vie—discipline militaire, accomplissement athlétique, et leadership d'affaires—peuvent se combiner pour forger un chemin extraordinaire dans le monde du marketing d'affiliation et du trading.`,
+      language: 'fr',
       socialLinks: placeholderSocial,
-      vimeoLiveEmbed: 'https://vimeo.com/event/4932282/embed',
+      vimeoLiveEmbed: 'https://vimeo.com/event/5325661/embed',
       vimeoUserId: '221550365',
-      vimeoFolderId: '24263935'
+      vimeoFolderId: '26382333'
     },
   ],
-  stock: [
-    { 
-      id: 'dani-curtis', 
-      name: 'Raquel Curtis',
-      category: 'stock',
-      img: 'https://picsum.photos/seed/finlit1/400/300',
-      profileImageFilename: 'Raquel C.jpg',
-      coverImageFilename: 'Raquel Curtis.jpg',
-      description: `Raquel Curtis, MBA, is a financial educator, entrepreneur, and international best-selling author dedicated to helping women take control of their finances and build wealth. A Georgia native and mother of three, Raquel turned personal setbacks into success through budgeting and investing, inspiring the creation of The Boujee Banker brand. She teaches women how to budget, save, invest, and grow online businesses. Raquel is the author of Mastering Your Money Mindset and co-author of the Amazon best-seller MoneyTalk$, featuring a foreword by Les Brown. A dynamic speaker and doctoral candidate, she has impacted thousands globally, guiding individuals toward lasting financial empowerment.`,
-      language: 'en',
-      socialLinks: placeholderSocial,
-      vimeoLiveEmbed: 'https://vimeo.com/event/4839563/embed',
-      vimeoUserId: '221550365',
-      vimeoFolderId: '23714509'
-    },
-  ],
+  futures: [],
   crypto: [
     { 
       id: 'corey-williams', 
@@ -236,22 +180,6 @@ const educatorsData = {
       vimeoLiveEmbed: 'https://vimeo.com/event/4849959/embed',
       vimeoUserId: '221550365',
       vimeoFolderId: '23782095'
-    },
-  ],
-  mindset: [
-    {
-      id: 'jorge-d',
-      name: 'Jorge D',
-      category: 'mindset',
-      img: 'https://picsum.photos/seed/jorged/400/300',
-      profileImageFilename: 'Jorge D.jpg',
-      coverImageFilename: 'Jorge D.jpg',
-      description: 'Coach especializado en desarrollo personal y mindset emprendedor, ayudando a transformar la mentalidad para alcanzar el éxito.',
-      language: 'es',
-      socialLinks: placeholderSocial,
-      vimeoLiveEmbed: 'https://vimeo.com/event/5032569/embed',
-      vimeoUserId: '221550365',
-      vimeoFolderId: '24795326'
     },
   ],
 };

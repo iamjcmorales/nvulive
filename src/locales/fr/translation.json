@@ -13,6 +13,7 @@
     "liveMarkups": "Live Markups",
     "beyondCharts": "Beyond the Charts",
     "tntTraining": "TNT Training",
+    "nmo": "NMO",
     "news": "Actualités",
     "markups": "Markups",
     "tradingJournal": "Journal de Trading",
@@ -97,7 +98,19 @@
     "noSessionsAvailable": "Aucune session disponible pour cet éducateur.",
     "favoriteSessions": "Sessions Favorites",
     "allSessions": "Toutes les Sessions",
-    "noFavorites": "Aucune session favorite. Marquez des sessions comme favorites en cliquant sur l'étoile."
+    "noFavorites": "Aucune session favorite. Marquez des sessions comme favorites en cliquant sur l'étoile.",
+    "noFavoriteSessionsYet": "Cet éducateur n'a pas encore sélectionné de sessions favorites."
+  },
+  "favoriteSessionsModal": {
+    "title": "Gérer les Sessions Favorites",
+    "loadingSessions": "Chargement des sessions...",
+    "noSessionsAvailable": "Aucune session disponible pour cet éducateur.",
+    "untitled": "Sans titre",
+    "noDescription": "Sans description",
+    "cancel": "Annuler",
+    "saving": "Enregistrement...",
+    "saveChanges": "Enregistrer les Modifications",
+    "manageButton": "Gérer les Favoris"
   },
   "liveChat": {
     "title": "NVU Chat en Direct",
@@ -161,8 +174,14 @@
     "annie-toney": "Éducatrice experte dans son domaine, engagée dans la réussite des étudiants.",
     "al-blue": "Dr. A.L.Blue, Sr. est un auteur de best-sellers, Évangéliste de la Richesse et Investisseur en Capital Privé, agissant en tant que Partenaire Senior et Directeur Général de Blue Wealth Solutions Consolidated LLC, une société d'autonomisation financière, de création de richesse et d'éducation pour une vie meilleure, axée sur la véritable création de richesse et l'accumulation d'actifs en métaux précieux, ainsi que sur les solutions de création de richesse générationnelle et de fonds fiduciaires. Il agit également en tant qu'Évangéliste de la Richesse enseignant les principes bibliques sur la création de richesse et une vie meilleure d'un point de vue spirituel en tant que Financier du Royaume.",
     "stephon-r": "Stephon Royal est un éducateur de médias sociaux passionné et dynamique dédié à autonomiser les individus et les entreprises à maîtriser l'art du storytelling numérique et de l'influence en ligne. Avec des années d'expérience dans la création de contenu viral et la construction de marques en ligne percutantes, Stephon combine créativité et stratégie pour aider les étudiants à libérer tout le potentiel des plateformes de médias sociaux.\n\nSpécialisé dans la création de contenu, l'engagement du public et les stratégies de monétisation, Stephon s'est forgé une réputation pour fournir des informations pratiques, des techniques innovantes et des solutions concrètes. Que vous soyez un influenceur débutant, un propriétaire de petite entreprise ou un marketeur expérimenté, le style d'enseignement accessible de Stephon garantit que chaque étudiant repart avec les compétences et la confiance nécessaires pour prospérer dans le monde en constante évolution des médias sociaux.\n\nConnu pour ses ateliers énergiques et son coaching personnalisé, la mission de Stephon est simple : vous aider à construire une marque qui non seulement se démarque, mais qui connecte, convertit et crée un impact durable.",
-    "tamara-minto": "Tamara Minto est auteure, conférencière, entrepreneure et éducatrice, avec une vaste expérience en marketing, immobilier et investissements. En 2018, Tamara a fondé une organisation à but non lucratif, iTrade Junior Investor Trading Game, comme plateforme pour autonomiser et éduquer les jeunes de 10 à 17 ans sur le pouvoir du marché financier. Elle est une investisseuse passionnée et défenseure de l'alphabétisation financière, se concentrant sur l'importance d'équiper nos familles pour développer un état d'esprit de richesse.",
+    "tamara-minto": "Tamara Mckenzie est auteure, conférencière, entrepreneure et éducatrice, avec une vaste expérience en marketing, immobilier et investissements. En 2018, Tamara a fondé une organisation à but non lucratif, iTrade Junior Investor Trading Game, comme plateforme pour autonomiser et éduquer les jeunes de 10 à 17 ans sur le pouvoir du marché financier. Elle est une investisseuse passionnée et défenseure de l'alphabétisation financière, se concentrant sur l'importance d'équiper nos familles pour développer un état d'esprit de richesse.",
     "angie-toney": "Éducatrice spécialisée en alphabétisation financière, aidant les gens à prendre le contrôle de leurs finances et à construire une richesse à long terme."
+  },
+  "nmo": {
+    "onboardingSessions": "Orientation des Nouveaux Membres",
+    "loadingSessions": "Chargement des sessions...",
+    "videoUntitled": "Vidéo Sans Titre",
+    "noSessionsAvailable": "Aucune session disponible"
   },
   "tntTraining": {
     "welcomeTitle": "TNT Training",
@@ -206,8 +225,7 @@
     "stock": "Actions",
     "crypto": "Crypto",
     "financial_literacy": "Littératie Financière",
-    "marketing_digital": "Marketing Numérique",
-    "mindset": "État d'Esprit"
+    "marketing_digital": "Marketing Numérique"
   },
   "calendar": {
     "pageTitle": "Calendrier",

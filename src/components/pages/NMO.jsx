@@ -15,7 +15,7 @@ const BannerContainer = styled.div`
   position: relative;
   width: 100%;
   height: 250px;
-  background: url('/tnttrainingsvg.svg') center/cover;
+  background: url('/images/New Members Orientation.jpg') center/cover no-repeat, #000;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -23,6 +23,27 @@ const BannerContainer = styled.div`
   padding: 0;
   @media (max-width: 768px) {
     height: 90px;
+  }
+
+  /* Optional subtle overlay to improve contrast if needed */
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.25);
+  }
+`;
+
+const BannerTitle = styled.h1`
+  color: white;
+  font-size: 48px;
+  font-weight: bold;
+  text-align: center;
+  margin: 0;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  
+  @media (max-width: 768px) {
+    font-size: 32px;
   }
 `;
 
@@ -34,75 +55,6 @@ const ContentContainer = styled.div`
   @media (max-width: 768px) {
     padding: 0 12px;
   }
-`;
-
-const TabContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 20px 0;
-  border-bottom: 1px solid rgba(0,150,136,0.2);
-  padding: 0 20px;
-  
-  @media (max-width: 768px) {
-    flex-direction: column;
-    gap: 10px;
-    padding: 0 10px;
-  }
-`;
-
-const LeftTabGroup = styled.div`
-  display: flex;
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  transform: translateX(0);
-  animation: slideInFromRight 0.5s ease-out;
-  
-  @keyframes slideInFromRight {
-    from {
-      transform: translateX(100px);
-      opacity: 0;
-    }
-    to {
-      transform: translateX(0);
-      opacity: 1;
-    }
-  }
-`;
-
-const RightTabGroup = styled.div`
-  display: flex;
-  gap: 20px;
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  
-  @media (max-width: 768px) {
-    gap: 10px;
-  }
-`;
-
-const Tab = styled.button`
-  background: transparent;
-  border: none;
-  color: ${props => props.$active ? '#00d4aa' : 'rgba(255, 255, 255, 0.7)'};
-  font-size: 16px;
-  font-weight: 600;
-  padding: 15px 30px;
-  cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  border-bottom: 2px solid ${props => props.$active ? '#00d4aa' : 'transparent'};
-  transform: ${props => props.$active ? 'scale(1.05)' : 'scale(1)'};
-  opacity: ${props => props.$active ? 1 : 0.8};
-  
-  @media (max-width: 768px) {
-    font-size: 14px;
-    padding: 12px 20px;
-  }
-`;
-
-const TabContent = styled.div`
-  opacity: ${props => props.$active ? 1 : 0};
-  transform: translateY(${props => props.$active ? '0' : '20px'});
-  transition: all 0.4s ease;
-  display: ${props => props.$active ? 'block' : 'none'};
 `;
 
 const SectionTitle = styled.h2`
@@ -208,7 +160,6 @@ const SessionDescription = styled.p`
   overflow: hidden;
 `;
 
-
 const ThumbnailImage = styled.img`
   position: absolute;
   top: 0;
@@ -274,83 +225,30 @@ const NoDataMessage = styled.div`
   font-size: 16px;
 `;
 
-const TNTTraining = () => {
+const NMO = () => {
   const { t } = useTranslation();
-  const [activeTab, setActiveTab] = useState('beyond-charts');
-  const [isTransitioning, setIsTransitioning] = useState(false);
-
-  // Define todas las pestañas disponibles (Beyond the Charts siempre primero)
-  const allTabs = [
-    { id: 'beyond-charts', label: 'Beyond the Charts' },
-    { id: 'tnt', label: 'TNT' },
-    { id: 'onboarding', label: 'Onboarding' }
-  ];
-
-  // Función para cambiar de pestaña con animación
-  const handleTabChange = (newTabId) => {
-    if (newTabId === activeTab) return;
-    
-    setIsTransitioning(true);
-    
-    // Pequeño delay para permitir la animación
-    setTimeout(() => {
-      setActiveTab(newTabId);
-      setIsTransitioning(false);
-    }, 200);
-  };
-
-  // Función para obtener las pestañas organizadas (activa a la izquierda, inactivas a la derecha)
-  const getOrganizedTabs = () => {
-    const activeTabObj = allTabs.find(tab => tab.id === activeTab);
-    const inactiveTabs = allTabs.filter(tab => tab.id !== activeTab);
-    
-    return {
-      leftTab: activeTabObj,
-      rightTabs: inactiveTabs
-    };
-  };
 
   // Estados para manejar videos de Vimeo
-  const [videosData, setVideosData] = useState({
-    'beyond-charts': [],
-    'tnt': [],
-    'onboarding': []
-  });
-  const [loading, setLoading] = useState({
-    'beyond-charts': false,
-    'tnt': false,
-    'onboarding': false
-  });
-  const [error, setError] = useState({
-    'beyond-charts': null,
-    'tnt': null,
-    'onboarding': null
-  });
+  const [videosData, setVideosData] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
   const [selectedVimeoId, setSelectedVimeoId] = useState(null);
+  
   const VIMEO_USER_ID = "221550365";
-  const FOLDER_IDS = {
-    'beyond-charts': "24833856",
-    'tnt': "26179964",
-    'onboarding': "26179951"
-  };
+  const FOLDER_ID = "26540787"; // NMO folder ID
   const VIMEO_ACCESS_TOKEN = "99b1a15a9f21cc8f4ffdb1e925103e99";
 
   useEffect(() => {
-    fetchVideos('beyond-charts');
+    fetchVideos();
   }, []);
 
-  useEffect(() => {
-    if (activeTab !== 'beyond-charts' && videosData[activeTab].length === 0) {
-      fetchVideos(activeTab);
-    }
-  }, [activeTab]);
-
-  const fetchVideos = async (tabId) => {
-    setLoading(prev => ({ ...prev, [tabId]: true }));
-    setError(prev => ({ ...prev, [tabId]: null }));
+  const fetchVideos = async () => {
+    setLoading(true);
+    setError(null);
     try {
       let videos = [];
-      let apiUrl = `https://api.vimeo.com/users/${VIMEO_USER_ID}/folders/${FOLDER_IDS[tabId]}/videos?fields=uri,name,description,duration,pictures,stats,link&per_page=50`;
+      let apiUrl = `https://api.vimeo.com/users/${VIMEO_USER_ID}/folders/${FOLDER_ID}/videos?fields=uri,name,description,duration,pictures,stats,link&per_page=50`;
+      
       while (apiUrl) {
         const response = await fetch(apiUrl, {
           headers: {
@@ -359,7 +257,9 @@ const TNTTraining = () => {
             "Content-Type": "application/json",
           },
         });
+        
         if (!response.ok) throw new Error(`HTTP error: ${response.status}`);
+        
         const data = await response.json();
         if (data.data && Array.isArray(data.data)) {
           videos = videos.concat(data.data.map(video => ({
@@ -370,13 +270,15 @@ const TNTTraining = () => {
             link: video.link,
           })));
         }
+        
         apiUrl = data.paging && data.paging.next ? `https://api.vimeo.com${data.paging.next}` : null;
       }
-      setVideosData(prev => ({ ...prev, [tabId]: videos }));
+      
+      setVideosData(videos.reverse());
     } catch (err) {
-      setError(prev => ({ ...prev, [tabId]: err.message }));
+      setError(err.message);
     } finally {
-      setLoading(prev => ({ ...prev, [tabId]: false }));
+      setLoading(false);
     }
   };
 
@@ -388,19 +290,20 @@ const TNTTraining = () => {
     setSelectedVimeoId(null);
   };
 
-  const renderVideoGrid = (tabId) => {
-    const tabVideos = videosData[tabId];
-    const tabLoading = loading[tabId];
-    const tabError = error[tabId];
-
-    return (
-      <TabContent $active={activeTab === tabId}>
-        {tabLoading && <LoadingMessage>{t('tntTraining.loadingSessions')}</LoadingMessage>}
-        {tabError && <ErrorMessage>{tabError}</ErrorMessage>}
-        {!tabLoading && !tabError && (
+  return (
+    <PageContainer>
+      <BannerContainer />
+      
+      <ContentContainer>
+        <SectionTitle>{t('nmo.onboardingSessions')}</SectionTitle>
+        
+        {loading && <LoadingMessage>{t('nmo.loadingSessions')}</LoadingMessage>}
+        {error && <ErrorMessage>{error}</ErrorMessage>}
+        
+        {!loading && !error && (
           <SessionsGrid>
-            {tabVideos.length > 0 ? (
-              tabVideos.map(video => (
+            {videosData.length > 0 ? (
+              videosData.map(video => (
                 <SessionCard key={video.id} onClick={() => handleVideoClick(video.id)}>
                   <Thumbnail>
                     <ThumbnailImage src={video.thumbnail || '/images/placeholder_course.jpg'} alt={video.title} />
@@ -409,57 +312,16 @@ const TNTTraining = () => {
                     </PlayButton>
                   </Thumbnail>
                   <SessionInfo>
-                    <SessionTitle>{video.title || t('tntTraining.videoUntitled')}</SessionTitle>
+                    <SessionTitle>{video.title || t('nmo.videoUntitled')}</SessionTitle>
                     <SessionDescription>{video.description}</SessionDescription>
                   </SessionInfo>
                 </SessionCard>
               ))
             ) : (
-              <NoDataMessage>{t('tntTraining.noSessionsAvailable')}</NoDataMessage>
+              <NoDataMessage>{t('nmo.noSessionsAvailable')}</NoDataMessage>
             )}
           </SessionsGrid>
         )}
-      </TabContent>
-    );
-  };
-
-  const renderBeyondChartsContent = () => renderVideoGrid('beyond-charts');
-
-  const renderTNTContent = () => renderVideoGrid('tnt');
-
-  const renderOnboardingContent = () => renderVideoGrid('onboarding');
-
-  const { leftTab, rightTabs } = getOrganizedTabs();
-
-  return (
-    <PageContainer>
-      <BannerContainer />
-      <ContentContainer>
-        <TabContainer>
-          <LeftTabGroup style={{ opacity: isTransitioning ? 0.5 : 1 }}>
-            <Tab 
-              $active={true}
-              onClick={() => handleTabChange(leftTab.id)}
-            >
-              {leftTab.label}
-            </Tab>
-          </LeftTabGroup>
-          <RightTabGroup style={{ opacity: isTransitioning ? 0.5 : 1 }}>
-            {rightTabs.map((tab) => (
-              <Tab 
-                key={tab.id}
-                $active={false}
-                onClick={() => handleTabChange(tab.id)}
-              >
-                {tab.label}
-              </Tab>
-            ))}
-          </RightTabGroup>
-        </TabContainer>
-        
-        {renderTNTContent()}
-        {renderBeyondChartsContent()}
-        {renderOnboardingContent()}
         
         {selectedVimeoId && (
           <VideoContainer onClick={handleCloseVideo}>
@@ -482,4 +344,4 @@ const TNTTraining = () => {
   );
 };
 
-export default TNTTraining;
+export default NMO;

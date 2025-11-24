@@ -173,76 +173,62 @@ const weekDays = [
 ];
 
 const nameToId = {
-  'Abi Belilty': 'abi-belity',
   'Franklin Araujo': 'frank-araujo',
   'Richard Hall Pops': 'richard-hall-pops',
-  'Ana Paulina': 'paulina',
   'Stephon Royal': 'stephon-r',
-  'Raquel Curtis': 'dani-curtis',
   'Mauricio Gaytán': 'maur-gaytan',
   'Angie Toney': 'angie-toney',
   'Jorge Damelines': 'jorge-d',
   'Sebastian Garcia': 'seb-garcia',
   'Javier Perez': 'javier-perez',
-  'Raphael Msica': 'raphael-msica',
-  'Andre Tyson': 'henry-tyson',
   'Arin Long': 'arin-long',
   'Corey Williams': 'corey-williams',
   'Lucas Longmire': 'lucas-longmire',
-  'Tamara Minto': 'tamara-minto'
+  'Tamara Mckenzie': 'tamara-minto',
+  'Jimmy el André': 'jimmy-el-andre'
 };
 
 const sessionsByDay = {
   Sunday: [
-    // Inglés
-    { time: '21:00', educator: 'Andre Tyson', title: 'Talk yo pips', lang: 'English' },
     // Español
     { time: '14:00', educator: 'Sebastian Garcia', title: 'Market open', lang: 'Español' },
+    // Français
+    { time: '15:00', educator: 'Jimmy el André', title: 'Akila/ Aligator stratégie', lang: 'Français' },
   ],
   Monday: [
     // Inglés
-    { time: '14:00', educator: 'Ana Paulina', title: '', lang: 'English' },
-    { time: '21:00', educator: 'Tamara Minto', title: 'Onboarding For Beginners', lang: 'English' },
+    { time: '21:00', educator: 'Tamara Mckenzie', title: 'Onboarding For Beginners', lang: 'English' },
     // Español
     { time: '11:00', educator: 'Franklin Araujo', title: 'Análisis del Mercado', lang: 'Español' },
-    { time: '20:00', educator: 'Mauricio Gaytán', title: 'GOLDEN HOUR', lang: 'Español' },
   ],
   Tuesday: [
     // Inglés
     { time: '08:00', educator: 'Lucas Longmire', title: '', lang: 'English' },
-    { time: '14:00', educator: 'Ana Paulina', title: '', lang: 'English' },
     { time: '19:00', educator: 'Angie Toney', title: '', lang: 'English' },
     { time: '20:00', educator: 'Arin Long', title: 'Forex Basics and Market Bully Strategy', lang: 'English' },
     { time: '23:00', educator: 'Richard Hall Pops', title: '', lang: 'English' },
     // Español
-    { time: '10:00', educator: 'Jorge Damelines', title: 'Mentalidad Visionaria', lang: 'Español' },
   ],
   Wednesday: [
-    // Inglés
     { time: '08:00', educator: 'Lucas Longmire', title: '', lang: 'English' },
     { time: '10:00', educator: 'Richard Hall Pops', title: '', lang: 'English' },
-    { time: '15:00', educator: 'Andre Tyson', title: 'Talk yo pips', lang: 'English' },
-    { time: '16:00', educator: 'Raphael Msica', title: 'Générer des Revenus avec le Trading Forex', lang: 'Français' },
     { time: '19:00', educator: 'Arin Long', title: 'Forex Basics and Market Bully Strategy', lang: 'English' },
     { time: '20:00', educator: 'Corey Williams', title: 'Crypto and Coffee', lang: 'English' },
     { time: '21:00', educator: 'Stephon Royal', title: 'VVS', lang: 'English' },
     // Español
-    { time: '10:00', educator: 'Abi Belilty', title: 'TRADING INSTITUCIONAL', lang: 'Español' },
-    { time: '20:00', educator: 'Mauricio Gaytán', title: 'GOLDEN HOUR', lang: 'Español' },
+    // Français
+    { time: '09:00', educator: 'Jimmy el André', title: 'Akila/ Aligator stratégie', lang: 'Français' },
   ],
   Thursday: [
-    // Inglés
     { time: '08:00', educator: 'Lucas Longmire', title: '', lang: 'English' },
-    { time: '19:00', educator: 'Raquel Curtis', title: 'Stocks 101', lang: 'English' },
-    { time: '20:00', educator: 'Andre Tyson', title: 'Talk yo pips', lang: 'English' },
     { time: '23:00', educator: 'Richard Hall Pops', title: '', lang: 'English' },
     // Español
     { time: '11:00', educator: 'Franklin Araujo', title: 'Educación y Formación Completa', lang: 'Español' },
-    { time: '22:00', educator: 'Abi Belilty', title: 'TRADING INSTITUCIONAL', lang: 'Español' },
+    // Français
+    { time: '09:00', educator: 'Jimmy el André', title: 'Akila/ Aligator stratégie', lang: 'Français' },
   ],
   Friday: [
     // Francés
-    { time: '16:00', educator: 'Raphael Msica', title: 'Générer des Revenus avec le Trading Forex', lang: 'Français' },
   ],
   Saturday: [],
 };
@@ -623,7 +609,7 @@ const Calendar = () => {
         <>
           <CalendarWrapper className="hide-on-mobile">
             <CalendarHeader>
-              {weekDays.map((day, idx) => (
+              {weekDays.map((day) => (
                 <HeaderCell key={day} $sunday={day === 'Sunday'}>{t(`calendar.${day.toLowerCase()}`)}</HeaderCell>
               ))}
             </CalendarHeader>
@@ -636,18 +622,37 @@ const Calendar = () => {
                         if (session.educator === 'Jeff Beausoleil') return null;
                         const educatorId = nameToId[session.educator];
                         const educatorObj = findEducatorById(educatorId);
-                        return educatorObj ? (
-                          <SessionCardWrapper key={idx} onClick={() => window.location.href = `/educadores/${educatorId}`} style={{cursor:'pointer'}}>
+
+                        const displayName = educatorObj?.name || session.educator;
+                        const imageUrl = educatorObj?.profileImageFilename
+                          ? (educatorObj.id === 'lucas-longmire' 
+                              ? `/images/perfil/${educatorObj.profileImageFilename}` 
+                              : `/PERFIL/${educatorObj.profileImageFilename}`)
+                          : educatorObj?.img || '/images/placeholder.jpg';
+
+                        const clickable = Boolean(educatorId && educatorObj);
+                        const handleClick = () => {
+                          if (clickable) {
+                            window.location.href = `/educadores/${educatorId}`;
+                          }
+                        };
+
+                        return (
+                          <SessionCardWrapper 
+                            key={idx} 
+                            onClick={handleClick} 
+                            style={{cursor: clickable ? 'pointer' : 'default', opacity: clickable ? 1 : 0.95}}
+                          >
                             <EducatorAvatar>
                               <img 
-                                src={educatorObj.profileImageFilename ? (educatorObj.id === 'lucas-longmire' ? `/images/perfil/${educatorObj.profileImageFilename}` : `/PERFIL/${educatorObj.profileImageFilename}`) : educatorObj.img || '/images/placeholder.jpg'}
-                                alt={educatorObj.name}
+                                src={imageUrl}
+                                alt={displayName}
                                 onError={e => { e.target.onerror = null; e.target.src='/images/placeholder.jpg'; }}
                               />
                             </EducatorAvatar>
                             <SessionInfo>
                               <div style={{ fontWeight: 600, fontSize: 15, marginBottom: 2 }}>
-                                {educatorObj?.name || session.educator}
+                                {displayName}
                               </div>
                               <SessionTime>{convertTime(session.time)}</SessionTime>
                               <SessionTitle>{session.title}</SessionTitle>
@@ -658,7 +663,7 @@ const Calendar = () => {
                               }</div>
                             </SessionInfo>
                           </SessionCardWrapper>
-                        ) : null;
+                        );
                       })
                     ) : null}
                   </DayCellContent>

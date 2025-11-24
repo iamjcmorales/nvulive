@@ -43,6 +43,34 @@ const getFirstNEducatorsByLanguage = (data, n, lang) => {
   return allEducators.slice(0, n);
 };
 
+const getTopEducatorsByVisits = (data, n) => {
+  // Top educadores por visitas (mixto español/inglés)
+  const topEducatorIds = [
+    'richard-hall-pops',    // Pops - 13,600 visitas (en)
+    'arin-long',            // Arin - 9,419 visitas (en)
+    'lucas-longmire',       // Lucas L - 6,320 visitas (en)
+    'henry-tyson',          // Andre Tyson - 5,527 visitas (en)
+    'corey-williams',       // Corey Williams - 916 visitas (en)
+    'seb-garcia',           // Sebastian Garcia - 81 visitas (es)
+    'abi-belity',           // Abi Belilty - 20 visitas (es)
+    'frank-araujo'          // Franklin Araujo - 33 visitas (es)
+  ];
+  
+  const allEducators = [];
+  for (const category in data) {
+    if (Array.isArray(data[category])) {
+      allEducators.push(...data[category]);
+    }
+  }
+  
+  // Obtener educadores sin filtrar por idioma, mostrando mix de ambos idiomas
+  const topEducators = topEducatorIds
+    .map(id => allEducators.find(edu => edu.id === id))
+    .filter(edu => edu);
+  
+  return topEducators.slice(0, n);
+};
+
 const getTopEducatorsByLanguage = (data, n, lang) => {
   const allEducators = [];
   for (const category in data) {
@@ -446,7 +474,7 @@ const Home = () => {
   console.log("Home Component Rendered");
   console.log("Datos Educadores Importados:", educatorsData);
   
-  const topEducators = getTopEducatorsByLanguage(educatorsData, 5, currentLang);
+  const topEducators = getTopEducatorsByVisits(educatorsData, 5);
   const previewEducators = getFirstNEducatorsByLanguage(educatorsData, 5, currentLang);
   
   console.log("Top Educators Derivados:", topEducators);
@@ -471,8 +499,8 @@ const Home = () => {
       {/* Sección Educadores Top */}
       <Section>
         <SectionTitle>
-          {String(t('home.topEducators') || 'Top Educators')}
-          <Link to="/educadores">{String(t('home.viewAll') || 'View All')} {'>'}</Link> 
+          Top Educators
+          <Link to="/educadores">View All {'>'}</Link> 
         </SectionTitle>
         <TopEducatorsContainer>
           {Array.isArray(topEducators) && topEducators.length > 0 ? (
@@ -486,16 +514,16 @@ const Home = () => {
                   <TopEducatorAvatar>
                     <img 
                       src={edu.profileImageFilename ? (edu.id === 'lucas-longmire' ? `/images/perfil/${edu.profileImageFilename}` : `/PERFIL/${edu.profileImageFilename}`) : '/images/placeholder.jpg'} 
-                      alt={String(edu.name || t('common.nameNotAvailable') || 'Educator')}
+                      alt={edu.name || 'Educator'}
                       onError={(e) => { e.target.onerror = null; e.target.src='/images/placeholder.jpg'; }}
                     />
-                    <span>{String(edu.name || t('common.nameNotAvailable') || 'Educator')}</span>
+                    <span>{edu.name || 'Educator'}</span>
                   </TopEducatorAvatar>
                 </Link>
               );
             })
           ) : (
-            <p>{String(t('home.noTopEducators') || 'No top educators available')}</p> 
+            <p>No top educators available</p> 
           )}
         </TopEducatorsContainer>
       </Section>
@@ -506,8 +534,8 @@ const Home = () => {
       {/* Sección Educadores Preview */}
       <Section>
         <SectionTitle>
-          {String(t('home.ourEducators') || 'Our Educators')} 
-          <Link to="/educadores">{String(t('home.viewAll') || 'View All')} {'>'}</Link> 
+          {t('home.ourEducators') || 'Our Educators'} 
+          <Link to="/educadores">{t('home.viewAll') || 'View All'} {'>'}</Link> 
         </SectionTitle>
         
         <EducatorsPreviewGrid>
@@ -521,23 +549,23 @@ const Home = () => {
                         <EducatorCard key={edu.id || `prev-edu-${index}`} to={`/educadores/${edu.id}`}> 
                             <EducatorImage 
                                 src={edu.profileImageFilename ? (edu.id === 'lucas-longmire' ? `/images/perfil/${edu.profileImageFilename}` : `/PERFIL/${edu.profileImageFilename}`) : '/images/placeholder.jpg'} 
-                                alt={String(edu.name || t('common.nameNotAvailable') || 'Educator')} 
+                                alt={edu.name || 'Educator'} 
                                 onError={(e) => { e.target.onerror = null; e.target.src='/images/placeholder.jpg'; }}
                             />
                             <EducatorCardInfo>
-                                <EducatorCardName>{String(edu.name || t('common.nameNotAvailable') || 'Educator')}</EducatorCardName>
-                                <EducatorCardTitle>{String(t(`educators.categories.${edu.category}`) || t('common.specialist') || 'Specialist')}</EducatorCardTitle>
+                                <EducatorCardName>{edu.name || t('common.nameNotAvailable') || 'Educator'}</EducatorCardName>
+                                <EducatorCardTitle>{t(`educators.categories.${edu.category}`) || t('common.specialist') || 'Specialist'}</EducatorCardTitle>
                             </EducatorCardInfo>
                         </EducatorCard>
                     );
                  })
             ) : (
-                 <p>{String(t('home.noEducatorsPreview') || 'No educators available')}</p> 
+                 <p>{t('home.noEducatorsPreview') || 'No educators available'}</p> 
             )}
         </EducatorsPreviewGrid>
 
         <ViewMoreButton to="/educadores">
-            {String(t('common.viewMore') || 'View More')}
+            {t('common.viewMore') || 'View More'}
         </ViewMoreButton>
       </Section>
       

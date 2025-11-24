@@ -12,6 +12,7 @@ const AUTHORIZED_TRADE_CREATORS = [
   1029917, // JC MORALES
   1072168, // RAQUEL CURTIS
   1085559, // NICOLE RICHARDS
+  1086538, // LUCAS LONGMIRE
   // Agregar otros IDs según sea necesario
 ];
 

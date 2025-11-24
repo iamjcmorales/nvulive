@@ -13,6 +13,7 @@
     "liveMarkups": "Señales en Vivo",
     "beyondCharts": "Beyond the Charts",
     "tntTraining": "TNT Training",
+    "nmo": "NMO",
     "news": "Noticias",
     "markups": "Señales de Trading",
     "tradingJournal": "Diario de Trading",
@@ -97,7 +98,8 @@
     "noSessionsAvailable": "No hay sesiones disponibles para este educador.",
     "favoriteSessions": "Sesiones Favoritas",
     "allSessions": "Todas las Sesiones",
-    "noFavorites": "No tienes sesiones favoritas. Marca algunas sesiones como favoritas haciendo clic en la estrella."
+    "noFavorites": "No tienes sesiones favoritas. Marca algunas sesiones como favoritas haciendo clic en la estrella.",
+    "noFavoriteSessionsYet": "Este educador no ha seleccionado sesiones favoritas aún."
   },
   "liveChat": {
     "title": "NVU Chat en Vivo",
@@ -158,8 +160,14 @@
     "annie-toney": "Educadora experta en su campo, comprometida con el éxito de los estudiantes.",
     "al-blue": "Dr. A.L.Blue, Sr. es un autor de bestsellers, Evangelista de la Riqueza e Inversionista de Capital Privado que se desempeña como Socio Senior y Director General de Blue Wealth Solutions Consolidated LLC, una empresa de empoderamiento financiero, construcción de riqueza y educación para una vida mejor enfocada en la verdadera creación de riqueza y acumulación de activos en metales preciosos, así como soluciones de creación de riqueza generacional y fondos fiduciarios. También se desempeña como Evangelista de la Riqueza enseñando principios bíblicos sobre creación de riqueza y mejor vida desde una perspectiva espiritual como Financiero del Reino.",
     "stephon-r": "Stephon Royal es un educador de redes sociales apasionado y dinámico dedicado a empoderar a individuos y empresas para dominar el arte de la narrativa digital y la influencia en línea. Con años de experiencia en la creación de contenido viral y la construcción de marcas en línea impactantes, Stephon combina creatividad con estrategia para ayudar a los estudiantes a desbloquear todo el potencial de las plataformas de redes sociales.\n\nEspecializado en creación de contenido, participación de audiencia y estrategias de monetización, Stephon se ha ganado una reputación por brindar información práctica, técnicas innovadoras y soluciones accionables. Ya seas un influencer principiante, propietario de una pequeña empresa o un marketero experimentado, el estilo de enseñanza accesible de Stephon asegura que cada estudiante se vaya con las habilidades y la confianza para prosperar en el mundo en constante evolución de las redes sociales.\n\nConocido por sus talleres energéticos y coaching personalizado, la misión de Stephon es simple: ayudarte a construir una marca que no solo se destaque, sino que también conecte, convierta y cree un impacto duradero.",
-    "tamara-minto": "Tamara Minto es autora, oradora, emprendedora y educadora, con una gran experiencia en marketing, bienes raíces e inversiones. En 2018, Tamara fundó una organización sin fines de lucro, iTrade Junior Investor Trading Game, como plataforma para empoderar y educar a jóvenes de 10 a 17 años sobre el poder del mercado financiero. Es una inversora apasionada y defensora de la alfabetización financiera, enfocándose en la importancia de equipar a nuestras familias para desarrollar una mentalidad de riqueza.",
+    "tamara-minto": "Tamara Mckenzie es autora, oradora, emprendedora y educadora, con una gran experiencia en marketing, bienes raíces e inversiones. En 2018, Tamara fundó una organización sin fines de lucro, iTrade Junior Investor Trading Game, como plataforma para empoderar y educar a jóvenes de 10 a 17 años sobre el poder del mercado financiero. Es una inversora apasionada y defensora de la alfabetización financiera, enfocándose en la importancia de equipar a nuestras familias para desarrollar una mentalidad de riqueza.",
     "angie-toney": "Educadora especializada en alfabetización financiera, ayudando a las personas a tomar control de sus finanzas y construir riqueza a largo plazo."
+  },
+  "nmo": {
+    "onboardingSessions": "Orientación de Nuevos Miembros",
+    "loadingSessions": "Cargando sesiones...",
+    "videoUntitled": "Video Sin Título",
+    "noSessionsAvailable": "No hay sesiones disponibles"
   },
   "tntTraining": {
     "welcomeTitle": "TNT Training",
@@ -203,8 +211,7 @@
     "stock": "Acciones",
     "crypto": "Cripto",
     "financial_literacy": "Educación Financiera",
-    "marketing_digital": "Marketing Digital",
-    "mindset": "Mindset"
+    "marketing_digital": "Marketing Digital"
   },
   "calendar": {
     "pageTitle": "Calendario",

@@ -10,7 +10,7 @@
 7. **raphael-msica** - Raphael Msica (FR)
 8. **richard-hall-pops** - Richard Hall Pops (EN) ✅ *Ya tiene chat*
 9. **lucas-longmire** - Lucas Longmire (EN)
-10. **tamara-minto** - Tamara Minto (EN)
+10. **tamara-minto** - Tamara Mckenzie (EN)
 
 ## FUTURES
 11. **henry-tyson** - Andre Tyson (EN)

@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
-import { FaTimes, FaStar, FaCheck, FaSpinner } from 'react-icons/fa';
+import { FaTimes, FaStar, FaCheck, FaSpinner, FaEdit } from 'react-icons/fa';
 import { 
   getEducatorFavoriteSessions, 
   saveEducatorFavoriteSessions 
 } from '../../services/favoriteSessions';
+import { currentUserCanManageFavorites } from '../../utils/permissions';
 
 const ModalOverlay = styled.div`
   position: fixed;
@@ -118,10 +119,33 @@ const SessionDescription = styled.p`
   line-height: 1.4;
 `;
 
+const SessionActions = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+`;
+
 const FavoriteIndicator = styled.div`
   color: ${props => props.$isFavorite ? '#FFD700' : 'rgb(100, 100, 100)'};
   font-size: 18px;
   flex-shrink: 0;
+`;
+
+const EditButton = styled.button`
+  background: none;
+  border: none;
+  color: rgb(158, 158, 158);
+  font-size: 14px;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    color: rgb(0, 150, 136);
+    background: rgba(0, 150, 136, 0.1);
+  }
 `;
 
 const ActionButtons = styled.div`
@@ -192,6 +216,10 @@ const FavoriteSessionsModal = ({
   const [selectedSessions, setSelectedSessions] = useState([]);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
+  const [editingSession, setEditingSession] = useState(null);
+  const [newName, setNewName] = useState('');
+  const [renaming, setRenaming] = useState(false);
+  const canManage = currentUserCanManageFavorites();
 
   useEffect(() => {
     if (isOpen && educatorId) {
@@ -237,6 +265,60 @@ const FavoriteSessionsModal = ({
     }
   };
 
+  const handleEditClick = (session, event) => {
+    event.stopPropagation();
+    setEditingSession(session.vimeoId);
+    setNewName(session.title || '');
+  };
+
+  const handleCancelEdit = () => {
+    setEditingSession(null);
+    setNewName('');
+  };
+
+  const handleRenameVideo = async () => {
+    if (!newName.trim() || !editingSession) return;
+    
+    setRenaming(true);
+    try {
+      // Llamada directa a la API de Vimeo
+      const response = await fetch(`https://api.vimeo.com/videos/${editingSession}`, {
+        method: 'PATCH',
+        headers: {
+          'Authorization': `Bearer ${import.meta.env.VITE_VIMEO_ACCESS_TOKEN}`,
+          'Accept': 'application/vnd.vimeo.*+json;version=3.4',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name: newName.trim()
+        })
+      });
+
+      if (response.ok) {
+        const updatedVideo = await response.json();
+        // Actualizar el título en la lista local
+        sessions.forEach(session => {
+          if (session.vimeoId === editingSession) {
+            session.title = newName.trim();
+          }
+        });
+        
+        setEditingSession(null);
+        setNewName('');
+        alert('Nombre del video actualizado exitosamente');
+      } else {
+        const errorText = await response.text();
+        console.error('Vimeo API Error:', response.status, errorText);
+        alert(`Error: ${response.status} - ${errorText}`);
+      }
+    } catch (error) {
+      console.error('Error renaming video:', error);
+      alert('Error al renombrar el video: ' + error.message);
+    } finally {
+      setRenaming(false);
+    }
+  };
+
   if (!isOpen) return null;
 
   return (
@@ -245,7 +327,7 @@ const FavoriteSessionsModal = ({
         <ModalHeader>
           <ModalTitle>
             <FaStar />
-            Gestionar Sesiones Favoritas
+            {t('favoriteSessionsModal.title')}
           </ModalTitle>
           <CloseButton onClick={onClose}>
             <FaTimes />
@@ -255,11 +337,11 @@ const FavoriteSessionsModal = ({
         {loading ? (
           <LoadingSpinner>
             <FaSpinner className="fa-spin" />
-            Cargando sesiones...
+            {t('favoriteSessionsModal.loadingSessions')}
           </LoadingSpinner>
         ) : sessions.length === 0 ? (
           <EmptyState>
-            <p>No hay sesiones disponibles para este educador.</p>
+            <p>{t('favoriteSessionsModal.noSessionsAvailable')}</p>
           </EmptyState>
         ) : (
           <>
@@ -275,24 +357,97 @@ const FavoriteSessionsModal = ({
                     alt={session.title}
                   />
                   <SessionInfo>
-                    <SessionTitle>{session.title || 'Sin título'}</SessionTitle>
-                    <SessionDescription>
-                      {session.description ? 
-                        session.description.substring(0, 100) + (session.description.length > 100 ? '...' : '')
-                        : 'Sin descripción'
-                      }
-                    </SessionDescription>
+                    {editingSession === session.vimeoId ? (
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                        <input
+                          type="text"
+                          value={newName}
+                          onChange={(e) => setNewName(e.target.value)}
+                          style={{
+                            background: 'rgb(40, 40, 40)',
+                            border: '1px solid rgb(60, 60, 60)',
+                            borderRadius: '4px',
+                            padding: '4px 8px',
+                            color: 'white',
+                            fontSize: '14px'
+                          }}
+                          onClick={(e) => e.stopPropagation()}
+                          onKeyDown={(e) => {
+                            if (e.key === 'Enter') handleRenameVideo();
+                            if (e.key === 'Escape') handleCancelEdit();
+                          }}
+                          autoFocus
+                        />
+                        <div style={{ display: 'flex', gap: '4px' }}>
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleRenameVideo();
+                            }}
+                            disabled={renaming}
+                            style={{
+                              background: 'rgb(0, 150, 136)',
+                              border: 'none',
+                              borderRadius: '4px',
+                              color: 'white',
+                              padding: '4px 8px',
+                              fontSize: '12px',
+                              cursor: renaming ? 'not-allowed' : 'pointer'
+                            }}
+                          >
+                            {renaming ? <FaSpinner className="fa-spin" /> : 'Guardar'}
+                          </button>
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleCancelEdit();
+                            }}
+                            style={{
+                              background: 'rgb(60, 60, 60)',
+                              border: 'none',
+                              borderRadius: '4px',
+                              color: 'white',
+                              padding: '4px 8px',
+                              fontSize: '12px',
+                              cursor: 'pointer'
+                            }}
+                          >
+                            {t('favoriteSessionsModal.cancel')}
+                          </button>
+                        </div>
+                      </div>
+                    ) : (
+                      <>
+                        <SessionTitle>{session.title || t('favoriteSessionsModal.untitled')}</SessionTitle>
+                        <SessionDescription>
+                          {session.description ? 
+                            session.description.substring(0, 100) + (session.description.length > 100 ? '...' : '')
+                            : t('favoriteSessionsModal.noDescription')
+                          }
+                        </SessionDescription>
+                      </>
+                    )}
                   </SessionInfo>
-                  <FavoriteIndicator $isFavorite={selectedSessions.includes(session.vimeoId)}>
-                    <FaStar />
-                  </FavoriteIndicator>
+                  <SessionActions>
+                    {canManage && editingSession !== session.vimeoId && (
+                      <EditButton
+                        onClick={(e) => handleEditClick(session, e)}
+                        title="Editar nombre del video"
+                      >
+                        <FaEdit />
+                      </EditButton>
+                    )}
+                    <FavoriteIndicator $isFavorite={selectedSessions.includes(session.vimeoId)}>
+                      <FaStar />
+                    </FavoriteIndicator>
+                  </SessionActions>
                 </SessionItem>
               ))}
             </SessionGrid>
 
             <ActionButtons>
               <Button onClick={onClose}>
-                Cancelar
+                {t('favoriteSessionsModal.cancel')}
               </Button>
               <Button 
                 $primary 
@@ -302,12 +457,12 @@ const FavoriteSessionsModal = ({
                 {saving ? (
                   <>
                     <FaSpinner className="fa-spin" />
-                    Guardando...
+                    {t('favoriteSessionsModal.saving')}
                   </>
                 ) : (
                   <>
                     <FaCheck />
-                    Guardar Cambios
+                    {t('favoriteSessionsModal.saveChanges')}
                   </>
                 )}
               </Button>

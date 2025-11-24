@@ -396,8 +396,10 @@ const EducatorSessions = () => {
 
   // --- Determinar la imagen del banner ---
   // Usar la imagen de portada del educador si existe, sino la imagen general
-  const bannerSrc = educator.coverImageFilename 
-                    ? `/images/PORTADAS/${educator.coverImageFilename}` 
+  const bannerSrc = educator.coverImageFilename
+                    ? (educator.coverImageFilename.startsWith('/') || educator.coverImageFilename.startsWith('http')
+                        ? educator.coverImageFilename
+                        : `/images/PORTADAS/${educator.coverImageFilename}`)
                     : '/images/banner.png'; // Fallback a la imagen genérica si no hay de portada
 
   // Función para manejar errores de carga de imagen
@@ -475,7 +477,7 @@ const EducatorSessions = () => {
                     </TabButton>
                     {canManage && (
                         <AdminButton onClick={() => setIsModalOpen(true)}>
-                            <FaCog /> Gestionar Favoritas
+                            <FaCog /> {t('favoriteSessionsModal.manageButton')}
                         </AdminButton>
                     )}
                 </TabBarContainer>
@@ -513,7 +515,7 @@ const EducatorSessions = () => {
                         ) : (
                         <NoDataMessage>
                             {activeFilter === 'favorites' 
-                                ? 'Este educador no ha seleccionado sesiones favoritas aún.'
+                                ? t('educatorSessions.noFavoriteSessionsYet', 'Este educador no ha seleccionado sesiones favoritas aún.')
                                 : (error === 'Este educador no tiene sesiones configuradas.' ? error : 'No hay sesiones disponibles.')
                             }
                         </NoDataMessage>

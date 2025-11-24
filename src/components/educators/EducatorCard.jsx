@@ -218,7 +218,6 @@ const HoverOverlay = styled.div`
 const educatorScheduleMapping = {
   'abi-belity': {
     schedule: {
-      wednesday: [{ time: '10:00', title: 'TRADING INSTITUCIONAL', language: 'Español' }],
       thursday: [{ time: '22:00', title: 'TRADING INSTITUCIONAL', language: 'Español' }]
     }
   },
@@ -235,20 +234,16 @@ const educatorScheduleMapping = {
       thursday: [{ time: '23:00', title: 'Forex Sessions', language: 'English' }]
     }
   },
-  'paulina': {
+  'jimmy-el-andre': {
     schedule: {
-      monday: [{ time: '14:00', title: 'Forex Education', language: 'English' }],
-      tuesday: [{ time: '14:00', title: 'Forex Education', language: 'English' }]
+      wednesday: [{ time: '09:00', title: 'Akila/ Aligator stratégie', language: 'Français' }],
+      thursday: [{ time: '09:00', title: 'Akila/ Aligator stratégie', language: 'Français' }],
+      sunday: [{ time: '15:00', title: 'Akila/ Aligator stratégie', language: 'Français' }]
     }
   },
   'stephon-r': {
     schedule: {
       wednesday: [{ time: '21:00', title: 'VVS', language: 'English' }]
-    }
-  },
-  'dani-curtis': {
-    schedule: {
-      thursday: [{ time: '19:00', title: 'Stocks 101', language: 'English' }]
     }
   },
   'maur-gaytan': {
@@ -302,12 +297,6 @@ const educatorScheduleMapping = {
       monday: [{ time: '21:00', title: 'Onboarding For Beginners', language: 'English' }]
     }
   },
-  'raphael-msica': {
-    schedule: {
-      wednesday: [{ time: '16:00', title: 'Générer des Revenus avec le Trading Forex', language: 'Français' }],
-      friday: [{ time: '16:00', title: 'Générer des Revenus avec le Trading Forex', language: 'Français' }]
-    }
-  }
 };
 
 
@@ -338,7 +327,8 @@ const EducatorCard = ({ educator }) => {
       'dani-curtis': 'Raquel C.jpg',
       'corey-williams': 'Corey Williams.jpg',
       'angie-toney': 'Angie Toney.jpg',
-      'tamara-minto': 'Tamara Minto.jpg'
+      'tamara-minto': 'Tamara McK.jpg',
+      'jimmy-el-andre': 'jimmuy.jpg'
     };
     
     const imageName = imageMap[educator.id];
